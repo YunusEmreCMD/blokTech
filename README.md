@@ -1,6 +1,6 @@
 # SpecificFilter Project
 
-De ```SpecificFilter Project``` is een project waarbij het doel is om een Filter te creeren, waarbij je specifiek kunt filteren op aspecten. In mijn geval ga ik specifiek filter op mensen met bepaalde wensen/intresses of op banen/projecten.
+De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersysteem. Het doel is dat je met het filtersysteem heel specifiek kunt filteren op aspecten. In mijn geval ga ik specifiek filter op mensen met bepaalde wensen/intresses of op banen/projecten.
 
 ## Inhoudsopagve
 
@@ -9,3 +9,13 @@ De ```SpecificFilter Project``` is een project waarbij het doel is om een Filter
 * Features
 * License
 * Bronnen
+
+## Intoductie
+
+## Hoe te installeren
+
+## Features
+
+## License
+
+## Bronnen
