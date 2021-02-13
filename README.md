@@ -4,7 +4,7 @@ De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersys
 
 ## Inhoudsopagve
 
-* [Introductie] Introductie
+* [https://github.com/YunusEmreCMD/blokTech/edit/main/README.md#Introductie] Introductie
 * Hoe te installeren
 * Features
 * License
