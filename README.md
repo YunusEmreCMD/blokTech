@@ -36,4 +36,6 @@ Er wordt in dit project gebruik gemaakt van de ```MIT``` license
 
 ## Bronnen
 
-* Nog geen
+* https://github.com/inessadl/readme
+* https://github.com/inessadl/readme/blob/master/_cheatsheet.md
++ https://github.com/aimeos/aimeos-typo3/blob/master/README.md#license
