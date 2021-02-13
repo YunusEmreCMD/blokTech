@@ -4,13 +4,13 @@ De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersys
 
 ## Inhoudsopagve
 
-* Introductie
+* [Introductie]Introductie
 * Hoe te installeren
 * Features
 * License
 * Bronnen
 
-## Intoductie
+## Introductie
 
 ## Hoe te installeren
 
