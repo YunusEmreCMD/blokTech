@@ -12,10 +12,25 @@ De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersys
 
 ## Introductie
 
+Ik ga een filtersysteem bouwen, waarbij je zowel kan filteren door gebruik te maken van checkboxes, radiobuttons als door gebruik te maken van een slider of door tesktinvoer.
+
 ## Hoe te installeren
+
+```js
+git clone https://github.com/YunusEmreCMD/blokTech.git
+```
 
 ## Features
 
+* Filteren door middel van een slider
+* Filteren door middel van een checkbox
+* Filteren door middel van een radiobutton
+* Filteren door teskt in te voeren
+
 ## License
 
+Er wordt in dit project gebruik gemaakt van de MIT license
+
 ## Bronnen
+
+* Nog geen
