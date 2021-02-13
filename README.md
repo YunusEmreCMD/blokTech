@@ -22,10 +22,10 @@ git clone https://github.com/YunusEmreCMD/blokTech.git
 
 ## Features
 
-* Filteren door middel van een slider
-* Filteren door middel van een checkbox
-* Filteren door middel van een radiobutton
-* Filteren door teskt in te voeren
+> Filteren door middel van een slider
+> Filteren door middel van een checkbox
+> Filteren door middel van een radiobutton
+> Filteren door teskt in te voeren
 
 ## License
 
