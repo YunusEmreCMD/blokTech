@@ -32,7 +32,7 @@ git clone https://github.com/YunusEmreCMD/blokTech.git
 
 ## License
 
-Er wordt in dit project gebruik gemaakt van de MIT license
+Er wordt in dit project gebruik gemaakt van de ```MIT``` license
 
 ## Bronnen
 
