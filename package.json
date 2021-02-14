@@ -1,0 +1,23 @@
+{
+  "name": "project-tech",
+  "version": "1.0.0",
+  "description": "Mijn blok-tech project",
+  "main": "HelloWorld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YunusEmreCMD/blokTech.git"
+  },
+  "author": "Yunus Emre Alkan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YunusEmreCMD/blokTech/issues"
+  },
+  "homepage": "https://github.com/YunusEmreCMD/blokTech#readme",
+  "dependencies": {
+    "camelcase": "^6.2.0",
+    "nodemon": "^2.0.7"
+  }
+}
