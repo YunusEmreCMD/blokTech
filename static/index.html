@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>MatchingApp</title>
+</head>
+
+
+<body class="resultaten">
+
+  <p class="bekijk-op-mobiel">Bekijk op mobiel formaat</p>
+
+  <!-- Filter balk -->
+
+  <header class="filter-balk">
+    <svg id="filter-knop" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="971.986px" height="971.986px" viewBox="0 0 971.986 971.986" style="enable-background:new 0 0 971.986 971.986;" xml:space="preserve">
+      <g>
+        <path d="M370.216,459.3c10.2,11.1,15.8,25.6,15.8,40.6v442c0,26.601,32.1,40.101,51.1,21.4l123.3-141.3
+    c16.5-19.8,25.6-29.601,25.6-49.2V500c0-15,5.7-29.5,15.8-40.601L955.615,75.5c26.5-28.8,6.101-75.5-33.1-75.5h-873
+           c-39.2,0-59.7,46.6-33.1,75.5L370.216,459.3z" />
+      </g>
+    </svg>
+  </header>
+
+
+
+  <!-- Uitschuivende filter overlay -->
+
+  <section class="filter-overlay">
+    <h2>Filter</h2>
+
+    <p>Zoekterm</p>
+    <input class="zoeken" type="text" placeholder="Functie, trefwoord of bedrijf" name="search">
+
+    <p>Afstand</p>
+    <input type="range" min="1" max="100" value="25" class="slider" id="myRange">
+
+    <p>Dienstverband</p>
+
+    <section class="checkbox-opties">
+      <div>
+        <input type="checkbox" name="soort-baan" value="Fulltime">
+        <label for="Fulltime">Fulltime</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="soort-baan" value="Parttime">
+        <label for="Parttime">Parttime</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="soort-baan" value="Stage">
+        <label for="Stage">Stage</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="soort-baan" value="Freelance/ZZP">
+        <label for="Freelance/ZZP">Freelance/ZZP</label>
+      </div>
+    </section>
+
+
+    <p>Opleidingsniveau</p>
+
+    <section class="checkbox-opties">
+      <div>
+        <input type="checkbox" name="opleidingsniveau" value="Fulltime">
+        <label for="Fulltime">Universiteit</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="opleidingsniveau" value="Hbo">
+        <label for="Hbo">Hbo</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="opleidingsniveau" value="Mbo">
+        <label for="Mbo">Mbo</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="opleidingsniveau" value="Havo">
+        <label for="Havo">Havo</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="opleidingsniveau" value="Vmbo">
+        <label for="Vmbo">Vmbo</label>
+      </div>
+    </section>
+
+    <p>Werkomgeving</p>
+    <div>
+      <input type="radio" name="Werkomgeving" value="Thuis">
+      <label for="Thuis">Thuis</label>
+    </div>
+    <div>
+      <input type="radio" name="Werkomgeving" value="Kantoor">
+      <label for="Kantoor">Kantoor</label>
+    </div>
+
+    <button type="button">Zoeken</button>
+
+  </section>
+
+
+  <!-- MAIN CONTENT -->
+
+<!--
+  <main>
+    <section class="content-voorkant">
+      <p>Hier komen alle belangrijke info te staan</p>
+    </section>
+
+    <section class="content-achterkant">
+      <p>Hier komen de werkzaamheden te staan en meer over het bedrijf</p>
+    </section>
+  </main>
+-->
+
+
+  <script src="scripts/javascript.js"></script>
+
+</body>
+
+</html>
