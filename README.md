@@ -12,7 +12,7 @@ De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersys
 
 ## Introductie
 
-Ik ga een filtersysteem bouwen, waarbij je zowel kan filteren door gebruik te maken van checkboxes, radiobuttons als door gebruik te maken van een slider of door tekStinvoer.
+Ik ga een filtersysteem bouwen, waarbij je zowel kan filteren door gebruik te maken van checkboxes, radiobuttons als door gebruik te maken van een slider of door tekstinvoer.
 
 ## Hoe te installeren
 
