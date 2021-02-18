@@ -28,7 +28,7 @@ git clone https://github.com/YunusEmreCMD/blokTech.git
 
 > Filteren door middel van een radiobutton
 
-> Filteren door teskt in te voeren
+> Filteren door tekst in te voeren
 
 ## License
 
