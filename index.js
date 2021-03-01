@@ -4,9 +4,19 @@ const port = 3000
 
 app.use(express.static('static'));
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+app.get('/ejs', (req,res) => {
+  res.render('home');
+});
+// app.get('/app', (req,res) => {
+//   res.render('pages/links', {
+//     links:items
+//   });
+// });
 app.get('/movies', (req,res) => {
     res.send('A list of movies');
 });
