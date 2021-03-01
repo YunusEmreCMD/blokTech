@@ -3,10 +3,10 @@ const exphbs = require('express-handlebars');
 const app = express();
 const port = 3000
 
-const movies = [
-  {title: "The Hulk", genre: "Action", jaartal: 1980},
-  {title: "Spiderman", genre: "Drama", jaartal: 2012},
-  {title: "Spongebob", genre: "Comedy", jaartal: 2021}
+const gebruikers = [
+  {naam: "Yunus Emre Alkan", soortGebruiker: "Werkzoekende", opleidingsniveau: "Hbo", leerjaar: 2, functie: "Creative designer", gewenstDienstverband: "stage"},
+  {naam: "Ali", soortGebruiker: "Werkzoekende", opleidingsniveau: "Universiteit", leerjaar: 3, functie: "Architect", gewenstDienstverband: "stage"},
+  {naam: "Lisa", soortGebruiker: "Werkzoekende", opleidingsniveau: "Mbo", leerjaar: 1, functie: "Apotheek assistente", gewenstDienstverband: "part-time"},
 ]
 
 app.use(express.static('static'));
@@ -17,15 +17,15 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-app.get('/handlebars', (req,res) => {
-  res.render('home');
+app.get('/gebruikers', (req,res) => {
+    res.render('lijstMetGebruikers', {title: "Dit zijn alle gebruikers", gebruikers});
 });
-app.get('/movies', (req,res) => {
-    res.render('listOfMovies', {title: "lijst van films", movies});
+app.get('/gebruikers-kaart', (req,res) => {
+  res.render('lijstMetGebruikersKaart', {title: "Dit zijn alle gebruikers", gebruikers});
 });
-app.get('/movies/:movieId', (req,res) => {
-  res.send(`<h1>Detailpage of movie ${req.params.movieId} </h1>`);
-});
+// app.get('/movies/:movieId', (req,res) => {
+//   res.send(`<h1>Detailpage of movie ${req.params.movieId} </h1>`);
+// });
 app.use(function (req, res, next) {
   res.status(404).send("Sorry can't find that!");
 });

@@ -126,3 +126,8 @@ button {
     display: block;
   }
 }
+
+.alle-gebruikers-tabel{
+    background-color: red;
+    color: red;
+}

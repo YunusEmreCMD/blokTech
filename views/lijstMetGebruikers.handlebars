@@ -1,0 +1,53 @@
+<h1>{{title}}</h1>
+
+<section class="alle-gebruikers-tabel"></section>
+
+{{!-- <table>
+    <tr>
+        <th>Naam</th>
+        <th>Soort gebruiker</th>
+        <th>Opleidingsniveau</th>
+        <th>Leerjaar</th>
+        <th>Functie</th>
+        <th>Gewenst dienstverband</th>
+    </tr>
+    {{#each gebruikers}}
+    <tr>
+        <td>{{this.naam}}</td>
+        <td>{{this.soortGebruiker}}</td>
+        <td>{{this.opleidingsniveau}}</td>
+        <td>{{this.leerjaar}}</td>
+        <td>{{this.functie}}</td>
+        <td>{{this.gewenstDienstverband}}</td>
+    </tr>
+</table> --}}
+
+{{#each gebruikers}}
+<table>
+        <tr>
+            <th>Naam</th>
+            <td>{{this.naam}}</td>
+        </tr>
+        <tr>
+            <th>Soort gebruiker</th>
+            <td>{{this.soortGebruiker}}</td>
+        </tr>
+        <tr>
+            <th>Opleidingsniveau</th>
+            <td>{{this.opleidingsniveau}}</td>
+        </tr>
+        <tr>
+            <th>Leerjaar</th>
+            <td>{{this.leerjaar}}</td>
+        </tr>
+        <tr>
+            <th>Functie</th>
+            <td>{{this.functie}}</td>
+        </tr>
+        <tr>
+            <th>Gewenst dienstverband</th>
+            <td>{{this.gewenstDienstverband}}</td>
+        </tr>
+    </table>
+</section>
+{{/each}}
