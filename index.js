@@ -2,19 +2,41 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const dotenv = require('dotenv').config();
+const { MongoClient } = require('mongodb');
 const port = 3000;
 
 
 // Array voor dynamische content
-
-// const gebruikers = [
-//   {naam: "Yunus Emre Alkan", soortGebruiker: "Werkzoekende", opleidingsniveau: "Hbo", leerjaar: 2, functie: "Creative designer", dienstverband: "Stage"},
-//   {naam: "Ali", soortGebruiker: "Werkzoekende", opleidingsniveau: "Universiteit", leerjaar: 3, functie: "Architect", dienstverband: "Stage"},
-//   {naam: "Lisa", soortGebruiker: "Werkzoekende", opleidingsniveau: "Mbo", leerjaar: 1, functie: "Apotheek assistente", dienstverband: "Part-time"}
-// ]
+const gebruikers = [
+  {naam: "Yunus Emre Alkan", soortGebruiker: "Werkzoekende", opleidingsniveau: "Hbo", leerjaar: 2, functie: "Creative designer", dienstverband: "Stage"},
+  {naam: "Ali", soortGebruiker: "Werkzoekende", opleidingsniveau: "Universiteit", leerjaar: 3, functie: "Architect", dienstverband: "Stage"},
+  {naam: "Lisa", soortGebruiker: "Werkzoekende", opleidingsniveau: "Mbo", leerjaar: 1, functie: "Apotheek assistente", dienstverband: "Part-time"}
+]
 
 // DB Connectie testen
-console.log(process.env.TESTVAR);
+// console.log(process.env.TESTVAR);
+
+let db = null;
+// function connectDB
+async function connectDB () {
+  // GET URI from .env file
+  const uri = process.env.DB_URI
+  //make connection to database
+  const options = { useUnifiedTopplogy: true };
+  const client = new MongoClient(uri, options)
+  await client.connect();
+  db = await client.db(process.env.DB_NAME)
+}
+
+connectDB()
+  .then(() => {
+    // succes
+    console.log('feest!');
+  })
+  .catch( error => {
+    // unsucces
+    console.log(error)
+  });
 
 app.use(express.static('static'));
 
