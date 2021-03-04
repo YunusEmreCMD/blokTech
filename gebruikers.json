@@ -1,0 +1,6 @@
+[
+    {"id": "Leo-Lozano", "naam": "Leo", "soortGebruiker": "Werkzoekende", "opleidingsniveau": ["Hbo", "leerjaar 2"], "kwaliteiten": ["HTML", "CSS"], "functie": "Front-end developer", "dienstverband": "Stage"},
+    {"id": "Ali-Lograd", "naam": "Ali", "soortGebruiker": "Werkzoekende", "opleidingsniveau": ["Universiteit", "leerjaar 3"], "kwaliteiten": ["AutoCAD"], "functie": "Architect", "dienstverband": "Stage"},
+    {"id": "Lisa-Kraker", "naam": "Lisa", "soortGebruiker": "Werkzoekende", "opleidingsniveau": ["Mbo", "leerjaar 1"], "kwaliteiten": ["Excel"], "functie": "Administratie medewerker", "dienstverband": "Part-time"},
+    {"id": "Anne-Bergen", "naam": "Anne", "soortGebruiker": "Werkzoekende", "opleidingsniveau": ["Hbo", "leerjaar 4"], "kwaliteiten": ["Illustrator", "Photoshop"], "functie": "Visual designer", "dienstverband": "Freelance"}
+]

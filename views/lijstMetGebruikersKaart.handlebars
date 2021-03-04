@@ -13,9 +13,8 @@
     <main>
         <section class="gebruiker-kaart">
             <header>
-                <h1>foto</h1>
-                <h1>Naam{{this.naam}}</h1>
-                <p>Opleidingsniveau{{this.opleidingsniveau}}</p>
+                <h1>{{gebruiker.naam}}</h1>
+                <p>{{gebruiker.opleidingsniveau}} - {{gebruiker.leerjaar}}</p>
             </header>
             <article class="gebruiker-main-content">
                 <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, maiores. Facere inventore nisi saepe, repellat dolores tenetur esse consequuntur in natus asperiores ducimus sit sequi itaque quasi, quo nostrum explicabo?</h2>
@@ -24,10 +23,9 @@
                 <p>CSS</p>
             </article>
             <article class="opzoek-naar">
-                <h3>Naam is opzoek naar</h3>
-                <p>Dienstverband: {{this.dienstverband}}</p>
-                <p>Functie: {{this.functie}}</p>
-                <p>Functie: {{title}}</p>
+                <h3>{{gebruiker.naam}} is opzoek naar</h3>
+                <p>Dienstverband: {{gebruiker.dienstverband}}</p>
+                <p>Functie: {{gebruiker.functie}}</p>
             </article>
         </section>
     </main>
