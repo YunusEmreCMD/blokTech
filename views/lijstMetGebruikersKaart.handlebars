@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="styles/gebruikers-kaart.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/gebruikers-kaart.css">
-    <title>Layout</title>
-</head>
+{{title}}
+{{!-- {{#each gebruikers}}
+{{this.naam}}
+{{/each}} --}}
 
-<body>
     <main>
         <section class="gebruiker-kaart">
             <header>
-                <h1>{{gebruiker.naam}}</h1>
-                <p>{{gebruiker.opleidingsniveau}} - {{gebruiker.leerjaar}}</p>
+                <h1>{{this.naam}}</h1>
+                <p>{{this.opleidingsniveau}}</p>
             </header>
             <article class="gebruiker-main-content">
                 <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, maiores. Facere inventore nisi saepe, repellat dolores tenetur esse consequuntur in natus asperiores ducimus sit sequi itaque quasi, quo nostrum explicabo?</h2>
                 <h3>Skills</h3>
-                <p>HTML</p>
-                <p>CSS</p>
+                <h3>{{this.kwaliteiten}}</h3>
             </article>
             <article class="opzoek-naar">
-                <h3>{{gebruiker.naam}} is opzoek naar</h3>
-                <p>Dienstverband: {{gebruiker.dienstverband}}</p>
-                <p>Functie: {{gebruiker.functie}}</p>
+                <h3>{{this.naam}} is opzoek naar</h3>
+                <p>Dienstverband: {{this.dienstverband}}</p>
+                <p>Functie: {{this.functie}}</p>
             </article>
         </section>
     </main>
-</body>
-
-</html>

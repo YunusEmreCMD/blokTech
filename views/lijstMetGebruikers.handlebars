@@ -1,7 +1,6 @@
-<h1>{{title}}</h1>
+<link rel="stylesheet" href="styles/gebruikers-kaart.css">
 
-<section class="alle-gebruikers-tabel"></section>
-
+{{!-- <section class="alle-gebruikers-tabel"></section> --}}
 {{!-- <table>
     <tr>
         <th>Naam</th>
@@ -22,32 +21,57 @@
     </tr>
 </table> --}}
 
-{{#each gebruikers}}
+{{!-- {{#each gebruikers}}
 <table>
-        <tr>
-            <th>Naam</th>
-            <td>{{this.naam}}</td>
-        </tr>
-        <tr>
-            <th>Soort gebruiker</th>
-            <td>{{this.soortGebruiker}}</td>
-        </tr>
-        <tr>
-            <th>Opleidingsniveau</th>
-            <td>{{this.opleidingsniveau}}</td>
-        </tr>
-        <tr>
-            <th>Leerjaar</th>
-            <td>{{this.leerjaar}}</td>
-        </tr>
-        <tr>
-            <th>Functie</th>
-            <td>{{this.functie}}</td>
-        </tr>
-        <tr>
-            <th>Gewenst dienstverband</th>
-            <td>{{this.gewenstDienstverband}}</td>
-        </tr>
-    </table>
+    <tr>
+        <th>Naam</th>
+        <td>{{this.naam}}</td>
+    </tr>
+    <tr>
+        <th>Soort gebruiker</th>
+        <td>{{this.soortGebruiker}}</td>
+    </tr>
+    <tr>
+        <th>Opleidingsniveau</th>
+        <td>{{this.opleidingsniveau}}</td>
+    </tr>
+    <tr>
+        <th>Kwaliteiten</th>
+        <td>{{this.kwaliteiten}}</td>
+    </tr>
+    <tr>
+        <th>Functie</th>
+        <td>{{this.functie}}</td>
+    </tr>
+    <tr>
+        <th>Gewenst dienstverband</th>
+        <td>{{this.dienstverband}}</td>
+    </tr>
+</table>
 </section>
-{{/each}}
+{{/each}} --}}
+
+<main>
+    {{#each gebruikers}}
+    <section class="gebruiker-kaart">
+        <header>
+            <h1>{{this.naam}}</h1>
+            <p>{{this.opleidingsniveau}}</p>
+        </header>
+        <article class="gebruiker-main-content">
+            <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, maiores. Facere inventore nisi saepe,
+                repellat dolores tenetur esse consequuntur in natus asperiores ducimus sit sequi itaque quasi, quo
+                nostrum
+                explicabo?</h2>
+            <h3>Skills</h3>
+            <h3>{{this.kwaliteiten}}</h3>
+        </article>
+        <article class="opzoek-naar">
+            <h3>{{this.naam}} is opzoek naar</h3>
+            <p>Dienstverband: {{this.dienstverband}}</p>
+            <p>Functie: {{this.functie}}</p>
+            <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p>
+        </article>
+    </section>
+    {{/each}}
+</main>
