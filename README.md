@@ -19,6 +19,9 @@ Ik ga een filtersysteem bouwen, waarbij je zowel kan filteren door gebruik te ma
 ```js
 git clone https://github.com/YunusEmreCMD/blokTech.git
 ```
+```js
+npm start
+```
 
 ## Features
 
