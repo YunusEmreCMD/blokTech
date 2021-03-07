@@ -35,6 +35,10 @@ start npm
 
 De functionaliteit om te **Filteren** is de main feature die is uitgewerkt in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
 
+## In gebruik
+
+Komt foto/video
+
 ## License
 
 Er wordt in dit project gebruik gemaakt van de [MIT](https://github.com/YunusEmreCMD/blokTech/blob/main/LICENSE) license
