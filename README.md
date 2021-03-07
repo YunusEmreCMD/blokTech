@@ -28,7 +28,7 @@ npm install
 ```
 Stap 4. Start npm (Node package manager)
 ```js
-npm install
+start npm
 ```
 
 
