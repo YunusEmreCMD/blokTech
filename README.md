@@ -12,7 +12,9 @@
 * [License](https://github.com/YunusEmreCMD/blokTech/blob/main/README.md#license)
 * [Bronnen](https://github.com/YunusEmreCMD/blokTech/blob/main/README.md#bronnen)
 
-## Hoe te installeren
+## Hoe te installeren en gebruiksklaar maken
+
+### Installatie
 
 Stap 1. Clone deze reposotiry
 ```js
@@ -26,7 +28,21 @@ Stap 3. Installeer de npm (Node package manager)
 ```js
 npm install
 ```
-Stap 4. Start npm (Node package manager)
+
+### Database connectie
+Stap 1. Installeer MongoDB en MongoDBcompass en zet een database op, [stappenplan](https://docs.atlas.mongodb.com/getting-started/) (*Als je dit als hebt kan je deze stap overslaan*)
+
+Stap 2.
+Wijzig de <password> en gebruiksnaam naar jouw gegevens
+**code**
+  
+Stap 3.
+verander de .env_example file naar .env
+**code**
+
+### Starten maar
+
+Start nu npm (Node package manager)
 ```js
 start npm
 ```
