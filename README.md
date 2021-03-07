@@ -34,13 +34,7 @@ start npm
 
 ## Features
 
-> Filteren door middel van een slider
-
-> Filteren door middel van een checkbox
-
-> Filteren door middel van een radiobutton
-
-> Filteren door tekst in te voeren
+Filteren is de uitgwerkte functionaliteit in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
 
 ## License
 
