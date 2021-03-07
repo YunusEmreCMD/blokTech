@@ -19,24 +19,45 @@ const port = 3000;
 let db = null;
 // function connectDB
 async function connectDB () {
-  // GET URI from .env file
+  // get URI from .env file
   const uri = process.env.DB_URI
-  //make connection to database
-  const options = { useUnifiedTopplogy: true };
+  // make connection to database
+  const options = { useUnifiedTopology: true };
   const client = new MongoClient(uri, options)
   await client.connect();
   db = await client.db(process.env.DB_NAME)
 }
-
 connectDB()
   .then(() => {
-    // succes
-    console.log('feest!');
+    // if succesfull connections is made, show a message
+    console.log('Feest!')
   })
   .catch( error => {
-    // unsucces
+    // if connnection is unsuccesful, show errors
     console.log(error)
   });
+
+// let db = null;
+// // function connectDB
+// async function connectDB () {
+//   // GET URI from .env file
+//   const uri = process.env.DB_URI
+//   //make connection to database
+//   const options = { useUnifiedTopplogy: true };
+//   const client = new MongoClient(uri, options)
+//   await client.connect();
+//   db = await client.db(process.env.DB_NAME)
+// }
+
+// connectDB()
+//   .then(() => {
+//     // succes
+//     console.log('feest!');
+//   })
+//   .catch( error => {
+//     // unsucces
+//     console.log(error)
+//   });
 
 app.use(express.static('static'));
 
@@ -52,8 +73,6 @@ app.get('/gebruikers-kaart', async (req,res) => {
   const gebruiker = gebruikers[0];
   res.render('lijstMetGebruikersKaart', {title: "Dit zijn alle gebruikers", gebruiker});
 });
-
-
 
 app.get('/gebruikersdb', async (req,res) => {
   let gebruikers = {}
