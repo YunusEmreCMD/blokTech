@@ -14,12 +14,23 @@
 
 ## Hoe te installeren
 
+Stap 1. Clone deze reposotiry
 ```js
 git clone https://github.com/YunusEmreCMD/blokTech.git
 ```
+Stap 2. Navigeer naar de zojuist geclonde reposotiry *Let op hoofdletters*
 ```js
-npm start
+cd blokTech/
 ```
+Stap 3. Installeer de npm (Node package manager)
+```js
+npm install
+```
+Stap 4. Start npm (Node package manager)
+```js
+npm install
+```
+
 
 ## Features
 
