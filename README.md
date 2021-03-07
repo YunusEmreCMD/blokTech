@@ -1,7 +1,7 @@
-# Matching App <project/filterNaam>
+# Matching App *project/filterNaam*
 
 > *Appnaam* is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden, beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de
-> <project/filterNaam>. Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door
+> *project/filterNaam*. Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door
 > een keuze te maken uit verschillende dropdown's en radiobuttons. 
 
 ## Inhoudsopagve
@@ -11,10 +11,6 @@
 * [Features](https://github.com/YunusEmreCMD/blokTech/blob/main/README.md#features)
 * [License](https://github.com/YunusEmreCMD/blokTech/blob/main/README.md#license)
 * [Bronnen](https://github.com/YunusEmreCMD/blokTech/blob/main/README.md#bronnen)
-
-## Introductie
-
-Ik ga een filtersysteem bouwen, waarbij je zowel kan filteren door gebruik te maken van checkboxes, radiobuttons als door gebruik te maken van een slider of door tekstinvoer.
 
 ## Hoe te installeren
 
