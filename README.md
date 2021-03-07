@@ -33,7 +33,7 @@ start npm
 
 ## Features
 
-De functionaliteit om te ###Filteren is de main feature die is uitgewerkt in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
+De functionaliteit om te **Filteren** is de main feature die is uitgewerkt in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
 
 ## License
 
