@@ -1,6 +1,6 @@
-# SpecificFilter Project
+# Matching App <project/filterNaam>
 
-De ```SpecificFilter Project``` is een project waarbij ik bouw aan een Filtersysteem. Het doel is dat je met het filtersysteem heel specifiek kunt filteren op aspecten. In mijn geval ga ik specifiek filter op mensen met bepaalde wensen/intresses of op banen/projecten.
+<Appnaam> is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden, beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de <project/filterNaam>. Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door een keuze te maken uit verschillende dropdown's en radiobuttons. 
 
 ## Inhoudsopagve
 
