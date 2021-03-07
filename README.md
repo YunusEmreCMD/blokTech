@@ -31,10 +31,9 @@ Stap 4. Start npm (Node package manager)
 start npm
 ```
 
-
 ## Features
 
-Filteren is de uitgwerkte functionaliteit in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
+De functionaliteit om te ###Filteren### is de main feature die is uitgewerkt in de applicatie, bekijk [inhoudelijke features]() voor meer informatie.
 
 ## License
 
