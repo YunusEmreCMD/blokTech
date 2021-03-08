@@ -1,43 +1,53 @@
-html, body{
-padding: 0;
-margin: 0;
-/* display: none;     */
+@font-face {
+    font-family: AppFont;
+    src: url('../fonts/sf-pro-text_regular.woff');
+  }
+  
+html,
+body {
+    font-family: AppFont;
+    padding: 0;
+    margin: 0;
+    /* display: none;     */
 }
 
-.gebruiker-kaart{
+main {}
+
+.gebruiker-kaart {
     background-color: rgb(255, 153, 0);
-    height: 500px;
+    height: 375px;
     width: 60%;
     margin: auto;
-    padding: 0.25em 3em;    
+    padding: 0.25em 3em;
 }
 
-.gebruiker-kaart h1{
+.gebruiker-kaart h1 {
     padding: 0;
-    margin: 0; 
+    margin: 0;
 }
 
-.gebruiker-kaart h3{
+.gebruiker-kaart h3 {
     padding-top: 1em;
     font-size: 12px;
 }
 
-.gebruiker-kaart p{
+.gebruiker-kaart p {
     font-size: 10px;
 }
 
 .gebruiker-kaart header {
     font-size: 12px;
+    text-align: unset;
 }
 
-.gebruiker-main-content h2{
+.gebruiker-main-content h2 {
     font-size: 12px;
     margin: 0;
     padding: 0;
     font-weight: normal;
 }
 
-.gebruiker-main-content p{
+.gebruiker-main-content p {
     background-color: rgb(253, 196, 71);
     display: inline-block;
     padding: 0.5em 1em;
@@ -47,7 +57,15 @@ margin: 0;
     border: none;
 }
 
-header,footer{
+.gebruiker-main-content h3 {}
+
+hr {
+    border: 1px solid black;
+    margin-top: 1em;
+}
+
+header,
+footer {
     text-align: center;
 }
 
