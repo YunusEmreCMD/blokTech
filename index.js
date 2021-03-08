@@ -71,7 +71,7 @@ app.get('/gebruikers', (req,res) => {
 app.get('/gebruikers-kaart', async (req,res) => {
   let gebruikers = {}
   const gebruiker = gebruikers[0];
-  res.render('lijstMetGebruikersKaart', {title: "Dit zijn alle gebruikers", gebruiker});
+  res.render('lijstMetGebruikersKaart', {title: "Dit zijn alle gebruikers", gebruikers});
 });
 
 app.get('/gebruikersdb', async (req,res) => {
@@ -89,7 +89,6 @@ app.get('/movies/:movieId', async (req, res) => {
   const movie = await db.collection('movies').findOne({ id: req.params.movieId });
   res.render('moviedetails', {title: "Movie details", movie})
 });
-
 
 app.use(function (req, res, next) {
   res.status(404).send("Sorry can't find that!");
