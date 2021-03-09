@@ -7,8 +7,10 @@
 > Werkzoekende kunnen filter op afstand, dit gaat via een slider. Ook is filteren mogelijk op dienstverband en opleidingsniveau, dit kan gemakkelijk door een keuze te maken uit de dropdowns. En tot slot kan er ook nog gefiltert worden op werkomgeving, deze filter gaat via een radiobutton.
 >
 > Wanneer een interresante werkgever of werkzoekende is gevonden kan er meer informatie verkregen worden door het kaartje om te draaien door er op te klikken. Indien de kaart past bij gebruiker kan er gelijk contact opgenomen worden, omdat alle contactgegevens in de app staan.
->
-> Benieuwd waarom ik deze doelgroep heb gekozen en waarom ik deze app ontwikkel? [lees hier]().
+
+> Er zijn wellicht veel apps of websites die verzorgen voor een connectie tussen een werkzoekende en werkegvers, maar ik heb niet op mijn manier gezien. Daarom heb ik gekzoen voor dit project. Ik wil het proces wat speelser en gemakkelijker maken, en naar mijn mening kan dat door **cards** te gebruiken waarop je moet filteren om resultaten te krijgen.
+
+> (lees hier meer over de gebruikte design principes)
 
 screenshot
 
