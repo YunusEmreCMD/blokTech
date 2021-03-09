@@ -64,31 +64,20 @@ app.use(express.static('static'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-app.get('/gebruikers', (req,res) => {
-    res.render('lijstMetGebruikers', {title: "Dit zijn alle gebruikers", gebruikers});
-});
-
-app.get('/gebruikers-kaart', async (req,res) => {
-  let gebruikers = {}
-  const gebruiker = gebruikers[0];
-  res.render('lijstMetGebruikersKaart', {title: "Dit zijn alle gebruikers", gebruikers});
-});
-
-app.get('/gebruikersdb', async (req,res) => {
+app.get('/', async (req,res) => {
   let gebruikers = {}
   gebruikers = await db.collection('gebruikers').find({},{sort: {name: 1}}).toArray();
-  res.render('lijstMetGebruikers', {title: "Dit zijn alle gebruikers", gebruikers});
+  res.render('index', {title: "Dit zijn alle gebruikers", gebruikers});
 });
 
-app.get('/gebruikersdb/:gebruikerId', async (req,res) => {
-  const gebruikers = await db.collection("gebruikers").findOne({ id: req.params.gebruikerId });
-  res.render('gebruikerdetails', {title: "Gebruiker details", gebruikers})
-});
-
-app.get('/movies/:movieId', async (req, res) => {
-  const movie = await db.collection('movies').findOne({ id: req.params.movieId });
-  res.render('moviedetails', {title: "Movie details", movie})
-});
+  app.post('/', async (req, res) => {
+    let gebruikers = {}
+    gebruikers = await db.collection('gebruikers').find({}).toArray();
+    res.render('index', {
+      results: gebruikers.length,
+      gebruikers: gebruiker
+    })
+    })
 
 app.use(function (req, res, next) {
   res.status(404).send("Sorry can't find that!");

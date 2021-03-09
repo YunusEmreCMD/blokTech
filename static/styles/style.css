@@ -7,7 +7,6 @@ body {
   font-family: AppFont;
   padding: 0;
   margin: 0;
-  overflow: hidden;
 }
 
 .bekijk-op-mobiel {
@@ -129,18 +128,60 @@ select option{
   font-weight: normal;
 }
 
-/* .content-voorkant {
-  background-color: bisque;
-  width: 70%;
-  margin: auto;
-  margin-top: 5em;
-  height: 40em;
-  text-align: center;
-  padding: 2em 0;
-  border-radius: 0.5em;
-} */
+/* Gebruikers kaart */
 
+main{
+  margin: 3em auto;
+  width: 80%;
+}
 
+.gebruiker-kaart {
+  background-color: rgb(255, 153, 0);
+  height: 375px;
+  padding: 1em 3em;
+  margin: 1em 0;
+}
+
+.gebruiker-kaart h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.gebruiker-kaart h3 {
+  padding-top: 1em;
+  font-size: 12px;
+}
+
+.gebruiker-kaart p {
+  font-size: 10px;
+}
+
+.gebruiker-kaart header {
+  font-size: 12px;
+  text-align: unset;
+}
+
+.gebruiker-main-content h2 {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.gebruiker-main-content p {
+  background-color: rgb(253, 196, 71);
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0;
+  margin-bottom: 0.5em;
+  border-radius: 50px;
+  border: none;
+}
+
+hr {
+  border: 1px solid black;
+  margin-top: 1em;
+}
 /* MEDIA QUERY */
 
 @media (min-width: 735px) {
