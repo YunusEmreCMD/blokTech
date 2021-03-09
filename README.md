@@ -5,6 +5,10 @@
 > een keuze te maken uit verschillende dropdown's en radiobuttons.
 > 
 > Werkzoekende kunnen filter op afstand, dit gaat via een slider. Ook is filteren mogelijk op dienstverband en opleidingsniveau, dit kan gemakkelijk door een keuze te maken uit > de dropdowns. En tot slot kan er ook nog gefiltert worden op werkomgeving, deze filter gaat via een radiobutton.
+> 
+> Wanneer een interresante werkgever of werkzoekende is gevonden kan er meer informatie verkregen worden door het kaartje om te draaien door er op te klikken. Indien de kaart past > bij gebruiker kan er gelijk contact opgenomen worden, omdat alle contactgegevens in de app staan.
+> 
+> Benieuwd waarom ik deze doelgroep heb gekozen en waarom ik deze app ontwikkel? [lees hier]().
 
 screenshot
 
