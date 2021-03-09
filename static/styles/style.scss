@@ -1,6 +1,6 @@
 @font-face {
   font-family: AppFont;
-  src: url("../fonts/sf-pro-text_regular.woff");
+  src: url('../fonts/sf-pro-text_regular.woff');
 }
 
 body {
@@ -20,12 +20,12 @@ body {
   padding: 1em 2em;
   text-align: right;
   z-index: 1;
-}
 
-.filter-balk svg {
-  width: 2em;
-  height: 2em;
-  fill: white;
+  svg {
+    width: 2em;
+    height: 2em;
+    fill: white;
+  }
 }
 
 .filter-overlay {
@@ -34,35 +34,32 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-animation-name: filter-overlay-openen;
-          animation-name: filter-overlay-openen;
-  -webkit-transition: 1s;
+  transform: translateY(100%);
+  animation-name: filter-overlay-openen;
   transition: 1s;
-  -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+
   /* z-index: ; */
   padding: 1em 3em;
   margin-top: 4em;
   height: 100%;
-}
 
-.filter-overlay h2 {
-  text-align: center;
-}
+  h2 {
+    text-align: center;
+  }
 
-.filter-overlay p {
-  padding-bottom: 0.25em;
-  padding-top: 0.5em;
+  p {
+    padding-bottom: 0.25em;
+    padding-top: 0.5em;
+  }
 }
 
 body.filterOverlayOpenen .filter-overlay {
-  -webkit-transform: translateY(0%);
-          transform: translateY(0%);
+  transform: translateY(0%);
 }
 
 /* SLIDER */
+
 label {
   display: block;
   padding: 2em 0 0.5em 0;
@@ -70,22 +67,22 @@ label {
 }
 
 .slider {
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    border-radius: 50px;
+    background: #0075FF;
+    cursor: pointer;
+  }
+
   -webkit-appearance: none;
   width: 100%;
   height: 1em;
   background: lightgray;
   outline: none;
   border-radius: 1em;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 2em;
-  height: 2em;
-  border-radius: 50px;
-  background: #0075FF;
-  cursor: pointer;
 }
 
 .zoeken {
@@ -109,40 +106,41 @@ select {
   padding: 0.5em;
   font-family: AppFont;
   width: 100%;
-}
 
-select option {
-  padding: 0.5em;
+  option {
+    padding: 0.5em;
+  }
 }
 
 .radio-buttons {
   border: none;
   padding: 0;
   margin: 0;
-}
 
-.radio-buttons legend {
-  padding: 2em 0 1em 0;
-  font-weight: 600;
-}
+  legend {
+    padding: 2em 0 1em 0;
+    font-weight: 600;
+  }
 
-.radio-buttons label {
-  display: inline-block;
-  padding: 0;
-  font-weight: normal;
+  label {
+    display: inline-block;
+    padding: 0;
+    font-weight: normal;
+  }
 }
 
 /* PROFIELEN */
+
 .profielen {
   height: 700px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-bottom: 20em;
   overflow-x: scroll;
   -ms-overflow-style: none;
+
   /* IE and Edge */
   scrollbar-width: none;
+
   /* Firefox */
   padding: 1em;
 }
@@ -152,55 +150,55 @@ select option {
 }
 
 .profiel {
-  background-color: #e6e6e6;
+  background-color: lightgrey;
   margin: auto;
   margin: 1em;
   padding: 0 2em;
-  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 0.5em;
   min-width: 75%;
   z-index: -2;
-}
 
-.profiel header {
-  margin-top: 1em;
-}
+  header {
+    margin-top: 1em;
 
-.profiel header h1 {
-  text-align: center;
-  font-size: 24px;
-  padding: 0;
-  margin: 0;
-}
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      padding: 0;
+      margin: 0;
+    }
+  }
 
-.profiel p {
-  font-size: 16px;
-  margin: 0;
-}
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
 
-.profiel header p {
-  text-align: center;
-  margin: 0.5em 0 1.5em 0;
-}
+  header p {
+    text-align: center;
+    margin: 0.5em 0 1.5em 0;
+  }
 
-.profiel h2 {
-  font-size: 18px;
-  margin: 0;
-  margin: 1.25em 0 0.5em 0;
-}
+  h2 {
+    font-size: 18px;
+    margin: 0;
+    margin: 1.25em 0 0.5em 0;
+  }
 
-.profiel span {
-  font-weight: 600;
+  span {
+    font-weight: 600;
+  }
 }
 
 /* MEDIA QUERY */
+
 @media (min-width: 735px) {
   header, .profielen {
     display: none;
   }
+
   .bekijk-op-mobiel {
     display: block;
   }
 }
-/*# sourceMappingURL=style.css.map */
