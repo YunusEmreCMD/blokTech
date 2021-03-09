@@ -8,7 +8,9 @@
 >
 > Wanneer een interresante werkgever of werkzoekende is gevonden kan er meer informatie verkregen worden door het kaartje om te draaien door er op te klikken. Indien de kaart past bij gebruiker kan er gelijk contact opgenomen worden, omdat alle contactgegevens in de app staan.
 
-> Er zijn wellicht veel apps of websites die verzorgen voor een connectie tussen een werkzoekende en werkegvers, maar ik heb niet op mijn manier gezien. Daarom heb ik gekzoen voor dit project. Ik wil het proces wat speelser en gemakkelijker maken, en naar mijn mening kan dat door **cards** (design principe) te gebruiken waarop je moet filteren om resultaten te krijgen. [lees hier meer over de gebruikte design principes] ()
+> Er zijn wellicht veel apps of websites die verzorgen voor een connectie tussen een werkzoekende en werkegvers, maar ik heb niet op mijn manier gezien. Daarom heb ik gekzoen voor dit project. Ik wil het proces wat speelser en gemakkelijker maken, en naar mijn mening kan dat door **cards** (design principe) te gebruiken waarop je moet filteren om resultaten te krijgen. 
+
+[lees hier meer over de gebruikte design principes] ()
 
 screenshot
 
