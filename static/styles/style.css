@@ -19,6 +19,7 @@ body {
   background-color: lightgray;
   padding: 1em 2em;
   text-align: right;
+  z-index: 1;
 }
 
 .filter-balk svg {
@@ -33,13 +34,13 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  transform: translateY(-100%);
+  transform: translateY(100%);
   animation-name: filter-overlay-openen;
   transition: 1s;
   transition-timing-function: ease-out;
-  z-index: -1;
+  /* z-index: ; */
   padding: 1em 3em;
-  padding-top: 5em;
+  margin-top: 4em;
   height: 100%;
 }
 
@@ -59,7 +60,7 @@ body.filterOverlayOpenen .filter-overlay {
 
 /* SLIDER */
 
-label{
+label {
   display: block;
   padding: 2em 0 0.5em 0;
   font-weight: 600;
@@ -107,87 +108,91 @@ select {
   width: 100%;
 }
 
-select option{
-  padding: 0.5em; 
+select option {
+  padding: 0.5em;
 }
 
-.radio-buttons{
+.radio-buttons {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.radio-buttons legend{
+.radio-buttons legend {
   padding: 2em 0 1em 0;
   font-weight: 600;
 }
 
-.radio-buttons label{
+.radio-buttons label {
   display: inline-block;
   padding: 0;
   font-weight: normal;
 }
 
-/* Gebruikers kaart */
 
-main{
-  margin: 3em auto;
-  width: 80%;
+/* PROFIELEN */
+
+.profielen {
+  height: 700px;
+  display: flex;
+  margin-bottom: 20em;
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  padding: 1em;
 }
 
-.gebruiker-kaart {
-  background-color: rgb(255, 153, 0);
-  height: 375px;
-  padding: 1em 3em;
-  margin: 1em 0;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.gebruiker-kaart h1 {
-  padding: 0;
-  margin: 0;
+.profiel {
+  background-color: lightgrey;
+  margin: auto;
+  margin: 1em;
+  padding: 0 2em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 0.5em;
+  min-width: 75%;
+  z-index: -2;
 }
 
-.gebruiker-kaart h3 {
-  padding-top: 1em;
-  font-size: 12px;
-}
-
-.gebruiker-kaart p {
-  font-size: 10px;
-}
-
-.gebruiker-kaart header {
-  font-size: 12px;
-  text-align: unset;
-}
-
-.gebruiker-main-content h2 {
-  font-size: 12px;
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-}
-
-.gebruiker-main-content p {
-  background-color: rgb(253, 196, 71);
-  display: inline-block;
-  padding: 0.5em 1em;
-  margin: 0;
-  margin-bottom: 0.5em;
-  border-radius: 50px;
-  border: none;
-}
-
-hr {
-  border: 1px solid black;
+.profiel header {
   margin-top: 1em;
 }
+
+.profiel header h1 {
+  text-align: center;
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.profiel p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.profiel header p {
+  text-align: center;
+  margin: 0.5em 0 1.5em 0;
+}
+
+.profiel h2 {
+  font-size: 18px;
+  margin: 0;
+  margin: 1.25em 0 0.5em 0;
+}
+
+.profiel span {
+  font-weight: 600;
+}
+
 /* MEDIA QUERY */
 
 @media (min-width: 735px) {
 
-  header,
-  section {
+header, .profielen {
     display: none;
   }
 

@@ -5,23 +5,12 @@ const dotenv = require('dotenv').config();
 const { MongoClient } = require('mongodb');
 const port = 3000;
 
-
-// Array voor dynamische content
-// const gebruikers = [
-//   {naam: "Yunus Emre Alkan", soortGebruiker: "Werkzoekende", opleidingsniveau: "Hbo", leerjaar: 2, functie: "Creative designer", dienstverband: "Stage"},
-//   {naam: "Ali", soortGebruiker: "Werkzoekende", opleidingsniveau: "Universiteit", leerjaar: 3, functie: "Architect", dienstverband: "Stage"},
-//   {naam: "Lisa", soortGebruiker: "Werkzoekende", opleidingsniveau: "Mbo", leerjaar: 1, functie: "Apotheek assistente", dienstverband: "Part-time"}
-// ]
-
-// DB Connectie testen
-// console.log(process.env.TESTVAR);
-
 let db = null;
-// function connectDB
+// functie om de database te connecten
 async function connectDB () {
-  // get URI from .env file
+  // URI van de .env file ophalen
   const uri = process.env.DB_URI
-  // make connection to database
+  // connectie maken met de database
   const options = { useUnifiedTopology: true };
   const client = new MongoClient(uri, options)
   await client.connect();
@@ -29,35 +18,13 @@ async function connectDB () {
 }
 connectDB()
   .then(() => {
-    // if succesfull connections is made, show a message
+    // succes om te verbinden
     console.log('Feest!')
   })
   .catch( error => {
-    // if connnection is unsuccesful, show errors
+    // geen succes om te verbinden
     console.log(error)
   });
-
-// let db = null;
-// // function connectDB
-// async function connectDB () {
-//   // GET URI from .env file
-//   const uri = process.env.DB_URI
-//   //make connection to database
-//   const options = { useUnifiedTopplogy: true };
-//   const client = new MongoClient(uri, options)
-//   await client.connect();
-//   db = await client.db(process.env.DB_NAME)
-// }
-
-// connectDB()
-//   .then(() => {
-//     // succes
-//     console.log('feest!');
-//   })
-//   .catch( error => {
-//     // unsucces
-//     console.log(error)
-//   });
 
 app.use(express.static('static'));
 
@@ -80,7 +47,7 @@ app.get('/', async (req,res) => {
     })
 
 app.use(function (req, res, next) {
-  res.status(404).send("Sorry can't find that!");
+  res.status(404).send("Sorry ik heb niks kunnen vinden");
 });
 
 app.listen(3000, () => {
