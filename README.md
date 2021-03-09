@@ -1,8 +1,12 @@
-# Matching App *project/filterNaam*
+# Matching App - Filter feature
 
-> *Appnaam* is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden, beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de
-> *project/filterNaam*. Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door
-> een keuze te maken uit verschillende dropdown's en radiobuttons. 
+> QuickJob is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden, beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de
+> de filter feature Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door
+> een keuze te maken uit verschillende dropdown's en radiobuttons.
+> 
+> Werkzoekende kunnen filter op afstand, dit gaat via een slider. Ook is filteren mogelijk op dienstverband en opleidingsniveau, dit kan gemakkelijk door een keuze te maken uit > de dropdowns. En tot slot kan er ook nog gefiltert worden op werkomgeving, deze filter gaat via een radiobutton.
+
+screenshot
 
 ## Inhoudsopagve
 
