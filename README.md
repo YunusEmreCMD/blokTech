@@ -1,8 +1,17 @@
-# Matching App *project/filterNaam*
+# Matching App - Filter feature
 
-> *Appnaam* is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden, beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de
-> *project/filterNaam*. Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door
-> een keuze te maken uit verschillende dropdown's en radiobuttons. 
+> QuickJob is een app waarbij werkzoekende en werkgevers elkaar kunnen vinden. Werkgevers stellen een project of baan openbaar (met daarin de bijhorende informatie over het project of de baan, eisen/wensen van het bedrijf en de werkzoeker waarnaar ze opzoek zijn.), waarop werkzoekende op kunnen reageren door contact op te nemen (informatie staat in de app), als het iets lijkt voor hen (grote kans van wel, want ze geven in de app de wensen en intresses aan. De app matcht de werkzoeker met de werkgever, op basis van de wensen en eisen van beide partijen.
+>
+> Beide partijen kunnen hun wensen/intresses aangeven in de app door gebruik te maken van de de filter feature Dit zorgt ervoor dat werkzoekende en werkgevers elkaar gemakkelijk kunnen vinden door specifiek te filteren. Interesses worden aangegeven in de app door een keuze te maken uit verschillende dropdown's en radiobuttons.
+>
+> Werkzoekende kunnen filter op afstand, dit gaat via een slider. Ook is filteren mogelijk op dienstverband en opleidingsniveau, dit kan gemakkelijk door een keuze te maken uit de dropdowns. En tot slot kan er ook nog gefiltert worden op werkomgeving, deze filter gaat via een radiobutton.
+>
+> Wanneer een interresante werkgever of werkzoekende is gevonden kan er meer informatie verkregen worden door het kaartje om te draaien door er op te klikken. Indien de kaart past bij gebruiker kan er gelijk contact opgenomen worden, omdat alle contactgegevens in de app staan.
+
+> Er zijn wellicht veel apps of websites die verzorgen voor een connectie tussen een werkzoekende en werkegvers, maar ik heb niet op mijn manier gezien. Daarom heb ik gekzoen voor dit project. Ik wil het proces wat speelser en gemakkelijker maken, en naar mijn mening kan dat door **cards** (design principe) te gebruiken waarop je moet filteren om resultaten te krijgen. 
+[lees hier meer over de gebruikte design principes]()
+
+screenshot
 
 ## Inhoudsopagve
 
