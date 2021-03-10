@@ -99,6 +99,6 @@ app.use(function (req, res, next) {
   res.status(404).send("Sorry ik heb niks kunnen vinden");
 });
 
-app.listen(3000, () => {
+app.listen(3000,) ====> app.listen(PORT,) {
   console.log(`Express web app on localhost:3000`);
 });
