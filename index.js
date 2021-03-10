@@ -1,9 +1,9 @@
+const port = process.env.PORT || 3000;
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const dotenv = require('dotenv').config();
 const { MongoClient } = require('mongodb');
-const port = 3000;
 
 let db = null;
 // functie om de database te connecten
