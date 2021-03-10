@@ -8,7 +8,6 @@ const port = 3000;
 let db = null;
 // functie om de database te connecten
 async function connectDB () {
-  // URI van de .env file ophalen
   const uri = process.env.DB_URI
   // connectie maken met de database
   const options = { useUnifiedTopology: true };
@@ -45,6 +44,10 @@ app.get('/', async (req,res) => {
       gebruikers: gebruiker
     })
     })
+
+    app.get('/toevoegen', (req, res) => {
+      res.render('toevoegen', {title: "yes"});
+    });
 
 app.use(function (req, res, next) {
   res.status(404).send("Sorry ik heb niks kunnen vinden");
