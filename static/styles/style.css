@@ -194,12 +194,12 @@ select option {
 }
 
 /* MEDIA QUERY */
-@media (min-width: 735px) {
+/* @media (min-width: 735px) {
   header, .profielen {
     display: none;
   }
   .bekijk-op-mobiel {
     display: block;
   }
-}
+} */
 /*# sourceMappingURL=style.css.map */

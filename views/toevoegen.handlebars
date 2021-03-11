@@ -1,21 +1,79 @@
-    <form action="/" method="post">
-        <div>
-            <label for="name">Name:</label><br>
-            <input id="name" type="text" name="name" required>
-        </div>
-        <div>
-            <label for="year">Year:</label><br>
-            <input id="year" type="text" name="year">
-        </div>
-        <div>
-            <fieldset>
-                <legend>Categories:</legend>
-                <input type="checkbox" name="categories" value="categories" id="categories">
-                <label for="">Categorie</label>
-            </fieldset>
-        </div>
-        <div>
-            <label for="storyline">Storyline</label><br>
-            <textarea name="storyline" id="" cols="30" rows="10"></textarea>
-        </div>
-        <button>Add</button>
+   <h2>{{title}}</h2>
+
+   <form action="/toevoegen" method="post">
+
+       <div>
+           <label for="id">Gebruiksnaam:</label><br>
+           <input id="id" type="text" name="id" required>
+       </div>
+
+       <div>
+           <label for="naam">Volledige naam:</label><br>
+           <input id="naam" type="text" name="naam" required>
+       </div>
+       
+       {{!-- <div>
+           <label for="soortGebruiker">Soort Gebruiker:</label><br>
+           <input id="soortGebruiker" type="text" name="soortGebruiker" required>
+       </div> --}}
+
+       <label for="dienstverband">Soort gebruiker</label>
+       <select name="soortGebruiker" id="soortGebruiker">
+           <option value="werkzoekende">werkzoekende</option>
+           <option value="werkgever">werkgever</option>
+       </select>
+
+
+       <div>
+           <label for="opleidingsniveau">Opleidingsniveau:</label><br>
+           <input id="opleidingsniveau" type="text" name="opleidingsniveau" required>
+       </div>
+              <div>
+           <label for="opleidingsniveau">Leerjaar:</label><br>
+           <input id="leerjaar" type="number" name="opleidingsniveau" min="1" max="5" required>
+       </div>
+
+
+       <div>
+           <label for="functie">Functie:</label><br>
+           <input id="functie" type="text" name="functie" required>
+       </div>
+
+       {{!-- <div>
+           <label for="kwaliteiten">kwaliteiten:</label><br>
+           <input id="kwaliteiten" type="text" name="kwaliteiten" required>
+       </div> --}}
+
+       <div>
+           <input type="checkbox" name="kwaliteiten" value="html" id="html">
+           <label for="kwaliteiten">html</label><br>
+       </div>
+              <div>
+           <input type="checkbox" name="kwaliteiten" value="css" id="css">
+           <label for="kwaliteiten">CSS</label><br>
+       </div>
+
+       {{!-- {{#each kwaliteiten}}
+       <div>
+       <input type="checkbox" name="kwaliteiten" value="{{kwaliteiten}}" id="{{kwaliteiten}}">
+       <label for="{{kwaliteiten}}">{{kwaliteiten}}</label><br>
+       </div>
+       {{/each}} --}}
+
+
+
+
+
+
+
+
+
+
+
+
+       <div>
+           <label for="dienstverband">Dienstverband:</label><br>
+           <input id="dienstverband" type="text" name="dienstverband" required>
+       </div>
+       <button>Add</button>
+   </form>
