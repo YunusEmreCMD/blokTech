@@ -1,5 +1,7 @@
  <form class="gebruikers-toevoegen" action="/toevoegen" method="post">
 
+
+{{!-- Invulvelden/optievelden - Soort gebruiker, gebruiksnaam, naam en biografie --}}
      <fieldset class="naam">
          <legend>Dit ben ik</legend>
 
@@ -20,14 +22,13 @@
                  <input id="naam" type="text" name="naam" required>
              </div>
          </section>
-
+         <div class="biografie">
+             <label for="biografie">Vertel een beetje overzelf</label>
+             <textarea name="biografie" rows="8" required></textarea>
+         </div>
      </fieldset>
 
-     {{!-- <div>
-           <label for="soortGebruiker">Soort Gebruiker:</label><br>
-           <input id="soortGebruiker" type="text" name="soortGebruiker" required>
-       </div> --}}
-
+{{!-- Invulvelden/optievelden - Schoolinformatie --}}
      <fieldset class="school">
          <legend>Mijn school informatie</legend>
          <div>
@@ -58,16 +59,7 @@
          </section>
      </fieldset>
 
-
-     {{!-- <div>
-             <input type="checkbox" name="kwaliteiten" value="html" id="html">
-             <label for="kwaliteiten">html</label><br>
-         </div>
-         
-         <div>
-             <input type="checkbox" name="kwaliteiten" value="css" id="css">
-             <label for="kwaliteiten">CSS</label><br>
-         </div> --}}
+{{!-- Invulvelden/optievelden - Kwaliteiten --}}
      <fieldset>
          <legend>Ik kan werken met <span>Je kunt meerdere selecteren</span></legend>
          <select name="kwaliteiten" required id="kwaliteiten" multiple>
@@ -79,9 +71,12 @@
              <option value="XD"> XD</option>
              <option value="Wordpress"> Wordpress</option>
              <option value="Joomla"> Joomla</option>
+             <option value="Excel"> Excel</option>
+             <option value="AutoCAD"> AutoCAD</option>
          </select>
      </fieldset>
 
+{{!-- Invulvelden/optievelden - Gebruiker is opzoek naar --}}
      <fieldset class="opzoek-naar">
          <legend>Ik ben opzoek naar</legend>
          <div>
