@@ -53,6 +53,8 @@ body {
   transition: 0.5s;
 }
 
+
+
 header,
 footer {
   max-width: 500px;
@@ -443,7 +445,7 @@ h3 {
 
 ::placeholder {
   font-style: italic;
-  color: rgba(199, 190, 190, 0.205);
+  color: rgba(199, 190, 190, 0.664);
 }
 
 .ingevulde-gegevens a{
