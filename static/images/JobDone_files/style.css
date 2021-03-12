@@ -9,21 +9,19 @@ body {
   margin: 0;
   max-width: 500px;
   margin: 0 auto;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
-.main-header {
+.main-header{
   background-color: #0075FF;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4.5em;
-  z-index: -1;
-  text-align: center;
 }
 
-.homepagina-knoppen {
+.homepagina-knoppen{
   margin-top: 10em;
   display: flex;
   flex-direction: column;
@@ -31,30 +29,27 @@ body {
   font-weight: 600;
 }
 
-.homepagina-knoppen a {
+.homepagina-knoppen a{
   margin: 3em auto;
-  color: rgb(255, 193, 22);
+  color: #0075FF; 
   padding: 2em 0;
   width: 60%;
   text-decoration: none;
   border-radius: 0.5em;
-  border: 4px solid rgb(255, 193, 22);
-  -webkit-box-shadow: rgba(149, 157, 165, 0.096) 0px 8px 24px;
+  border: 4px solid #0075FF ;-webkit-box-shadow: rgba(149, 157, 165, 0.096) 0px 8px 24px;
   box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
 }
 
-.homepagina-knoppen a:hover {
-  color: white;
+.homepagina-knoppen a:hover{
+  color:white; 
   border: none;
-  width: 70%;
-  padding: 2.5em 0;
-  background-color: rgb(255, 193, 22);
-  ;
+  padding: 3em 1em;
+  background-color: #0075FF;
   transition: 0.5s;
+
 }
 
-header,
-footer {
+header, footer{
   max-width: 500px;
   margin: 0 auto;
 }
@@ -76,7 +71,6 @@ footer {
   width: 2em;
   height: 2em;
   fill: white;
-  cursor: pointer;
 }
 
 .filter-overlay {
@@ -88,19 +82,20 @@ footer {
   right: 0;
   left: 0;
   -webkit-transform: translateY(100%);
-  transform: translateY(100%);
+          transform: translateY(100%);
   -webkit-animation-name: filter-overlay-openen;
-  animation-name: filter-overlay-openen;
+          animation-name: filter-overlay-openen;
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
   /* padding: 1em 3em; */
   margin-top: 4em;
   height: 100%;
 }
 
-.jobdone {
+.jobdone{
+  display: inline;
   float: left;
   color: white;
   font-size: 25px;
@@ -108,11 +103,6 @@ footer {
   vertical-align: middle;
   margin: 0;
   padding: 0;
-}
-
-.main-header .jobdone {
-  float: none;
-  margin-top: 0.75em;
 }
 
 .maximale-breedte-mobiel {
@@ -131,7 +121,7 @@ footer {
 
 body.filterOverlayOpenen .filter-overlay {
   -webkit-transform: translateY(0%);
-  transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 /* SLIDER */
@@ -167,38 +157,27 @@ label {
 }
 
 input[type=submit] {
-  margin-top: 4em;
+  margin-top: 2em;
   width: 100%;
-  padding: 1.25em;
-  background-color: rgb(255, 193, 22);
+  padding: 1em;
+  background-color: #0075FF;
   color: white;
   border: none;
   font-size: 15px;
   font-family: AppFont;
-  font-weight: 600;
-  cursor: pointer;
-  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 0.5em;
-  transition: 0.5s;
-}
-
-input[type=submit]:hover {
-  padding: 1.5em;
 }
 
 select {
   padding: 0.5em;
   font-family: AppFont;
   width: 100%;
-  cursor: pointer;
 }
 
 select option {
   padding: 0.5em;
 }
 
-/* .radio-buttons {
+.radio-buttons {
   border: none;
   padding: 0;
   margin: 0;
@@ -213,11 +192,11 @@ select option {
   display: inline-block;
   padding: 0;
   font-weight: normal;
-} */
+}
 
 /* PROFIELEN */
 .profielen {
-  height: 600px;
+  height: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -235,23 +214,23 @@ select option {
 }
 
 .profiel {
-  background-color: rgb(235, 206, 128);
+  background-color: rgb(228, 228, 228);
   margin: auto;
   margin: 1em;
   padding: 0 2em;
   -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 0.5em;
   min-width: 75%;
   z-index: -2;
 }
 
 .profiel header {
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .profiel header h1 {
-  /* text-align: center; */
+  text-align: center;
   font-size: 24px;
   padding: 0;
   margin: 0;
@@ -277,39 +256,17 @@ select option {
   font-weight: 600;
 }
 
-.profiel .school-info {
-  display: flex;
-  justify-content: space-between;
-  margin: 1em 0;
-}
-
-.profiel .school-info p {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-
-hr {
-  margin-bottom: 1em;
-  border: 0.5px solid black;
-}
-
-.footer-terug {
-  z-index: 10;
-}
-
-footer {
+footer{
   background-color: #0075FF;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 3em;
-  padding-top: 1.5em;
+  height: 4.5em;
   text-align: center;
 }
 
-footer a {
+footer a{
   text-decoration: none;
   color: white;
   font-size: 20px;
@@ -318,157 +275,12 @@ footer a {
   margin: auto 0;
 }
 
-footer svg {
+footer svg{
   vertical-align: middle;
   width: 1.25em;
   height: 1.25em;
   fill: white;
   padding-right: 0.5em;
-}
-
-
-
-/* Gebruikers toevoegen */
-
-input {
-  padding: 0.5em;
-}
-
-.gebruikers-toevoegen {
-  margin-top: 6em;
-  padding: 0 1.5em;
-  padding-bottom: 6em;
-}
-
-.gebruikers-toevoegen label {
-  display: inline-block;
-  padding: 1.5em 0 0.25em 0;
-  font-size: 14px;
-}
-
-fieldset {
-  margin-top: 1.5em;
-  padding-bottom: 1.5em;
-  border: 1.5px solid #0075FF;
-}
-
-fieldset span {
-  margin: 0 0.5em;
-  font-size: 12px;
-  font-style: italic;
-}
-
-.naam>label {
-  padding: 0.5em 0;
-}
-
-.naam section {
-  display: flex;
-  justify-content: space-between;
-}
-
-.school > div input{
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.school > div{
-  padding-right: 1em;
-}
-
-.school-flexbox{
-  display: flex;
-}
-
-.school-flexbox div:nth-child(2){
-  margin: 0 1em;
-}
-
-/* .school div:not(:last-child) {
-  padding-right: 2em;
-} */
-
-.school label {
-  padding: 0.5em 0;
-}
-
-.opzoek-naar {
-  display: flex;
-  justify-content: space-between;
-}
-
-.opzoek-naar label {
-  padding: 0.5em 0;
-}
-
-.gebruikers-toevoegen button {
-  width: 60%;
-  display: block;
-  margin: 2em auto;
-  border: none;
-  padding: 1.5em 0;
-  border-radius: 0.5em;
-  background-color: rgb(255, 193, 22);
-  font-weight: 600;
-  box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
-  color: white;
-  font-size: 18px;
-}
-
-.gebruikers-toevoegen button:hover {
-  border: none;
-  width: 70%;
-  padding: 1.75em 0;
-  transition: 0.5s;
-}
-
-/* Ingevulde gegevens */
-
-.ingevulde-gegevens {
-  margin-top: 6em;
-  font-size: 16px;
-  padding: 0 2em;
-}
-
-.ingevulde-gegevens h1 {
-  margin-bottom: 0;
-}
-
-.ingevulde-gegevens p,
-h3 {
-  font-size: 14px;
-  display: inline-block;
-  /* margin-bottom: 0.5em; */
-}
-
-::placeholder {
-  font-style: italic;
-  color: rgba(199, 190, 190, 0.205);
-}
-
-.ingevulde-gegevens a{
-  width: 60%;
-  padding: 1.25em;
-  background-color: rgb(255, 193, 22);
-  color: white;
-  border: none;
-  font-size: 15px;
-  font-family: AppFont;
-  font-weight: 600;
-  cursor: pointer;
-  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 0.5em;
-  transition: 0.5s;
-  margin: 2.25em auto;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-}
-
-.ingevulde-gegevens a:hover {
-  padding: 1.5em;
-  width: 70%;
 }
 
 /* MEDIA QUERY */

@@ -1,0 +1,40 @@
+{{> filter-header}}
+
+<section class="profielen">
+
+    {{#each gebruikers}}
+    <article class="profiel">
+        <header>
+            <h1>{{this.naam}}</h1>
+            <div class="school-info">
+                <p>{{this.schoolNaam}}</p>
+                <p>{{this.opleidingsniveau}}, leerjaar {{this.leerjaar}}</p>
+            </div>
+            <hr>
+            {{!-- <p>{{this.soortGebruiker}}</p> --}}
+        </header>
+        <article class="gebruiker-main-content">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, maiores. Facere inventore nisi
+                saepe,
+                repellat dolores tenetur esse consequuntur in natus asperiores ducimus sit sequi itaque quasi, quo
+                nostrum
+                explicabo?</p>
+            <h2>Skills</h2>
+            <p>{{this.kwaliteiten}}</p>
+        </article>
+        <article>
+            <h2>{{this.naam}} is opzoek naar</h2>
+            <p><span>Dienstverband:</span> {{this.dienstverband}}</span></p>
+            <p><span>Functie:</span> {{this.functie}}</p>
+            {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
+        </article>
+    </article>
+    {{/each}}
+    {{!-- </article>
+          <article class="hallo">
+
+          </article>
+          <article class="hallo">
+
+          </article> --}}
+</section>

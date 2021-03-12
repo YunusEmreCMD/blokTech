@@ -34,32 +34,41 @@ connectDB()
   });
 
 app.use(express.static('static'));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-app.get('/', async (req, res) => {
+
+app.get('/', (req, res) => {
+  res.render('home', {
+    title: "JobDone",
+  })
+});
+
+app.get('/resultaten', async (req, res) => {
   let gebruikers = {}
   gebruikers = await db.collection('gebruikers').find({}, {
     sort: {
       name: 1
     }
   }).toArray();
-  res.render('index', {
-    title: "Dit zijn alle gebruikers",
-    gebruikers
+  res.render('resultaten', {
+    title: "JobDone",
+    layout: 'resultaten',
+    gebruikers,
   });
 });
 
-app.post('/', async (req, res) => {
+app.post('/resultaten', async (req, res) => {
   let gebruikers = {}
   gebruikers = await db.collection('gebruikers').find({}).toArray();
-  res.render('index', {
+  res.render('resultaten', {
     results: gebruikers.length,
     gebruikers: gebruikers
   })
 })
-
 
 // app.post('/', async (req, res) => {
 //   // data from database
@@ -78,45 +87,16 @@ app.post('/', async (req, res) => {
 //   if (req.body.werkomgeving !== 'all') {
 //     gebruikers = gebruikers.filter(gebruiker => { return gebruikers.werkomgeving <= req.body.werkomgeving })
 //   }
-//   res.render('index', {
+//   res.render('resultaten', {
 //     results: gebruikers.length,
 //     gebruikers: gebruikers
 //   })
 // })
 
-
-// app.get('/toevoegen', (req, res) => {
-//   res.render('toevoegen', {title: "yes"});
-// });
-
-//   app.post('/toevoegen', (req, res) => {
-//     const profiel = {};
-//     console.log(req.body.year);
-//     res.render('toevoegen', {title: "yes", profiel});
-//   });
-
-
-// app.get('/toevoegen', (req, res) => {
-//   res.render('toevoegen', {title: "hoi"});
-// });
-
-// app.post('/toevoegen', async (req,res) => {
-//   const id = slug(req.body.name);
-//   const movie = {"id": "id", "name": req.body.name, "year": req.body.year, "categories": req.body.categories, "storyline": req.body.storyline};
-//   await db.collection('gebruikers').insertOne(movie);
-//   res.render('toegevoegd', {title: "Added a new movie", movie})
-//   console.log(req.body.year);
-// });
-
-// app.get('/done', (req, res) => {
-//   res.render('done', {title: "hoi"});
-// });
-
-
 app.get('/toevoegen', (req, res) => {
   let gebruikers = {}
   res.render('toevoegen', {
-    title: "gebruiker toevoegen",
+    title: "Gebruiker Toevoegen",
     gebruikers
   });
 });
@@ -127,69 +107,20 @@ app.post('/toevoegen', async (req, res) => {
     "id": req.body.id,
     "naam": req.body.naam,
     "soortGebruiker": req.body.soortGebruiker,
+    "opleidingRichting": req.body.opleidingRichting,
+    "schoolNaam": req.body.schoolNaam,
     "opleidingsniveau": req.body.opleidingsniveau,
-    "functie": req.body.functie,
+    "leerjaar": req.body.leerjaar,
     "kwaliteiten": req.body.kwaliteiten,
+    "functie": req.body.functie,
     "dienstverband": req.body.dienstverband
   };
   await db.collection('gebruikers').insertOne(gebruikers);
   res.render('done', {
-    title: req.body.naam + "je bent toegevoegd",
+    title: req.body.naam + " je bent toegevoegd!",
     gebruikers
   })
 });
-
-
-
-// app.get('/movies', async (req, res) => {
-//   // create an empty list of movies
-//   let movies = {}
-//   // look for alle movies in database and sort them by year and name into an array
-//   movies = await db.collection('movies').find({}, {
-//     sort: {
-//       year: -1,
-//       name: 1
-//     }
-//   }).toArray();
-//   res.render('movielist', {
-//     title: 'List of all movies',
-//     movies
-//   })
-// })
-// app.get('/movies/add', (req, res) => {
-//   res.render('add', {
-//     title: "Add movie",
-//     categories
-//   });
-// });
-// app.post('/movies/add', async (req, res) => {
-//   const id = slug(req.body.name);
-//   const movie = {
-//     "id": "id",
-//     "name": req.body.name,
-//     "year": req.body.year,
-//     "categories": req.body.categories,
-//     "storyline": req.body.storyline
-//   };
-//   await db.collection('movies').insertOne(movie);
-//   res.render('moviedetails', {
-//     title: "Added a new movie",
-//     movie
-//   })
-// });
-// app.get('/movies/:movieId', async (req, res) => {
-//   const movie = await db.collection('movies').findOne({
-//     id: req.params.movieId
-//   });
-//   res.render('moviedetails', {
-//     title: "Movie details",
-//     movie
-//   })
-// });
-
-
-
-
 
 app.use(function (req, res, next) {
   res.status(404).send("Sorry ik heb niks kunnen vinden");
