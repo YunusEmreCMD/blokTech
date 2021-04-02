@@ -3,6 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const slug = require('slug')
+const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv').config();
 const {
@@ -43,6 +44,62 @@ app.use(bodyParser.urlencoded({
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+
+
+const gebruikersSchema = new mongoose.Schema({
+  soortGebruiker: {
+    type: String,
+    required: false
+  },
+  id: {
+    type: String,
+    required: false
+  },
+  naam: {
+    type: String,
+    required: false
+  },
+  biografie: {
+    type: String,
+    required: false
+  },
+  opleidingRichting: {
+    type: String,
+    required: false
+  },
+  schoolNaam: {
+    type: String,
+    required: false
+  },
+  opleidingsniveau: {
+    type: String,
+    required: false
+  },
+  leerjaar: {
+    type: Number,
+    required: false
+  },
+  functie: {
+    type: Number,
+    required: false
+  },
+  dienstverband: {
+    type: Number,
+    required: false
+  }
+});
+
+
+
+
+
+
+
+
+
+
+const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
+
 // Homepagina route -get
 app.get('/', (req, res) => {
   res.render('home', {
@@ -56,7 +113,8 @@ app.get('/resultaten', async (req, res) => {
   gebruikers = await db.collection('gebruikers').find({}, {
   }).toArray();
   res.render('resultaten', {
-    title: "JobDone",
+    title: "Resultaten",
+    results: gebruikers.length,
     layout: 'resultaten',
     gebruikers,
   });
@@ -67,10 +125,76 @@ app.post('/resultaten', async (req, res) => {
   let gebruikers = {}
   gebruikers = await db.collection('gebruikers').find({}).toArray();
   res.render('resultaten', {
+    title: "Resultaten",
     results: gebruikers.length,
+    layout: 'resultaten',
     gebruikers: gebruikers
   })
 })
+
+
+
+
+
+
+app.get('/resultaten', async (req, res) => {
+
+  // Ingelogde user blijkt profiel te hebben
+  await gebruikersCollection.find({})
+
+    //  Filteren
+    .where('dienstverband').equals(req.body.dienstverband)
+    .where('opleidingsniveau').equals(req.body.opleidingsniveau)
+
+    // Met lean zetten we vervolgens de gefilterde vacatures om in Javascript objects
+    .lean()
+    // Execute zorgt ervoor dat de gefilterde vacatures in een callback worden meegegeven
+    .exec((err, vacatures) => {
+      if (err) {
+        console.log(err);
+      } 
+      
+      else {
+        //  Checkt of er uberhaupt een resultaat is op basis van voorkeuren
+        if (gebruikers.length === 0) {
+          //  Als er geen vacatures zijn wordt er een error aangemaakt
+          // let errors = [];
+          // errors.push({message:"Helaas er zijn geen vacatures voor jou"});
+          // res.render('resultaten', { title: 'Een lijst met resultaten', errors});
+          console.log("geen vacatures");
+        } 
+        else {
+          // Rendert resultaat
+          res.render('resultaten', { title: 'Een lijst met resultaten', gebruikers});
+        }
+      }
+    });
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Toevoegen pagina route - get
 app.get('/toevoegen', (req, res) => {
@@ -81,7 +205,7 @@ app.get('/toevoegen', (req, res) => {
   });
 });
 
-// Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiker
+// Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
 app.post('/toevoegen', async (req, res) => {
   const id = slug(req.body.naam);
   const gebruikers = {

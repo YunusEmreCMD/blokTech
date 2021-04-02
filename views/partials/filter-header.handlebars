@@ -1,6 +1,6 @@
 <header class="filter-header">
 
-<p class="jobdone">{{title}}</p>
+<p class="jobdone">Job Done</p>
 
         <svg id="filter-knop" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="971.986px" height="971.986px"
@@ -13,7 +13,7 @@
         </svg>
     </header>
 
-    <form class="filter-overlay" action="/" method="POST">
+    <form class="filter-overlay" action="/resultaten" method="POST">
         <section class="maximale-breedte-mobiel">
 
         {{!-- Een aantal filteroopties uitgeschakeld, om eerst te beginnen met het te laten werken, daarna meer filtert toevoegen --}}
@@ -25,7 +25,7 @@
         <input type="range" min="1" max="100" value="25" class="slider" id="myRange"> --}}
 
         <label for="dienstverband">Dienstverband</label>
-        <select name="dienstverbanden" id="dienstverbanden">
+        <select name="dienstverband" id="dienstverband">
             <option value="fulltime">Fulltime</option>
             <option value="parttime">Parttime</option>
             <option value="stage">Stage</option>
@@ -34,7 +34,7 @@
         </select>
 
         <label for="opleidingsniveau">Opleidingsniveau</label>
-        <select name="opleidingsniveaus" id="opleidingsniveaus">
+        <select name="opleidingsniveau" id="opleidingsniveau">
             <option value="universiteit">Universiteit</option>
             <option value="hbo">Hbo</option>
             <option value="mbo">Mbo</option>
