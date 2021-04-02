@@ -1,0 +1,252 @@
+const PORT = process.env.PORT || 3000;
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const slug = require('slug')
+const mongoose = require('mongoose');
+const app = express();
+const dotenv = require('dotenv').config();
+const {
+  MongoClient
+} = require('mongodb');
+
+// let db = null;
+// // functie om de database te connecten
+// async function connectDB() {
+//   const uri = process.env.DB_URI
+//   // connectie maken met de database
+//   const options = {
+//     useUnifiedTopology: true
+//   };
+//   const client = new MongoClient(uri, options)
+//   await client.connect();
+//   db = await client.db(process.env.DB_NAME)
+// }
+// connectDB()
+//   .then(() => {
+//     // Het verbinden met de DB is gelukt
+//     console.log('Feest!')
+//   })
+//   .catch(error => {
+//     // Het verbinden met de DB is niet gelukt
+//     console.log(error)
+//   });
+
+const uri = process.env.DB_URI;
+
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log('MongoDB connectie :)'))
+.catch(err => console.log(err));
+
+// Aangeven waar onze statishce files zich bevinden  
+app.use(express.static('static'));
+
+// Hiermee zorgen we ervoor dat we data kunnen versturen naar de DB
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+
+// Template engine opgeven
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
+
+
+// const gebruikersSchema = new mongoose.Schema({
+//   soortGebruiker: {
+//     type: String,
+//     required: false
+//   },
+//   id: {
+//     type: String,
+//     required: false
+//   },
+//   naam: {
+//     type: String,
+//     required: false
+//   },
+//   biografie: {
+//     type: String,
+//     required: false
+//   },
+//   opleidingRichting: {
+//     type: String,
+//     required: false
+//   },
+//   schoolNaam: {
+//     type: String,
+//     required: false
+//   },
+//   opleidingsniveau: {
+//     type: String,
+//     required: true
+//   },
+//   leerjaar: {
+//     type: Number,
+//     required: false
+//   },
+//   functie: {
+//     type: Number,
+//     required: false
+//   },
+//   dienstverband: {
+//     type: Number,
+//     required: true
+//   }
+// });
+
+const gebruikersSchema = new mongoose.Schema({
+  soortGebruiker: String,
+  id: String,
+  naam: String,
+  biografie: String,
+  opleidingRichting: String,
+  schoolNaam: String,
+  opleidingsniveau: { type: String, required: true },
+  leerjaar: Number,
+  functie: String,
+  dienstverband: { type: String, required: true },
+});
+
+const gebruikersModel = mongoose.model("gebruikers", gebruikersSchema);
+const gebruikersCollection = mongoose.model("gebruikers", gebruikersSchema);
+
+// Homepagina route -get
+app.get('/', (req, res) => {
+  res.render('home', {
+    title: "JobDone",
+  })
+});
+
+
+// Reultaten pagina route - get
+
+// app.get('/resultaten', async (req, res) => {
+//   const gebruikers = {};  
+  
+//   await gebruikersCollection.find({})
+
+
+//   res.render('resultaten', {
+//     title: "Resultaten",
+//     layout: 'resultaten',
+//     gebruikers: gebruikers,
+//     results: gebruikers.length
+//   });
+// });
+
+// Reultaten pagina route - post - om data vanuit het formulier te versturen
+
+app.get('/resultaten', async (req, res) => {
+
+    await gebruikersCollection.find({})
+    //  Filteren op profiel van ingelogde gebruiker
+    .where('dienstverband-filter').equals(req.body.dienstverband)
+    .where('opleidingsniveau-filter').equals(req.body.opleidingsniveau)
+    
+    // Met lean zetten we vervolgens de gefilterde vacatures om in Javascript objects
+    .lean()
+    // Execute zorgt ervoor dat de gefilterde vacatures in een callback worden meegegeven
+    .exec((err, gebruikers) => {
+      if (err) {
+        console.log(err);
+      } 
+      
+      else {
+        //  Checkt of er uberhaupt een resultaat is op basis van voorkeuren
+        if (gebruikers.length === 0) {
+          //  Als er geen vacatures zijn wordt er een error aangemaakt
+          let errors = [];
+          errors.push({message:"Helaas er zijn geen vacatures voor jou"});
+          res.render('resultaten', { title: 'Een lijst met resultaten', results: gebruikers.length, errors});
+        } 
+        else {
+          // Rendert resultaat
+          res.render('resultaten', { title: 'Een lijst met resultaten', results: gebruikers.length, gebruikers});
+        }
+      }
+    });
+});
+
+app.post('/resultaten', async (req, res) => {
+
+const gebruikers = {};
+
+ await gebruikersCollection.find({})
+  res.render('resultaten', {
+    title: "Resultaten",
+    layout: 'resultaten',
+    gebruikers: gebruikers,
+    results: gebruikers.length
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Toevoegen pagina route - get
+app.get('/toevoegen', (req, res) => {
+  let gebruikers = {}
+  res.render('toevoegen', {
+    title: "Gebruiker Toevoegen",
+    gebruikers
+  });
+});
+
+// Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
+app.post('/toevoegen', async (req, res) => {
+  const id = slug(req.body.naam);
+  const gebruikers = {
+    "id": req.body.id,
+    "naam": req.body.naam,
+    "soortGebruiker": req.body.soortGebruiker,
+    "biografie": req.body.biografie,
+    "opleidingRichting": req.body.opleidingRichting,
+    "schoolNaam": req.body.schoolNaam,
+    "opleidingsniveau": req.body.opleidingsniveau,
+    "leerjaar": req.body.leerjaar,
+    "kwaliteiten": req.body.kwaliteiten,
+    "functie": req.body.functie,
+    "dienstverband": req.body.dienstverband
+  };
+  await gebruikersCollection.insertOne(gebruikers);
+  res.render('ingevuldeGegevens', {
+    title: req.body.naam + " je bent toegevoegd!",
+    gebruikers
+  })
+});
+
+
+
+
+
+
+
+// 404 route
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry ik heb niks kunnen vinden");
+});
+
+// Geeft de port terug die gebruikt wordt
+app.listen(PORT, () => {
+  console.log(`Gebruikte poort: ${PORT}!`)
+})

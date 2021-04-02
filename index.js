@@ -46,59 +46,50 @@ app.set('view engine', 'handlebars');
 
 
 
-const gebruikersSchema = new mongoose.Schema({
-  soortGebruiker: {
-    type: String,
-    required: false
-  },
-  id: {
-    type: String,
-    required: false
-  },
-  naam: {
-    type: String,
-    required: false
-  },
-  biografie: {
-    type: String,
-    required: false
-  },
-  opleidingRichting: {
-    type: String,
-    required: false
-  },
-  schoolNaam: {
-    type: String,
-    required: false
-  },
-  opleidingsniveau: {
-    type: String,
-    required: false
-  },
-  leerjaar: {
-    type: Number,
-    required: false
-  },
-  functie: {
-    type: Number,
-    required: false
-  },
-  dienstverband: {
-    type: Number,
-    required: false
-  }
-});
+// const gebruikersSchema = new mongoose.Schema({
+//   soortGebruiker: {
+//     type: String,
+//     required: false
+//   },
+//   id: {
+//     type: String,
+//     required: false
+//   },
+//   naam: {
+//     type: String,
+//     required: false
+//   },
+//   biografie: {
+//     type: String,
+//     required: false
+//   },
+//   opleidingRichting: {
+//     type: String,
+//     required: false
+//   },
+//   schoolNaam: {
+//     type: String,
+//     required: false
+//   },
+//   opleidingsniveau: {
+//     type: String,
+//     required: false
+//   },
+//   leerjaar: {
+//     type: Number,
+//     required: false
+//   },
+//   functie: {
+//     type: Number,
+//     required: false
+//   },
+//   dienstverband: {
+//     type: Number,
+//     required: false
+//   }
+// });
 
-
-
-
-
-
-
-
-
-
-const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
+// const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 
 // Homepagina route -get
 app.get('/', (req, res) => {
@@ -131,69 +122,6 @@ app.post('/resultaten', async (req, res) => {
     gebruikers: gebruikers
   })
 })
-
-
-
-
-
-
-app.get('/resultaten', async (req, res) => {
-
-  // Ingelogde user blijkt profiel te hebben
-  await gebruikersCollection.find({})
-
-    //  Filteren
-    .where('dienstverband').equals(req.body.dienstverband)
-    .where('opleidingsniveau').equals(req.body.opleidingsniveau)
-
-    // Met lean zetten we vervolgens de gefilterde vacatures om in Javascript objects
-    .lean()
-    // Execute zorgt ervoor dat de gefilterde vacatures in een callback worden meegegeven
-    .exec((err, vacatures) => {
-      if (err) {
-        console.log(err);
-      } 
-      
-      else {
-        //  Checkt of er uberhaupt een resultaat is op basis van voorkeuren
-        if (gebruikers.length === 0) {
-          //  Als er geen vacatures zijn wordt er een error aangemaakt
-          // let errors = [];
-          // errors.push({message:"Helaas er zijn geen vacatures voor jou"});
-          // res.render('resultaten', { title: 'Een lijst met resultaten', errors});
-          console.log("geen vacatures");
-        } 
-        else {
-          // Rendert resultaat
-          res.render('resultaten', { title: 'Een lijst met resultaten', gebruikers});
-        }
-      }
-    });
-  }
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Toevoegen pagina route - get
