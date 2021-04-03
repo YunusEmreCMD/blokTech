@@ -1,11 +1,11 @@
 {{> toevoegen-header }}
 
-<form class="gebruikers-toevoegen" action="/werkzoekendeToevoegen" method="post">
+<form class="gebruikers-toevoegen" action="/vacaturesToevoegen" method="post">
 
 
     {{!-- Invulvelden/optievelden - Soort gebruiker, gebruiksnaam, naam en biografie --}}
     <fieldset class="naam">
-        <legend>Dit ben ik</legend>
+        <legend>Het bedrijf</legend>
 
         <label for="soortGebruiker">Soort gebruiker</label>
         <select name="soortGebruiker" id="soortGebruiker" required>
@@ -16,36 +16,35 @@
 
         <section>
             <div>
-                <label for="id">Gebruikersnaam</label><br>
-                <input id="id" type="text" name="id" placeholder="Bijv. Jarno1809" required>
+                <label for="id">Vacature Naam</label><br>
+                <input id="id" type="text" name="id" placeholder="FED AMS" required>
             </div>
             <div>
-                <label for="naam">Volledige naam</label><br>
-                <input id="naam" type="text" name="naam" required>
+                <label for="bedrijfsnaam">Bedrijfsnaam</label><br>
+                <input id="bedrijfsnaam" type="text" name="bedrijfsnaam" required>
+            </div>
+            <div>
+                <label for="locatie">Locatie</label><br>
+                <input id="locatie" type="text" name="locatie" required>
+            </div>
+            <div>
+                <label for="dienstverband">Dienstverband</label><br>
+                <input id="dienstverband" type="text" name="dienstverband" required>
             </div>
         </section>
-        <div class="biografie">
-            <label for="biografie">Vertel een beetje overzelf</label>
-            <textarea name="biografie" rows="8" required></textarea>
-        </div>
     </fieldset>
 
     {{!-- Invulvelden/optievelden - Schoolinformatie --}}
     <fieldset class="school">
-        <legend>Mijn school informatie</legend>
-        <div>
-            <label for="opleidingRichting">Opleiding / richting</label><br>
-            <input id="opleidingRichting" type="text" name="opleidingRichting"
-                placeholder="Bijv. Communication and Multi Media Design" required>
+        <legend>De vacature</legend>
+        <div class="biografie">
+            <label for="vacatureOmschrijving">Vacature Omschrijving</label>
+            <textarea name="vacatureOmschrijving" rows="8" required></textarea>
         </div>
         <section class="school-flexbox">
             <div>
-                <label for="schoolNaam">School</label><br>
-                <input id="schoolNaam" type="text" name="schoolNaam" placeholder="Bijv. Hogeschool Leiden" required>
-            </div>
-            <div>
-                <label for="opleidingsniveau">Opleidingsniveau</label>
-                <select name="opleidingsniveau" id="opleidingsniveau" required>
+                <label for="competenties">Competenties</label>
+                <select name="competenties" required id="competenties" multiple>
                     <option value="">Maak keuze</option>
                     <option value="Universiteit">Universiteit</option>
                     <option value="Hbo">Hbo</option>
@@ -56,50 +55,33 @@
                 </select>
             </div>
             <div>
-                <label for="leerjaar">Leerjaar</label><br>
-                <input id="leerjaar" type="number" name="leerjaar" min="1" max="6" required>
+                <label for="skills">Skills</label>
+                <select name="skills" required id="skills" multiple>
+                    <option value="">Maak keuze</option>
+                    <option value="Universiteit">Universiteit</option>
+                    <option value="Hbo">Hbo</option>
+                    <option value="Mbo">Mbo</option>
+                    <option value="Vwo">Vwo</option>
+                    <option value="Havo">Havo</option>
+                    <option value="Vmbo">Vmbo</option>
+                </select>
             </div>
         </section>
     </fieldset>
 
     {{!-- Invulvelden/optievelden - Kwaliteiten --}}
     <fieldset>
-        <legend>Ik kan werken met <span>Je kunt meerdere selecteren</span></legend>
-        <select name="kwaliteiten" required id="kwaliteiten" multiple>
-            <option value="HTML"> HTML</option>
-            <option value="CSS"> CSS</option>
-            <option value="Javascript"> Javascript</option>
-            <option value="Illustrator"> Illustrator</option>
-            <option value="Photoshop"> Photoshop</option>
-            <option value="XD"> XD</option>
-            <option value="Wordpress"> Wordpress</option>
-            <option value="Joomla"> Joomla</option>
-            <option value="Excel"> Excel</option>
-            <option value="AutoCAD"> AutoCAD</option>
-        </select>
-    </fieldset>
-
-    {{!-- Invulvelden/optievelden - Gebruiker is opzoek naar --}}
-    <fieldset class="opzoek-naar">
-        <legend>Ik ben opzoek naar</legend>
+        <legend>Aanbod</span></legend>
         <div>
-            <label for="functie">Functie:</label><br>
-            <input id="functie" type="text" name="functie" placeholder="Bijv. Webdedigner" required>
+            <label for="aanbod">Aanbod:</label><br>
+            <input id="aanbod" type="text" name="aanbod" placeholder="Piza vrijdag" required>
         </div>
-
         <div>
-            <label for="dienstverband">Dienstverband</label>
-            <select name="dienstverband" id="dienstverband" required>
-                <option value="">Maak keuze</option>
-                <option value="Fulltime">Fulltime</option>
-                <option value="Parttime">Parttime</option>
-                <option value="Stage">Stage</option>
-                <option value="Freelance/zzp">Freelance/ZZP</option>
-                <option value="Vrijwillig">Vrijwillig</option>
-            </select>
+            <label for="salaris">Salaris:</label><br>
+            <input id="salaris" type="text" name="salaris" placeholder="500" required>
         </div>
     </fieldset>
-
+    
     <button>Toevoegen</button>
 
 </form>

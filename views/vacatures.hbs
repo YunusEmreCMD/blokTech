@@ -1,6 +1,6 @@
 {{> filter-header}}
 
-<form class="filter-overlay" action="/werkzoekende" method="POST">
+<form class="filter-overlay" action="/vacatures" method="POST">
     <section class="maximale-breedte-mobiel">
         <label for="dienstverband-filter">Dienstverband</label>
         <select name="dienstverbandFilter" id="dienstverbandFilter">
@@ -17,8 +17,8 @@
 
         <label for="opleidingsniveau-filter">Opleidingsniveau</label>
         <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
-            {{#if opleidingsFilter}}
-            <option value={{opleidingsFilter}}>{{opleidingsFilter}}</option>
+            {{#if opleidingsniveauFilter}}
+            <option value={{opleidingsniveauFilter}}>{{opleidingsniveauFilter}}</option>
             {{/if}}
             <option value="Alle">Alle</option>
             <option value="Universiteit">Universiteit</option>
@@ -41,26 +41,28 @@
 <h1>{{title}} ({{results}})</h1>
 
 <section class="profielen">
-    {{#each gebruikers}}
+    {{#each vacatures}}
     <article class="profiel">
         <header>
-            <h2>{{naam}}</h2>
+            <h2>{{vacatureNaam}}</h2>
             <div class="school-info">
-                <p>{{schoolNaam}}</p>
-                <p>{{opleidingsniveau}}, leerjaar {{leerjaar}}</p>
+                <p>{{bedrijfsnaam}}, {{locatie}}</p>
+                <p>{{dienstverband}}</p>
             </div>
             <hr>
             {{!-- <p>{{soortGebruiker}}</p> --}}
         </header>
         <article class="gebruiker-main-content">
-            <p>{{biografie}}</p>
-            <h2>Skills</h2>
-            <p>{{kwaliteiten}}</p>
+            <p>{{vacatureOmschrijving}}</p>
+            <h2>Dit ben jij:</h2>
+            <p>{{competenties}}</p>
+            <h2>Je kan werken met</h2>
+            <p>{{skills}}</p>
         </article>
         <article>
-            <h2>{{naam}} is opzoek naar</h2>
-            <p><span>Dienstverband:</span> {{dienstverband}}</span></p>
-            <p><span>Functie:</span> {{functie}}</p>
+            <h2>Wat wij jou kunnen bieden: </h2>
+            <p>{{aanbod}}</span></p>
+            <p><span>Salaris</span> {{salaris}}</p>
             {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
         </article>
     </article>
