@@ -1,36 +1,47 @@
+require('dotenv').config();
+
 const PORT = process.env.PORT || 3000;
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const slug = require('slug')
 const mongoose = require('mongoose');
+const db = mongoose.connection
 const app = express();
-const dotenv = require('dotenv').config();
-const {
-  MongoClient
-} = require('mongodb');
+// const {
+//   MongoClient
+// } = require('mongodb');
 
-let db = null;
-// functie om de database te connecten
-async function connectDB() {
-  const uri = process.env.DB_URI
-  // connectie maken met de database
-  const options = {
-    useUnifiedTopology: true
-  };
-  const client = new MongoClient(uri, options)
-  await client.connect();
-  db = await client.db(process.env.DB_NAME)
-}
-connectDB()
-  .then(() => {
-    // Het verbinden met de DB is gelukt
-    console.log('Feest!')
-  })
-  .catch(error => {
-    // Het verbinden met de DB is niet gelukt
-    console.log(error)
-  });
+mongoose.connect(process.env.DB_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+})
+
+db.once('open', () => {
+  console.log('Connected to MongoDB')
+})
+
+// let db = null;
+// // functie om de database te connecten
+// async function connectDB() {
+//   const uri = process.env.DB_URI
+//   // connectie maken met de database
+//   const options = {
+//     useUnifiedTopology: true
+//   };
+//   const client = new MongoClient(uri, options)
+//   await client.connect();
+//   db = await client.db(process.env.DB_NAME)
+// }
+// connectDB()
+//   .then(() => {
+//     // Het verbinden met de DB is gelukt
+//     console.log('Feest!')
+//   })
+//   .catch(error => {
+//     // Het verbinden met de DB is niet gelukt
+//     console.log(error)
+//   });
 
 // Aangeven waar onze statishce files zich bevinden  
 app.use(express.static('static'));
@@ -44,55 +55,53 @@ app.use(bodyParser.urlencoded({
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+const gebruikersSchema = new mongoose.Schema({
+  soortGebruiker: {
+    type: String,
+    required: false
+  },
+  id: {
+    type: String,
+    required: false
+  },
+  naam: {
+    type: String,
+    required: false
+  },
+  biografie: {
+    type: String,
+    required: false
+  },
+  opleidingRichting: {
+    type: String,
+    required: false
+  },
+  schoolNaam: {
+    type: String,
+    required: false
+  },
+  opleidingsniveau: {
+    type: String,
+    required: false
+  },
+  leerjaar: {
+    type: Number,
+    required: false
+  },
+  functie: {
+    type: String,
+    required: false
+  },
+  dienstverband: {
+    type: String,
+    required: false
+  }
+});
 
-
-// const gebruikersSchema = new mongoose.Schema({
-//   soortGebruiker: {
-//     type: String,
-//     required: false
-//   },
-//   id: {
-//     type: String,
-//     required: false
-//   },
-//   naam: {
-//     type: String,
-//     required: false
-//   },
-//   biografie: {
-//     type: String,
-//     required: false
-//   },
-//   opleidingRichting: {
-//     type: String,
-//     required: false
-//   },
-//   schoolNaam: {
-//     type: String,
-//     required: false
-//   },
-//   opleidingsniveau: {
-//     type: String,
-//     required: false
-//   },
-//   leerjaar: {
-//     type: Number,
-//     required: false
-//   },
-//   functie: {
-//     type: Number,
-//     required: false
-//   },
-//   dienstverband: {
-//     type: Number,
-//     required: false
-//   }
-// });
-
-// const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
+const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 
 // Homepagina route -get
-app.get('/', (req, res) => {
+app.get('/' ,async (req, res) => {
   res.render('home', {
     title: "JobDone",
   })
@@ -113,13 +122,39 @@ app.get('/resultaten', async (req, res) => {
 
 // Reultaten pagina route - post - om data vanuit het formulier te versturen
 app.post('/resultaten', async (req, res) => {
-  let gebruikers = {}
-  gebruikers = await db.collection('gebruikers').find({}).toArray();
+
+  // variabelen aan, filter opties
+  const opleidingsFilter = req.body.opleidingsniveauFilter
+  const dienstverbandFilter = req.body.dienstverbandFilter
+
+  // lege object aan, standaard. Zoekt naar alles
+  let query = {}
+
+  // if else checkt waarop er wordt gefilterd, past query aan
+  if (opleidingsFilter === 'Alle' && dienstverbandFilter === 'Alle') {
+    query = {}
+  } else if (opleidingsFilter === 'Alle') {
+    query = { dienstverband: dienstverbandFilter }
+  } else if (dienstverbandFilter === 'Alle') {
+    query = { opleidingsniveau: opleidingsFilter }
+  } else {
+    query = { 
+      opleidingsniveau: opleidingsFilter,
+      dienstverband: dienstverbandFilter
+    }
+  }
+
+  // query gebruiken, om in de db te zoeken
+  // lean, omzetten naar json, anders is het een mongodb object
+  const gebruikers = await gebruikersCollection.find(query).lean()
+
   res.render('resultaten', {
     title: "Resultaten",
     results: gebruikers.length,
     layout: 'resultaten',
-    gebruikers: gebruikers
+    gebruikers,
+    opleidingsFilter,
+    dienstverbandFilter
   })
 })
 
