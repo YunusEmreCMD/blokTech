@@ -1,0 +1,63 @@
+    {{> filter-header}}
+
+    <form class="filter-overlay" action="/werkzoekende" method="POST">
+        <section class="maximale-breedte-mobiel">
+            <label for="dienstverband-filter">Dienstverband</label>
+            <select name="dienstverbandFilter" id="dienstverbandFilter">
+                {{#if dienstverbandFilter}}
+                <option value={{dienstverbandFilter}}>{{dienstverbandFilter}}</option>
+                {{/if}}
+                <option value="Alle">Alle</option>
+                <option value="Fulltime">Fulltime</option>
+                <option value="Parttime">Parttime</option>
+                <option value="Stage">Stage</option>
+                <option value="Freelance">Freelance/ZPP</option>
+                <option value="Vrijwillig">Vrijwillig</option>
+            </select>
+
+            <label for="opleidingsniveau-filter">Opleidingsniveau</label>
+            <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
+                {{#if opleidingsFilter}}
+                <option value={{opleidingsFilter}}>{{opleidingsFilter}}</option>
+                {{/if}}
+                <option value="Alle">Alle</option>
+                <option value="Universiteit">Universiteit</option>
+                <option value="Hbo">Hbo</option>
+                <option value="Mbo">Mbo</option>
+                <option value="Vwo">Vwo</option>
+                <option value="Havo">Havo</option>
+                <option value="Vmbo">Vmbo</option>
+            </select>
+
+            <input type="submit">
+        </section>
+    </form>
+
+    <h1>{{title}} ({{results}})</h1>
+
+    <section class="profielen">
+        {{#each gebruikers}}
+        <article class="profiel">
+            <header>
+                <h2>{{naam}}</h2>
+                <div class="school-info">
+                    <p>{{schoolNaam}}</p>
+                    <p>{{opleidingsniveau}}, leerjaar {{leerjaar}}</p>
+                </div>
+                <hr>
+                {{!-- <p>{{soortGebruiker}}</p> --}}
+            </header>
+            <article class="gebruiker-main-content">
+                <p>{{biografie}}</p>
+                <h2>Skills</h2>
+                <p>{{kwaliteiten}}</p>
+            </article>
+            <article>
+                <h2>{{naam}} is opzoek naar</h2>
+                <p><span>Dienstverband:</span> {{dienstverband}}</span></p>
+                <p><span>Functie:</span> {{functie}}</p>
+                {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
+            </article>
+        </article>
+        {{/each}}
+    </section>

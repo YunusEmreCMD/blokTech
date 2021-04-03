@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 const express = require('express');
-const exphbs = require('express-handlebars');
+const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const slug = require('slug')
+// const slug = require('slug')
 const mongoose = require('mongoose');
 const db = mongoose.connection
 const app = express();
@@ -21,28 +21,6 @@ db.once('open', () => {
   console.log('Connected to MongoDB')
 })
 
-// let db = null;
-// // functie om de database te connecten
-// async function connectDB() {
-//   const uri = process.env.DB_URI
-//   // connectie maken met de database
-//   const options = {
-//     useUnifiedTopology: true
-//   };
-//   const client = new MongoClient(uri, options)
-//   await client.connect();
-//   db = await client.db(process.env.DB_NAME)
-// }
-// connectDB()
-//   .then(() => {
-//     // Het verbinden met de DB is gelukt
-//     console.log('Feest!')
-//   })
-//   .catch(error => {
-//     // Het verbinden met de DB is niet gelukt
-//     console.log(error)
-//   });
-
 // Aangeven waar onze statishce files zich bevinden  
 app.use(express.static('static'));
 
@@ -52,8 +30,8 @@ app.use(bodyParser.urlencoded({
 }))
 
 // Template engine opgeven
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+app.engine('hbs', hbs({extname: 'hbs'}));
+app.set('view engine', 'hbs');
 
 const gebruikersSchema = new mongoose.Schema({
   soortGebruiker: {
@@ -103,25 +81,28 @@ const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 // Homepagina route -get
 app.get('/' ,async (req, res) => {
   res.render('home', {
+    paginaClass: "home",
     title: "JobDone",
   })
 });
 
 // Reultaten pagina route - get
-app.get('/resultaten', async (req, res) => {
+app.get('/werkzoekende', async (req, res) => {
   let gebruikers = {}
   gebruikers = await db.collection('gebruikers').find({}, {
   }).toArray();
-  res.render('resultaten', {
-    title: "Resultaten",
+  res.render('werkzoekende', {
+    title: "Werkzoekende",
+    paginaClass: "resultaten",
+    footertekst: "Vacatures toevoegen",
+    footerlink: "/vacaturesToevoegen",
     results: gebruikers.length,
-    layout: 'resultaten',
     gebruikers,
   });
 });
 
 // Reultaten pagina route - post - om data vanuit het formulier te versturen
-app.post('/resultaten', async (req, res) => {
+app.post('/werkzoekende', async (req, res) => {
 
   // variabelen aan, filter opties
   const opleidingsFilter = req.body.opleidingsniveauFilter
@@ -148,10 +129,12 @@ app.post('/resultaten', async (req, res) => {
   // lean, omzetten naar json, anders is het een mongodb object
   const gebruikers = await gebruikersCollection.find(query).lean()
 
-  res.render('resultaten', {
-    title: "Resultaten",
+  res.render('werkzoekende', {
+    title: "Werkzoekende",
+    paginaClass: "resultaten",
+    footertekst: "Vacatures toevoegen",
+    footerlink: "/vacaturesToevoegen",
     results: gebruikers.length,
-    layout: 'resultaten',
     gebruikers,
     opleidingsFilter,
     dienstverbandFilter
@@ -159,18 +142,58 @@ app.post('/resultaten', async (req, res) => {
 })
 
 
+////////////////////// VACATURES /////////////////////////
+
+// Reultaten pagina route - get
+app.get('/vacatures', async (req, res) => {
+  let vacatures = {}
+  vacatures = await db.collection('vacatures').find({}, {
+  }).toArray();
+  res.render('vacatures', {
+    title: "Vacatures",
+    paginaClass: "resultaten",
+    results: vacatures.length,
+    vacatures,
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Toevoegen pagina route - get
-app.get('/toevoegen', (req, res) => {
+app.get('/werkzoekendeToevoegen', (req, res) => {
   let gebruikers = {}
-  res.render('toevoegen', {
+  res.render('werkzoekendeToevoegen', {
+    paginaClass: "werkzoekende-toevoegen",
+    footertekst: "Terug naar werkzoekende",
+    footerlink: "/werkzoekende",
     title: "Gebruiker Toevoegen",
     gebruikers
   });
 });
 
 // Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
-app.post('/toevoegen', async (req, res) => {
-  const id = slug(req.body.naam);
+app.post('/werkzoekendeToevoegen', async (req, res) => {
   const gebruikers = {
     "id": req.body.id,
     "naam": req.body.naam,
@@ -187,6 +210,9 @@ app.post('/toevoegen', async (req, res) => {
   await db.collection('gebruikers').insertOne(gebruikers);
   res.render('ingevuldeGegevens', {
     title: req.body.naam + " je bent toegevoegd!",
+    paginaClass: "werkzoekende-toevoegen",
+    footertekst: "Terug naar werkzoekende",
+    footerlink: "/werkzoekende",
     gebruikers
   })
 });

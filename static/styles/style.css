@@ -9,7 +9,11 @@ body {
   margin: 0;
   max-width: 500px;
   margin: 0 auto;
-  /* overflow: hidden; */
+  overflow: hidden;
+}
+
+header a{
+  text-decoration: none;
 }
 
 /* Header voor de homepagina */
@@ -24,7 +28,7 @@ body {
   text-align: center;
 }
 
-.homepagina-knoppen {
+.home-knoppen {
   margin-top: 10em;
   display: flex;
   flex-direction: column;
@@ -32,7 +36,7 @@ body {
   font-weight: 600;
 }
 
-.homepagina-knoppen a {
+.home .home-knoppen a{
   margin: 3em auto;
   color: rgb(255, 193, 22);
   padding: 2em 0;
@@ -44,7 +48,7 @@ body {
   box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
 }
 
-.homepagina-knoppen a:hover {
+.home .home-knoppen a:hover {
   color: white;
   border: none;
   width: 70%;
@@ -238,7 +242,7 @@ select option {
   /* margin-top: 5em; */
 }
 
-.resultaten-pagina h1{
+.resultaten h1{
   margin: 0;
   margin-top: 1em ;
   text-align: center;
@@ -310,10 +314,6 @@ hr {
   border: 0.5px solid black;
 }
 
-.footer-terug {
-  z-index: 10;
-}
-
 /* Footer styling */
 footer {
   background-color: #0075FF;
@@ -324,6 +324,7 @@ footer {
   height: 3em;
   padding-top: 1.5em;
   text-align: center;
+  z-index: 10;
 }
 
 footer a {
@@ -343,9 +344,17 @@ footer svg {
   padding-right: 0.5em;
 }
 
+.werkzoekende-footer{
+  z-index: 15;
+}
+
 
 
 /* Gebruikers toevoegen */
+
+.werkzoekende-toevoegen{
+  overflow: auto;
+}
 
 input {
   padding: 0.5em;
