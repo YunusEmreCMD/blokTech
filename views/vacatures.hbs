@@ -1,0 +1,75 @@
+{{> filter-header}}
+
+<form class="filter-overlay" action="/vacatures" method="POST">
+    <section class="maximale-breedte-mobiel">
+        <label for="dienstverband-filter">Dienstverband</label>
+        <select name="dienstverbandFilter" id="dienstverbandFilter">
+            {{#if dienstverbandFilter}}
+            <option value={{dienstverbandFilter}}>{{dienstverbandFilter}}</option>
+            {{/if}}
+            <option value="Alle">Alle</option>
+            <option value="Fulltime">Fulltime</option>
+            <option value="Parttime">Parttime</option>
+            <option value="Stage">Stage</option>
+            <option value="Freelance">Freelance</option>
+            <option value="Vrijwillig">Vrijwillig</option>
+        </select>
+
+        <label for="opleidingsniveau-filter">Opleidingsniveau</label>
+        <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
+            {{#if opleidingsniveauFilter}}
+            <option value={{opleidingsniveauFilter}}>{{opleidingsniveauFilter}}</option>
+            {{/if}}
+            <option value="Alle">Alle</option>
+            <option value="Universiteit">Universiteit</option>
+            <option value="Hbo">Hbo</option>
+            <option value="Mbo">Mbo</option>
+            <option value="Vwo">Vwo</option>
+            <option value="Havo">Havo</option>
+            <option value="Vmbo">Vmbo</option>
+        </select>
+
+        <input type="submit">
+    </section>
+</form>
+
+
+
+
+
+
+<h1>{{title}} ({{results}})</h1>
+
+<section class="profielen">
+    {{#each vacatures}}
+    <article class="profiel vacature-card">
+        <header>
+            <h2>{{vacatureNaam}}</h2>
+            <div class="school-info">
+                <p>{{bedrijfsnaam}}, {{plaatsnaam}}</p>
+                <p>{{branch}}</p>
+                <p>{{dienstverband}}</p>
+            </div>
+            <hr>
+            {{!-- <p>{{soortGebruiker}}</p> --}}
+        </header>
+        <article class="gebruiker-main-content">
+            <p>{{vacatureOmschrijving}}</p>
+            <h2>Dit ben jij</h2>
+            <h3>Je bent</h3>
+            <p>{{competenties}} </p>
+            <h3>Je kan werken met</h3>
+            <p>{{skills}} </p>
+            <h3>Je bezit minimaal een</h3>
+            <p>{{opleidingsniveau}} werk- denkniveau </p>
+        </article>
+        <article>
+            <h2>Wat wij jou kunnen bieden</h2>
+            <p>{{aanbod}}</span></p>
+            {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
+        </article>
+    </article>
+    {{/each}}
+</section>
+
+</main>

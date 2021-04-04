@@ -9,7 +9,11 @@ body {
   margin: 0;
   max-width: 500px;
   margin: 0 auto;
-  /* overflow: hidden; */
+  overflow: hidden;
+}
+
+header a {
+  text-decoration: none;
 }
 
 /* Header voor de homepagina */
@@ -24,7 +28,7 @@ body {
   text-align: center;
 }
 
-.homepagina-knoppen {
+.home-knoppen {
   margin-top: 10em;
   display: flex;
   flex-direction: column;
@@ -32,7 +36,7 @@ body {
   font-weight: 600;
 }
 
-.homepagina-knoppen a {
+.home .home-knoppen a {
   margin: 3em auto;
   color: rgb(255, 193, 22);
   padding: 2em 0;
@@ -44,7 +48,7 @@ body {
   box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
 }
 
-.homepagina-knoppen a:hover {
+.home .home-knoppen a:hover {
   color: white;
   border: none;
   width: 70%;
@@ -238,9 +242,9 @@ select option {
   /* margin-top: 5em; */
 }
 
-.resultaten-pagina h1{
+.resultaten h1 {
   margin: 0;
-  margin-top: 1em ;
+  margin-top: 1em;
   text-align: center;
 }
 
@@ -283,6 +287,12 @@ select option {
   margin: 0.5em 0 1.5em 0;
 }
 
+.vacature-card h2 {
+  font-size: 18px;
+  margin: 0;
+  margin: 0.75em 0 0.5em 0;
+}
+
 .profiel h2 {
   font-size: 18px;
   margin: 0;
@@ -310,10 +320,6 @@ hr {
   border: 0.5px solid black;
 }
 
-.footer-terug {
-  z-index: 10;
-}
-
 /* Footer styling */
 footer {
   background-color: #0075FF;
@@ -324,6 +330,7 @@ footer {
   height: 3em;
   padding-top: 1.5em;
   text-align: center;
+  z-index: 10;
 }
 
 footer a {
@@ -343,9 +350,17 @@ footer svg {
   padding-right: 0.5em;
 }
 
+.werkzoekende-footer {
+  z-index: 15;
+}
 
 
-/* Gebruikers toevoegen */
+
+/* Werkzoekende toevoegen */
+
+.werkzoekende-toevoegen {
+  overflow: auto;
+}
 
 input {
   padding: 0.5em;
@@ -363,13 +378,13 @@ input {
   font-size: 14px;
 }
 
-fieldset {
+.gebruikers-toevoegen fieldset {
   margin-top: 1.5em;
   padding-bottom: 1.5em;
   border: 1.5px solid #0075FF;
 }
 
-fieldset span {
+.gebruikers-toevoegen fieldset span {
   margin: 0 0.5em;
   font-size: 12px;
   font-style: italic;
@@ -384,30 +399,30 @@ fieldset span {
   justify-content: space-between;
 }
 
-.biografie textarea{
+.biografie textarea {
   width: 99%;
   resize: none;
   font-family: AppFont;
 }
 
-.biografie label{
+.biografie label {
   display: block;
 }
 
-.school > div input{
+.school>div input {
   width: 100%;
   margin-bottom: 1em;
 }
 
-.school > div{
+.school>div {
   padding-right: 1em;
 }
 
-.school-flexbox{
+.school-flexbox {
   display: flex;
 }
 
-.school-flexbox div:nth-child(2){
+.school-flexbox div:nth-child(2) {
   margin: 0 1em;
 }
 
@@ -419,7 +434,16 @@ fieldset span {
   padding: 0.5em 0;
 }
 
-.opzoek-naar {
+.opzoek-naar>div {
+  padding-right: 1em;
+}
+
+.opzoek-naar>div input {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.opzoek-naar-flex {
   display: flex;
   justify-content: space-between;
 }
@@ -452,6 +476,141 @@ fieldset span {
 
 
 
+
+
+
+
+
+
+
+
+
+/* Vacatures toevoegen */
+
+.vacatures-toevoegen {
+  overflow: auto;
+}
+
+input {
+  padding: 0.5em;
+}
+
+.vacatures-toevoegen {
+  margin-top: 6em;
+  padding: 0 1.5em;
+  padding-bottom: 6em;
+}
+
+.vacatures-toevoegen label {
+  display: inline-block;
+  padding: 1.5em 0 0.25em 0;
+  font-size: 14px;
+}
+
+.vacatures-toevoegen fieldset {
+  margin-top: 1.5em;
+  padding-bottom: 1.5em;
+  border: 1.5px solid #0075FF;
+}
+
+.vacatures-toevoegen fieldset span {
+  margin: 0 0.5em;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* .het-bedrijf > label {
+  padding: 0.5em 0;
+} */
+
+.het-bedrijf section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.vacature-omschrijving textarea {
+  width: 99%;
+  resize: none;
+  font-family: AppFont;
+}
+
+.vacature-omschrijving label {
+  display: block;
+}
+
+.vacature>div input {
+  width: 100%;
+}
+
+.vacature div:first-of-type {
+  padding-right: 1em;
+}
+
+.vacature-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vacature-details div:not(:last-child) {
+  padding-right: 2em;
+}
+
+
+
+.vraag-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vraag-flexbox div {
+  width: 45%;
+}
+
+/* .vraag-flexbox div:nth-child(2){
+  margin: 0 1em;
+} */
+
+.aanbod textarea {
+  width: 99%;
+  resize: none;
+  font-family: AppFont;
+}
+
+.vacatures-toevoegen button {
+  width: 60%;
+  display: block;
+  margin: 2em auto;
+  border: none;
+  padding: 1.5em 0;
+  border-radius: 0.5em;
+  background-color: rgb(255, 193, 22);
+  font-weight: 600;
+  box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.vacatures-toevoegen button:hover {
+  border: none;
+  width: 70%;
+  padding: 1.75em 0;
+  transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Ingevulde gegevens */
 
 .ingevulde-gegevens {
@@ -460,18 +619,24 @@ fieldset span {
   padding: 0 2em;
 }
 
-.ingevulde-gegevens h1 {
+.profielen h1 {
   margin-bottom: 0;
 }
 
-.ingevulde-gegevens p,
-h3 {
+.profielen h3 {
   font-size: 14px;
-  display: inline-block;
-  /* margin-bottom: 0.5em; */
+  display: block;
+  margin: 1em 0 0.5em 0;
 }
 
-.biografie{
+.profielen p{
+  font-size: 14px;
+  display: block;
+  margin: 0;
+  margin-bottom: 0.75em;
+}
+
+.biografie {
   padding-top: 0;
   margin-top: 0;
 }
@@ -481,7 +646,7 @@ h3 {
   color: rgba(199, 190, 190, 0.664);
 }
 
-.ingevulde-gegevens a{
+.ingevulde-gegevens a {
   width: 60%;
   padding: 1.25em;
   background-color: rgb(255, 193, 22);

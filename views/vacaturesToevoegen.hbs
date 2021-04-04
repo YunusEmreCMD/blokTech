@@ -1,0 +1,120 @@
+{{> toevoegen-header }}
+
+<form class="vacatures-toevoegen" action="/vacaturesToevoegen" method="post">
+
+
+    {{!-- Invulvelden/optievelden - Soort gebruiker, gebruiksnaam, naam en biografie --}}
+    <fieldset class="het-bedrijf">
+        <legend>Het bedrijf</legend>
+
+        <section>
+            <div>
+                <label for="bedrijfsnaam">Bedrijfsnaam</label><br>
+                <input id="bedrijfsnaam" type="text" name="bedrijfsnaam" required>
+            </div>
+            <div>
+                <label for="plaatsnaam">Plaatsnaam</label><br>
+                <input id="plaatsnaam" type="text" name="plaatsnaam" required>
+            </div>
+        </section>
+    </fieldset>
+
+    {{!-- Invulvelden/optievelden - Schoolinformatie --}}
+    <fieldset class="vacature">
+        <legend>De vacature</legend>
+
+        <div>
+            <label for="vacatureNaam">Vacature Naam</label><br>
+            <input id="vacatureNaam" type="text" name="vacatureNaam" placeholder="FED AMS" required>
+        </div>
+
+        <section class="vacature-details">
+            <div>
+                <label for="dienstverband">Dienstverband</label>
+                <select name="dienstverband" id="dienstverband" required>
+                    <option value="">Maak keuze</option>
+                    <option value="Fulltime">Fulltime</option>
+                    <option value="Parttime">Parttime</option>
+                    <option value="Stage">Stage</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Vrijwillig">Vrijwillig</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="Branch">Branch</label>
+                <select name="branch" id="branch" required>
+                    <option value="">Maak keuze</option>
+                    <option value="ICT">ICT</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+        </section>
+
+
+        <div class="vacature-omschrijving">
+            <label for="vacatureOmschrijving">Vacature Omschrijving</label>
+            <textarea name="vacatureOmschrijving" rows="8" required></textarea>
+        </div>
+    </fieldset>
+
+    {{!-- Invulvelden/optievelden - Kwaliteiten --}}
+    <fieldset class="vraag">
+        <legend>Waaraan moet de werkzoekende aan voldoen?</span></legend>
+        <div>
+            <label for="opleidingsniveau">Opleidingsniveau</label>
+            <select name="opleidingsniveau" id="opleidingsniveau" required>
+                <option value="">Maak keuze</option>
+                <option value="Universiteit">Universiteit</option>
+                <option value="Hbo">Hbo</option>
+                <option value="Mbo">Mbo</option>
+                <option value="Vwo">Vwo</option>
+                <option value="Havo">Havo</option>
+                <option value="Vmbo">Vmbo</option>
+            </select>
+        </div>
+
+        <section class="vraag-flexbox">
+            <div>
+                <label for="competenties">Competenties</label>
+                <select name="competenties" required id="competenties" multiple>
+                    <option value="Ambitieus">Ambitieus</option>
+                    <option value="Analytisch">Analytisch</option>
+                    <option value="Creatief">Creatief</option>
+                    <option value="Flexibel">Flexibel</option>
+                    <option value="Klantgericht">Klantgericht</option>
+                    <option value="Zelfstandig">Zelfstandig</option>
+                </select>
+            </div>
+            <div>
+                <label for="skills">Skills</label>
+                <select name="skills" required id="skills" multiple>
+                    <option value="HTML"> HTML</option>
+                    <option value="CSS"> CSS</option>
+                    <option value="Javascript"> Javascript</option>
+                    <option value="Illustrator"> Illustrator</option>
+                    <option value="Photoshop"> Photoshop</option>
+                    <option value="XD"> XD</option>
+                    <option value="Wordpress"> Wordpress</option>
+                    <option value="Joomla"> Joomla</option>
+                    <option value="Excel"> Excel</option>
+                    <option value="AutoCAD"> AutoCAD</option>
+                </select>
+            </div>
+        </section>
+    </fieldset>
+
+    {{!-- Invulvelden/optievelden - Kwaliteiten --}}
+    <fieldset>
+        <legend>Wat biedt je de werkzoekende aan?</span></legend>
+        <div class="aanbod">
+            <label for="aanbod">Aanbod</label>
+            <textarea name="aanbod" rows="4" required></textarea>
+        </div>
+    </fieldset>
+
+    <button>Toevoegen</button>
+
+</form>
