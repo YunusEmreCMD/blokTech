@@ -5,9 +5,13 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 // const slug = require('slug')
+const flash = require('connect-flash');
+const session = require('express-session');
+const bcrypt = require('bcryptjs'); 
 const mongoose = require('mongoose');
 const db = mongoose.connection
 const app = express();
+const passport = require('passport')
 // const {
 //   MongoClient
 // } = require('mongodb');
@@ -30,15 +34,68 @@ app.use(bodyParser.urlencoded({
 }))
 
 // Template engine opgeven
-app.engine('hbs', hbs({extname: 'hbs'}));
+app.engine('hbs', hbs({
+  extname: 'hbs'
+}));
 app.set('view engine', 'hbs');
 
+
+app.use(session({
+  secret: 'geheim',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.serializeUser((user, done) =>{
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  userModel.findById(id,(err, user) => {
+    done(err, user);
+  });
+});
+
+
+// Authenticate check
+
+// function checkAuthenticated (req, res, next) {
+//   if(req.isAuthenticated()){
+//   return next()
+//   }
+//   res.redirect('/')
+//   };
+
+// function checkNotAuthenticated (req, res, next) {
+//   if(req.isAuthenticated()){
+//   res.redirect('/resultaten');
+//   };
+//   next();
+// };
+
+//Flash
+app.use(flash());
+
+
+
 const gebruikersSchema = new mongoose.Schema({
-  id: {
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  voornaam: {
     type: String,
     required: false
   },
-  naam: {
+  achternaam: {
     type: String,
     required: false
   },
@@ -76,16 +133,7 @@ const gebruikersSchema = new mongoose.Schema({
   }
 });
 
-const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
-
-
-
-
 const vacaturesSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: false
-  },
   vacatureNaam: {
     type: String,
     required: false
@@ -128,34 +176,14 @@ const vacaturesSchema = new mongoose.Schema({
   },
 });
 
+
 const vacatureCollection = mongoose.model('vacature', vacaturesSchema);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
+const gebruikersModel = mongoose.model('gebruikers', gebruikersSchema);
 
 
 // Homepagina route -get
-app.get('/' ,async (req, res) => {
+app.get('/', async (req, res) => { //checkNotAuthenticated
   res.render('home', {
     paginaClass: "home",
     title: "JobDone",
@@ -163,13 +191,136 @@ app.get('/' ,async (req, res) => {
 });
 
 
+
+
+////////////////////////// REGISTREREN
+
+app.get('/registreren', (req, res) => { //checkNotAuthenticated
+  res.render('registreren', {
+    title: "Registreren"
+  })
+});
+
+
+app.post('/registreren', async (req, res) => {
+  const {
+    email,
+    password
+  } = req.body;
+  let errors = [];
+
+  //Controleer benodigden velden
+  if (!email || !password) {
+    errors.push({
+      message: 'please invullen'
+    });
+  }
+
+  //Wachtwoord lengte instellen
+  if (password.length < 6) {
+    errors.push({
+      message: 'Wachtwoord te kort'
+    })
+  }
+
+  await gebruikersModel.findOne({
+      email: email
+    })
+    .then(user => {
+      if (user) {
+        //Gebruiker bestaat
+        errors.push({
+          message: "Email al in gebruik"
+        });
+      }
+    });
+
+  if (errors.length) {
+    console.log(errors);
+    res.render('registreren', {
+      errors,
+      email,
+      password
+    })
+  } else {
+    const newUser = new gebruikersModel({
+      email,
+      password
+    });
+    newUser.save()
+      .then(user => {
+        req.flash('succes_msg', 'geregistreerd');
+        res.redirect('/');
+      })
+      .catch(err => console.log(err));
+}}); 
+
+
+
+/////////////////////////// INLOGGEN ////////////////////
+
+
+app.get('/login', (req, res) => {
+  const errors = req.flash();
+  res.render('login', { errors })
+});
+
+
+// Login handle
+app.post('/login', (req, res, next) => {
+  passport.use(
+    new localStrategy({ usernameField: 'email' }, (email, password, done)=>{
+      // Match user
+      gebruikersModel.findOne({ email: email})
+      .then(user => {
+        if(!user){
+          return done(null, false, {message: 'Email bestaat nog niet'})
+        }
+  
+        // Match Password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if(err) throw err;
+          if(isMatch){
+          req.session.user = user
+            return done(null, user);
+          } else{
+            return done(null, false, {message:'Wachtwoord fout'})
+          }
+        });
+      })
+      .catch(err => console.log(err));
+    })
+  );
+  passport.authenticate('local', {
+    successRedirect:'/werkzoekende',
+    failureRedirect: '/',
+    failureFlash: true
+  })(req, res, next);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////// WERKZOEKENDE /////////////////////
 
 // Reultaten pagina route - get
-app.get('/werkzoekende', async (req, res) => {
+app.get('/werkzoekende', async (req, res) => { //checkAuthenticated
   let gebruikers = {}
-  gebruikers = await db.collection('gebruikers').find({}, {
-  }).toArray();
+  gebruikers = await db.collection('gebruikers').find({}, {}).toArray();
   res.render('werkzoekende', {
     title: "Werkzoekende",
     paginaClass: "resultaten",
@@ -194,11 +345,15 @@ app.post('/werkzoekende', async (req, res) => {
   if (branchFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
     query = {}
   } else if (opleidingsniveauFilter === 'Alle') {
-    query = { branch: branchFilter }
+    query = {
+      branch: branchFilter
+    }
   } else if (branchFilter === 'Alle') {
-    query = { opleidingsniveau: opleidingsniveauFilter }
+    query = {
+      opleidingsniveau: opleidingsniveauFilter
+    }
   } else {
-    query = { 
+    query = {
       opleidingsniveau: opleidingsniveauFilter,
       branch: branchFilter
     }
@@ -206,7 +361,7 @@ app.post('/werkzoekende', async (req, res) => {
 
   // query gebruiken, om in de db te zoeken
   // lean, omzetten naar json, anders is het een mongodb object
-  const gebruikers = await gebruikersCollection.find(query).lean()
+  const gebruikers = await gebruikersModel.find(query).lean()
 
   res.render('werkzoekende', {
     title: "Werkzoekende",
@@ -224,10 +379,9 @@ app.post('/werkzoekende', async (req, res) => {
 ////////////////////// VACATURES /////////////////////////
 
 // Reultaten pagina route - get
-app.get('/vacatures', async (req, res) => {
+app.get('/vacatures', async (req, res) => { //checkAuthenticated
   let vacatures = {}
-  vacatures = await db.collection('vacatures').find({}, {
-  }).toArray();
+  vacatures = await db.collection('vacatures').find({}, {}).toArray();
   res.render('vacatures', {
     title: "Vacatures",
     paginaClass: "resultaten",
@@ -250,11 +404,15 @@ app.post('/vacatures', async (req, res) => {
   if (dienstverbandFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
     query = {}
   } else if (opleidingsniveauFilter === 'Alle') {
-    query = { dienstverband: dienstverbandFilter }
-  } else if ( dienstverbandFilter === 'Alle') {
-    query = { opleidingsniveau: opleidingsniveauFilter }
+    query = {
+      dienstverband: dienstverbandFilter
+    }
+  } else if (dienstverbandFilter === 'Alle') {
+    query = {
+      opleidingsniveau: opleidingsniveauFilter
+    }
   } else {
-    query = { 
+    query = {
       opleidingsniveau: opleidingsniveauFilter,
       dienstverband: dienstverbandFilter
     }
@@ -296,7 +454,7 @@ app.post('/vacatures', async (req, res) => {
 
 
 // Toevoegen pagina route - get
-app.get('/werkzoekendeToevoegen', (req, res) => {
+app.get('/werkzoekendeToevoegen', (req, res) => { // gebruikersModel
   let gebruikers = {}
   res.render('werkzoekendeToevoegen', {
     paginaClass: "werkzoekende-toevoegen",
@@ -335,11 +493,11 @@ app.post('/werkzoekendeToevoegen', async (req, res) => {
 
 
 
-app.get('/vacaturesToevoegen', (req, res) => {
+app.get('/vacaturesToevoegen', (req, res) => { //checkAuthenticated
   let vacature = {}
   res.render('vacaturesToevoegen', {
     paginaClass: "werkzoekende-toevoegen",
-    footertekst: "hoi",
+    footertekst: "Terug naar werkzoekende",
     footerlink: "/werkzoekende",
     title: "Vacature Toevoegen",
     vacature
@@ -364,11 +522,12 @@ app.post('/vacaturesToevoegen', async (req, res) => {
   res.render('vacaturesIngevuldeGegevens', {
     title: req.body.vacatureNaam + " is toegevoegd!",
     paginaClass: "werkzoekende-toevoegen",
-    footertekst: "hoi",
-    footerlink: "/werkzoekende",
+    // footertekst: "hoi",
+    // footerlink: "/werkzoekende",
     vacatures
   })
 });
+
 
 
 

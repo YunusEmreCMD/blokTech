@@ -33,9 +33,9 @@
 
     <h1>{{title}} ({{results}})</h1>
 
-    <section class="profielen">
+    <section class="cards">
         {{#each gebruikers}}
-        <article class="profiel">
+        <article class="card-content card-werkzoekende">
             <header>
                 <h2>{{voornaam}} {{achternaam}}</h2>
                 <div class="school-info">
@@ -52,10 +52,12 @@
             </article>
             <article>
                 <h2>{{voornaam}} {{achternaam}} is opzoek naar</h2>
-                <p><span>Functie:</span> {{functie}}</p>
-                <p><span>Branch:</span> {{branch}}</p>
-                <p><span>Dienstverband:</span> {{dienstverband}}</span></p>
-                {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
+                <h3>Functie:</h3>
+                <p>{{functie}}</p>
+                <h3>Branch:</h3>
+                <p>{{branch}}</p>
+                <h3>Dienstverband:</h3>
+                <p>{{dienstverband}}</span></p>
             </article>
         </article>
         {{/each}}
