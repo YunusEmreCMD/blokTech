@@ -1,64 +1,65 @@
-    {{> filter-header}}
+{{> filter-header}}
+<form class="filter-overlay" action="/werkzoekende" method="POST">
+    <section class="maximale-breedte-mobiel">
+        <label for="dienstverband-filter">Dienstverband</label>
+        <select name="dienstverbandFilter" id="dienstverbandFilter">
+            {{#if dienstverbandFilter}}
+            <option value={{dienstverbandFilter}}>{{dienstverbandFilter}}</option>
+            {{/if}}
+            <option value="Alle">Alle</option>
+            <option value="Fulltime">Fulltime</option>
+            <option value="Parttime">Parttime</option>
+            <option value="Stage">Stage</option>
+            <option value="Freelance">Freelance</option>
+            <option value="Vrijwillig">Vrijwillig</option>
+        </select>
 
-    <form class="filter-overlay" action="/werkzoekende" method="POST">
-        <section class="maximale-breedte-mobiel">
-            <label for="branchFilter">Branch</label>
-            <select name="branchFilter" id="branchFilter">
-                {{#if branchFilter}}
-                <option value={{branchFilter}}>{{branchFilter}}</option>
-                {{/if}}
-                <option value="Alle">Alle</option>
-                <option value="ICT">ICT</option>
-                <option value="Design">Design</option>
-                <option value="Marketing">Marketing</option>
-            </select>
+        <label for="opleidingsniveau-filter">Opleidingsniveau</label>
+        <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
+            {{#if opleidingsniveauFilter}}
+            <option value={{opleidingsniveauFilter}}>{{opleidingsniveauFilter}}</option>
+            {{/if}}
+            <option value="Alle">Alle</option>
+            <option value="Universiteit">Universiteit</option>
+            <option value="Hbo">Hbo</option>
+            <option value="Mbo">Mbo</option>
+            <option value="Vwo">Vwo</option>
+            <option value="Havo">Havo</option>
+            <option value="Vmbo">Vmbo</option>
+        </select>
 
-            <label for="opleidingsniveau-filter">Opleidingsniveau</label>
-            <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
-                {{#if opleidingsniveauFilter}}
-                <option value={{opleidingsniveauFilter}}>{{opleidingsniveauFilter}}</option>
-                {{/if}}
-                <option value="Alle">Alle</option>
-                <option value="Universiteit">Universiteit</option>
-                <option value="Hbo">Hbo</option>
-                <option value="Mbo">Mbo</option>
-                <option value="Vwo">Vwo</option>
-                <option value="Havo">Havo</option>
-                <option value="Vmbo">Vmbo</option>
-            </select>
-
-            <input type="submit">
-        </section>
-    </form>
-
-    <h1>{{title}} ({{results}})</h1>
-
-    <section class="cards">
-        {{#each gebruikers}}
-        <article class="card-content card-werkzoekende">
-            <header>
-                <h2>{{voornaam}} {{achternaam}}</h2>
-                <div class="school-info">
-                    <p>{{schoolNaam}}</p>
-                    <p>{{opleidingsniveau}}, {{leerjaar}}</p>
-                </div>
-                <hr>
-                {{!-- <p>{{soortGebruiker}}</p> --}}
-            </header>
-            <article class="gebruiker-main-content">
-                <p>{{biografie}}</p>
-                <h2>Skills</h2>
-                <p>{{kwaliteiten}}</p>
-            </article>
-            <article>
-                <h2>{{voornaam}} {{achternaam}} is opzoek naar</h2>
-                <h3>Functie:</h3>
-                <p>{{functie}}</p>
-                <h3>Branch:</h3>
-                <p>{{branch}}</p>
-                <h3>Dienstverband:</h3>
-                <p>{{dienstverband}}</span></p>
-            </article>
-        </article>
-        {{/each}}
+        <input type="submit">
     </section>
+</form>
+
+<h1>{{title}} ({{results}})</h1>
+
+<section class="cards">
+    {{#each gebruikers}}
+    <article class="card-content card-werkzoekende">
+        <header>
+            <h2>{{voornaam}} {{achternaam}}</h2>
+            <div class="school-info">
+                <p>{{schoolNaam}}</p>
+                <p>{{opleidingsniveau}}, {{leerjaar}}</p>
+            </div>
+            <hr>
+            {{!-- <p>{{soortGebruiker}}</p> --}}
+        </header>
+        <article class="gebruiker-main-content">
+            <p>{{biografie}}</p>
+            <h2>Skills</h2>
+            <p>{{kwaliteiten}}</p>
+        </article>
+        <article>
+            <h2>{{voornaam}} {{achternaam}} is opzoek naar</h2>
+            <h3>Functie:</h3>
+            <p>{{functie}}</p>
+            <h3>Branch:</h3>
+            <p>{{branch}}</p>
+            <h3>Dienstverband:</h3>
+            <p>{{dienstverband}}</span></p>
+        </article>
+    </article>
+    {{/each}}
+</section>
