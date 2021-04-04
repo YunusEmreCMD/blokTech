@@ -34,10 +34,6 @@ app.engine('hbs', hbs({extname: 'hbs'}));
 app.set('view engine', 'hbs');
 
 const gebruikersSchema = new mongoose.Schema({
-  soortGebruiker: {
-    type: String,
-    required: false
-  },
   id: {
     type: String,
     required: false
@@ -70,6 +66,10 @@ const gebruikersSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  branch: {
+    type: String,
+    required: false
+  },
   dienstverband: {
     type: String,
     required: false
@@ -82,11 +82,11 @@ const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 
 
 const vacaturesSchema = new mongoose.Schema({
-  vacatureNaam: {
+  id: {
     type: String,
     required: false
   },
-  id: {
+  vacatureNaam: {
     type: String,
     required: false
   },
@@ -94,7 +94,7 @@ const vacaturesSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  locatie: {
+  plaatsnaam: {
     type: String,
     required: false
   },
@@ -102,7 +102,15 @@ const vacaturesSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  branch: {
+    type: String,
+    required: false
+  },
   vacatureOmschrijving: {
+    type: String,
+    required: false
+  },
+  opleidingsniveau: {
     type: String,
     required: false
   },
@@ -118,10 +126,6 @@ const vacaturesSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  salaris: {
-    type: Number,
-    required: false
-  }
 });
 
 const vacatureCollection = mongoose.model('vacature', vacaturesSchema);
@@ -180,23 +184,23 @@ app.get('/werkzoekende', async (req, res) => {
 app.post('/werkzoekende', async (req, res) => {
 
   // variabelen aan, filter opties
+  const branchFilter = req.body.branchFilter
   const opleidingsniveauFilter = req.body.opleidingsniveauFilter
-  const dienstverbandFilter = req.body.dienstverbandFilter
 
   // lege object aan, standaard. Zoekt naar alles
   let query = {}
 
   // if else checkt waarop er wordt gefilterd, past query aan
-  if (opleidingsniveauFilter === 'Alle' && dienstverbandFilter === 'Alle') {
+  if (branchFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
     query = {}
   } else if (opleidingsniveauFilter === 'Alle') {
-    query = { dienstverband: dienstverbandFilter }
-  } else if (dienstverbandFilter === 'Alle') {
+    query = { branch: branchFilter }
+  } else if (branchFilter === 'Alle') {
     query = { opleidingsniveau: opleidingsniveauFilter }
   } else {
     query = { 
       opleidingsniveau: opleidingsniveauFilter,
-      dienstverband: dienstverbandFilter
+      branch: branchFilter
     }
   }
 
@@ -212,7 +216,7 @@ app.post('/werkzoekende', async (req, res) => {
     results: gebruikers.length,
     gebruikers,
     opleidingsniveauFilter,
-    dienstverbandFilter
+    branchFilter
   })
 })
 
@@ -236,18 +240,18 @@ app.get('/vacatures', async (req, res) => {
 app.post('/vacatures', async (req, res) => {
 
   // variabelen aan, filter opties
-  const opleidingsniveauFilter = req.body.opleidingsniveauFilter
   const dienstverbandFilter = req.body.dienstverbandFilter
+  const opleidingsniveauFilter = req.body.opleidingsniveauFilter
 
   // lege object aan, standaard. Zoekt naar alles
   let query = {}
 
   // if else checkt waarop er wordt gefilterd, past query aan
-  if (opleidingsniveauFilter === 'Alle' && dienstverbandFilter === 'Alle') {
+  if (dienstverbandFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
     query = {}
   } else if (opleidingsniveauFilter === 'Alle') {
     query = { dienstverband: dienstverbandFilter }
-  } else if (dienstverbandFilter === 'Alle') {
+  } else if ( dienstverbandFilter === 'Alle') {
     query = { opleidingsniveau: opleidingsniveauFilter }
   } else {
     query = { 
@@ -306,9 +310,8 @@ app.get('/werkzoekendeToevoegen', (req, res) => {
 // Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
 app.post('/werkzoekendeToevoegen', async (req, res) => {
   const gebruikers = {
-    "id": req.body.id,
-    "naam": req.body.naam,
-    "soortGebruiker": req.body.soortGebruiker,
+    "voornaam": req.body.voornaam,
+    "achternaam": req.body.achternaam,
     "biografie": req.body.biografie,
     "opleidingRichting": req.body.opleidingRichting,
     "schoolNaam": req.body.schoolNaam,
@@ -316,6 +319,7 @@ app.post('/werkzoekendeToevoegen', async (req, res) => {
     "leerjaar": req.body.leerjaar,
     "kwaliteiten": req.body.kwaliteiten,
     "functie": req.body.functie,
+    "branch": req.body.branch,
     "dienstverband": req.body.dienstverband
   };
   await db.collection('gebruikers').insertOne(gebruikers);
@@ -345,20 +349,20 @@ app.get('/vacaturesToevoegen', (req, res) => {
 // Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
 app.post('/vacaturesToevoegen', async (req, res) => {
   const vacatures = {
-    // "id": req.body.id,
-    "vacatureNaam": req.body.id,
+    "vacatureNaam": req.body.vacatureNaam,
     "bedrijfsnaam": req.body.bedrijfsnaam,
-    "locatie": req.body.locatie,
+    "plaatsnaam": req.body.plaatsnaam,
     "dienstverband": req.body.dienstverband,
+    "branch": req.body.branch,
     "vacatureOmschrijving": req.body.vacatureOmschrijving,
+    "opleidingsniveau": req.body.opleidingsniveau,
     "competenties": req.body.competenties,
     "skills": req.body.skills,
-    "aanbod": req.body.aanbod,
-    "salaris": req.body.salaris
+    "aanbod": req.body.aanbod
   };
   await db.collection('vacatures').insertOne(vacatures);
   res.render('vacaturesIngevuldeGegevens', {
-    title: req.body.id + " is toegevoegd!",
+    title: req.body.vacatureNaam + " is toegevoegd!",
     paginaClass: "werkzoekende-toevoegen",
     footertekst: "hoi",
     footerlink: "/werkzoekende",

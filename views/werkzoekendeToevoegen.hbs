@@ -7,21 +7,21 @@
     <fieldset class="naam">
         <legend>Dit ben ik</legend>
 
-        <label for="soortGebruiker">Soort gebruiker</label>
+        {{!-- <label for="soortGebruiker">Soort gebruiker</label>
         <select name="soortGebruiker" id="soortGebruiker" required>
             <option value="">Maak keuze</option>
             <option value="Werkzoekende">Werkzoekende</option>
             <option value="Werkgever">Werkgever</option>
-        </select>
+        </select> --}}
 
         <section>
             <div>
-                <label for="id">Gebruikersnaam</label><br>
-                <input id="id" type="text" name="id" placeholder="Bijv. Jarno1809" required>
+                <label for="voornaam">Voornaam</label><br>
+                <input id="voornaam" type="text" name="voornaam" required>
             </div>
             <div>
-                <label for="naam">Volledige naam</label><br>
-                <input id="naam" type="text" name="naam" required>
+                <label for="achternaam">Achternaam</label><br>
+                <input id="achternaam" type="text" name="achternaam" required>
             </div>
         </section>
         <div class="biografie">
@@ -82,22 +82,38 @@
     {{!-- Invulvelden/optievelden - Gebruiker is opzoek naar --}}
     <fieldset class="opzoek-naar">
         <legend>Ik ben opzoek naar</legend>
+
         <div>
             <label for="functie">Functie:</label><br>
             <input id="functie" type="text" name="functie" placeholder="Bijv. Webdedigner" required>
         </div>
 
-        <div>
-            <label for="dienstverband">Dienstverband</label>
-            <select name="dienstverband" id="dienstverband" required>
-                <option value="">Maak keuze</option>
-                <option value="Fulltime">Fulltime</option>
-                <option value="Parttime">Parttime</option>
-                <option value="Stage">Stage</option>
-                <option value="Freelance/zzp">Freelance/ZZP</option>
-                <option value="Vrijwillig">Vrijwillig</option>
-            </select>
-        </div>
+        <section class="opzoek-naar-flex">
+
+            <div>
+                <label for="branch">Branch</label>
+                <select name="branch" id="branch" required>
+                    <option value="">Maak keuze</option>
+                    <option value="ICT">ICT</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dienstverband">Dienstverband</label>
+                <select name="dienstverband" id="dienstverband" required>
+                    <option value="">Maak keuze</option>
+                    <option value="Fulltime">Fulltime</option>
+                    <option value="Parttime">Parttime</option>
+                    <option value="Stage">Stage</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Vrijwillig">Vrijwillig</option>
+                </select>
+            </div>
+
+        </section>
+
     </fieldset>
 
     <button>Toevoegen</button>
