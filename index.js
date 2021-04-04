@@ -335,65 +335,6 @@ app.get('/werkzoekende', async (req, res) => { //checkAuthenticated
 app.post('/werkzoekende', async (req, res) => {
 
   // variabelen aan, filter opties
-  const branchFilter = req.body.branchFilter
-  const opleidingsniveauFilter = req.body.opleidingsniveauFilter
-
-  // lege object aan, standaard. Zoekt naar alles
-  let query = {}
-
-  // if else checkt waarop er wordt gefilterd, past query aan
-  if (branchFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
-    query = {}
-  } else if (opleidingsniveauFilter === 'Alle') {
-    query = {
-      branch: branchFilter
-    }
-  } else if (branchFilter === 'Alle') {
-    query = {
-      opleidingsniveau: opleidingsniveauFilter
-    }
-  } else {
-    query = {
-      opleidingsniveau: opleidingsniveauFilter,
-      branch: branchFilter
-    }
-  }
-
-  // query gebruiken, om in de db te zoeken
-  // lean, omzetten naar json, anders is het een mongodb object
-  const gebruikers = await gebruikersModel.find(query).lean()
-
-  res.render('werkzoekende', {
-    title: "Werkzoekende",
-    paginaClass: "resultaten",
-    footertekst: "Vacatures toevoegen",
-    footerlink: "/vacaturesToevoegen",
-    results: gebruikers.length,
-    gebruikers,
-    opleidingsniveauFilter,
-    branchFilter
-  })
-})
-
-
-////////////////////// VACATURES /////////////////////////
-
-// Reultaten pagina route - get
-app.get('/vacatures', async (req, res) => { //checkAuthenticated
-  let vacatures = {}
-  vacatures = await db.collection('vacatures').find({}, {}).toArray();
-  res.render('vacatures', {
-    title: "Vacatures",
-    paginaClass: "resultaten",
-    results: vacatures.length,
-    vacatures,
-  });
-});
-
-// Reultaten pagina route - post - om data vanuit het formulier te versturen
-app.post('/vacatures', async (req, res) => {
-
-  // variabelen aan, filter opties
   const dienstverbandFilter = req.body.dienstverbandFilter
   const opleidingsniveauFilter = req.body.opleidingsniveauFilter
 
@@ -420,6 +361,65 @@ app.post('/vacatures', async (req, res) => {
 
   // query gebruiken, om in de db te zoeken
   // lean, omzetten naar json, anders is het een mongodb object
+  const gebruikers = await gebruikersModel.find(query).lean()
+
+  res.render('werkzoekende', {
+    title: "Werkzoekende",
+    paginaClass: "resultaten",
+    footertekst: "Vacatures toevoegen",
+    footerlink: "/vacaturesToevoegen",
+    results: gebruikers.length,
+    gebruikers,
+    opleidingsniveauFilter,
+    dienstverbandFilter
+  })
+})
+
+
+////////////////////// VACATURES /////////////////////////
+
+// Reultaten pagina route - get
+app.get('/vacatures', async (req, res) => { //checkAuthenticated
+  let vacatures = {}
+  vacatures = await db.collection('vacatures').find({}, {}).toArray();
+  res.render('vacatures', {
+    title: "Vacatures",
+    paginaClass: "resultaten",
+    results: vacatures.length,
+    vacatures,
+  });
+});
+
+// Reultaten pagina route - post - om data vanuit het formulier te versturen
+app.post('/vacatures', async (req, res) => {
+
+    // variabelen aanmaken, filter opties
+    const branchFilter = req.body.branchFilter
+    const dienstverbandFilter = req.body.dienstverbandFilter
+  
+    // lege object aan, standaard. Zoekt naar alles
+    let query = {}
+  
+    // if else checkt waarop er wordt gefilterd, past query aan
+    if (branchFilter === 'Alle' && dienstverbandFilter === 'Alle') {
+      query = {}
+    } else if (dienstverbandFilter === 'Alle') {
+      query = {
+        branch: branchFilter
+      }
+    } else if (branchFilter === 'Alle') {
+      query = {
+        dienstverband: dienstverbandFilter
+      }
+    } else {
+      query = {
+        dienstverband: dienstverbandFilter,
+        branch: branchFilter
+      }
+    }
+  
+  // query gebruiken, om in de db te zoeken
+  // lean, omzetten naar json, anders is het een mongodb object
   const vacatures = await vacatureCollection.find(query).lean()
 
   res.render('vacatures', {
@@ -427,8 +427,8 @@ app.post('/vacatures', async (req, res) => {
     paginaClass: "resultaten",
     results: vacatures.length,
     vacatures,
-    opleidingsniveauFilter,
-    dienstverbandFilter
+    dienstverbandFilter,
+    branchFilter
   })
 })
 

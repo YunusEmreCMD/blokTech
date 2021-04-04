@@ -1,7 +1,19 @@
 {{> filter-header}}
 
+
 <form class="filter-overlay" action="/vacatures" method="POST">
     <section class="maximale-breedte-mobiel">
+        <label for="branchFilter">Branch</label>
+        <select name="branchFilter" id="branchFilter">
+            {{#if branchFilter}}
+            <option value={{branchFilter}}>{{branchFilter}}</option>
+            {{/if}}
+            <option value="Alle">Alle</option>
+            <option value="ICT">ICT</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
         <label for="dienstverband-filter">Dienstverband</label>
         <select name="dienstverbandFilter" id="dienstverbandFilter">
             {{#if dienstverbandFilter}}
@@ -13,20 +25,6 @@
             <option value="Stage">Stage</option>
             <option value="Freelance">Freelance</option>
             <option value="Vrijwillig">Vrijwillig</option>
-        </select>
-
-        <label for="opleidingsniveau-filter">Opleidingsniveau</label>
-        <select name="opleidingsniveauFilter" id="opleidingsniveauFilter">
-            {{#if opleidingsniveauFilter}}
-            <option value={{opleidingsniveauFilter}}>{{opleidingsniveauFilter}}</option>
-            {{/if}}
-            <option value="Alle">Alle</option>
-            <option value="Universiteit">Universiteit</option>
-            <option value="Hbo">Hbo</option>
-            <option value="Mbo">Mbo</option>
-            <option value="Vwo">Vwo</option>
-            <option value="Havo">Havo</option>
-            <option value="Vmbo">Vmbo</option>
         </select>
 
         <input type="submit">
