@@ -51,23 +51,48 @@
             <hr>
             {{!-- <p>{{soortGebruiker}}</p> --}}
         </header>
-        <article class="gebruiker-main-content">
-            <p>{{vacatureOmschrijving}}</p>
-            <h2>Dit ben jij</h2>
-            <h3>Je bent</h3>
-            <p>{{competenties}} </p>
-            <h3>Je kan werken met</h3>
-            <p>{{skills}} </p>
-            <h3>Je bezit minimaal een</h3>
-            <p>{{opleidingsniveau}} werk- denkniveau </p>
-        </article>
-        <article>
-            <h2>Wat wij jou kunnen bieden</h2>
-            <p>{{aanbod}}</span></p>
-            {{!-- <p><a href="/gebruikersdb/{{gebruikers.id}}">Meer info</a></p> --}}
-        </article>
+
+        <p>{{vacatureOmschrijving}}</p>
+        <h2>Wat wij zoeken</h2>
+        <h3>Je bent</h3>
+        <p>{{competenties}} </p>
+        <h3>Je kan werken met</h3>
+        <p>{{skills}} </p>
+        <h3>Je bezit minimaal een</h3>
+        <p>{{opleidingsniveau}} werk- denkniveau </p>
+
+        <h2>Wat wij jou bieden</h2>
+        <p>{{aanbod}}</p>
+
+
+        <div class="link">
+            <h4>Meer informatie</h4>
+            <br>
+            <div class="test">
+                <div>
+                    <h5>Contactpersoon:</h5>
+                    <a href="{{contactpersoonLinkedIn}}">{{contactpersoonVoornaam}} {{contactpersoonAchternaam}}</a>
+                </div>
+                <div>
+                    <h5>Email:</h5>
+                    <a href="mailto:{{contactpersoonEmail}}">{{contactpersoonEmail}}</a>
+                </div>
+                <div>
+                    <h5>Telefoonnummer:</h5>
+                    <a href="tel:{{contactpersoonNummer}}">{{contactpersoonNummer}}</a>
+                </div>
+                <div>
+                    <h5>Website:</h5>
+                    <a href="{{bedrijfWebsite}}" target="_blank">{{bedrijfWebsite}}</a>
+                </div>
+                                <div>
+                    <h5>Adres:</h5>
+                    <a href="https://www.google.nl/maps/place/{{straatnaam}}+{{huisnummer}}+{{postcode}}+{{plaatsnaam}}">{{straatnaam}} {{huisnummer}},{{postcode}},{{plaatsnaam}}</a>
+                </div>
+            </div>
+
+        </div>
+
     </article>
     {{/each}}
 </section>
-
-</main>
