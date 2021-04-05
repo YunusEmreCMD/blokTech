@@ -9,9 +9,16 @@
             <option value={{branchFilter}}>{{branchFilter}}</option>
             {{/if}}
             <option value="Alle">Alle</option>
-            <option value="ICT">ICT</option>
             <option value="Design">Design</option>
+            <option value="ICT">ICT</option>
+            <option value="Kunst">Kunst</option>
+            <option value="Landbouw">Landbouw</option>
             <option value="Marketing">Marketing</option>
+            <option value="Media">Media</option>
+            <option value="Onderwijs">Onderwijs</option>
+            <option value="Retail">Retail</option>
+            <option value="Sport">Sport</option>
+            <option value="Zorg">Zorg</option>
         </select>
 
         <label for="dienstverband-filter">Dienstverband</label>
@@ -85,9 +92,11 @@
                     <h5>Website:</h5>
                     <a href="{{bedrijfWebsite}}" target="_blank">{{bedrijfWebsite}}</a>
                 </div>
-                                <div>
+                <div>
                     <h5>Adres:</h5>
-                    <a href="https://www.google.nl/maps/place/{{straatnaam}}+{{huisnummer}}+{{postcode}}+{{plaatsnaam}}">{{straatnaam}} {{huisnummer}},{{postcode}},{{plaatsnaam}}</a>
+                    <a
+                        href="https://www.google.nl/maps/place/{{straatnaam}}+{{huisnummer}}+{{postcode}}+{{plaatsnaam}}">{{straatnaam}}
+                        {{huisnummer}},{{postcode}},{{plaatsnaam}}</a>
                 </div>
             </div>
 
