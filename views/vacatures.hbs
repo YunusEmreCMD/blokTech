@@ -11,10 +11,11 @@
             <option value="Alle">Alle</option>
             <option value="Design">Design</option>
             <option value="ICT">ICT</option>
+            <option value="Horeca">Horeca</option>
             <option value="Kunst">Kunst</option>
             <option value="Landbouw">Landbouw</option>
+            <option value="Logistiek">Logistiek</option>
             <option value="Marketing">Marketing</option>
-            <option value="Media">Media</option>
             <option value="Onderwijs">Onderwijs</option>
             <option value="Retail">Retail</option>
             <option value="Sport">Sport</option>
@@ -75,7 +76,7 @@
         <div class="link">
             <h4>Meer informatie</h4>
             <br>
-            <div class="test">
+            <div class="meer-info">
                 <div>
                     <h5>Contactpersoon:</h5>
                     <a href="{{contactpersoonLinkedIn}}">{{contactpersoonVoornaam}} {{contactpersoonAchternaam}}</a>
@@ -98,10 +99,25 @@
                         href="https://www.google.nl/maps/place/{{straatnaam}}+{{huisnummer}}+{{postcode}}+{{plaatsnaam}}">{{straatnaam}}
                         {{huisnummer}},{{postcode}},{{plaatsnaam}}</a>
                 </div>
+                {{!-- <div>
+                    <h5>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. <br>
+                    <br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</h5>
+                </div> --}}
             </div>
 
         </div>
 
     </article>
     {{/each}}
+
+
+    {{#if results}}
+    {{else}}
+    <div class="geen-resultaten">
+        <h3>Oeii... er zijn geen vacatures</h3>
+        <img src="/images/404-7.png" alt="">
+        <h3>Probeer opnieuw te filteren <br> op andere criteria</h3>
+    </div>
+    {{/if}}
+
 </section>

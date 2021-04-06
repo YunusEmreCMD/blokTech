@@ -157,13 +157,13 @@ const vacaturesSchema = new mongoose.Schema({
 
 // De database schema's stoppen in een variabele
 const vacatureCollection = mongoose.model('vacature', vacaturesSchema);
-const gebruikersModel = mongoose.model('gebruikers', gebruikersSchema);
+// const gebruikersModel = mongoose.model('gebruikers', gebruikersSchema);
 // const vacaturesModel = mongoose.model('vacature', vacaturesSchema);
-// const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
+const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 
 
 // Homepagina route -get
-app.get('/', async (req, res) => { //checkNotAuthenticated
+app.get('/', async (req, res) => {
   res.render('home', {
     paginaClass: "home",
     title: "JobDone",
@@ -174,13 +174,13 @@ app.get('/', async (req, res) => { //checkNotAuthenticated
 ////////////////////// WERKZOEKENDE /////////////////////
 
 // Werkzoekende resultaten route - get
-app.get('/werkzoekende', async (req, res) => { //checkAuthenticated
+app.get('/werkzoekende', async (req, res) => {
   let gebruikers = {}
-  gebruikers = await db.collection('gebruikers').find({}, {}).toArray();
+  gebruikers = await gebruikersCollection.find({}).lean()
   res.render('werkzoekende', {
     title: "Werkzoekende",
     paginaClass: "resultaten",
-    footertekst: "Vacatures toevoegen",
+    footertekst: "Vacature plaatsen",
     footerlink: "/vacaturesToevoegen",
     results: gebruikers.length,
     gebruikers,
@@ -217,12 +217,12 @@ app.post('/werkzoekende', async (req, res) => {
 
   // query gebruiken, om in de db te zoeken
   // lean, omzetten naar json, anders is het een mongodb object
-  const gebruikers = await gebruikersModel.find(query).lean()
+  const gebruikers = await gebruikersCollection.find(query).lean()
 
   res.render('werkzoekende', {
     title: "Werkzoekende",
     paginaClass: "resultaten",
-    footertekst: "Vacatures toevoegen",
+    footertekst: "Vacature plaatsen",
     footerlink: "/vacaturesToevoegen",
     results: gebruikers.length,
     gebruikers,
@@ -232,15 +232,63 @@ app.post('/werkzoekende', async (req, res) => {
 })
 
 
+///////////////// WERKZOEKENDE TOEVOEGEN //////////////
+
+// Werkzoekedende toevoegen route - get
+app.get('/werkzoekendeToevoegen', (req, res) => {
+  let gebruikers = {}
+  res.render('werkzoekendeToevoegen', {
+    paginaClass: "werkzoekende-toevoegen",
+    footertekst: "Terug naar vacatures",
+    footerlink: "/vacatures",
+    title: "Werkzoekende aanmaken",
+    gebruikers
+  });
+});
+
+
+// Werkzoekedende toevoegen route - post - ik haal data op het formulier door de req.body te gebruiken
+app.post('/werkzoekendeToevoegen', async (req, res) => {
+  const gebruikers = {
+    "voornaam": req.body.voornaam,
+    "achternaam": req.body.achternaam,
+    "leeftijd": req.body.leeftijd,
+    "werkzoekendeEmail": req.body.werkzoekendeEmail,
+    "werkzoekendePortfolio": req.body.werkzoekendePortfolio,
+    "werkzoekendeCv": req.body.werkzoekendeCv,
+    "werkzoekendeWoonplaats": req.body.werkzoekendeWoonplaats,
+    "biografie": req.body.biografie,
+    "opleidingRichting": req.body.opleidingRichting,
+    "schoolNaam": req.body.schoolNaam,
+    "opleidingsniveau": req.body.opleidingsniveau,
+    "leerjaar": req.body.leerjaar,
+    "skills": req.body.skills,
+    "functie": req.body.functie,
+    "branch": req.body.branch,
+    "dienstverband": req.body.dienstverband
+  };
+  await db.collection('gebruikers').insertOne(gebruikers);
+  res.render('werkzoekendeIngevuldeGegevens', {
+    title: req.body.voornaam + " je bent toegevoegd!",
+    paginaClass: "werkzoekende-toevoegen",
+    footertekst: "Terug naar vacatures",
+    footerlink: "/vacatures",
+    gebruikers
+  })
+});
+
+
+
 ////////////////////// VACATURES /////////////////////////
 
 // Vacature resultaten route - get
-app.get('/vacatures', async (req, res) => { //checkAuthenticated
-  let vacatures = {}
-  vacatures = await db.collection('vacatures').find({}, {}).toArray();
+app.get('/vacatures', async (req, res) => {
+  vacatures = await vacatureCollection.find({}).lean()
   res.render('vacatures', {
     title: "Vacatures",
     paginaClass: "resultaten",
+    footertekst: "Werkzoekende aanmaken",
+    footerlink: "/werkzoekendeToevoegen",
     results: vacatures.length,
     vacatures,
   });
@@ -282,50 +330,13 @@ app.post('/vacatures', async (req, res) => {
     title: "Vacatures",
     paginaClass: "resultaten",
     results: vacatures.length,
+    footertekst: "Werkzoekende aanmaken",
+    footerlink: "/werkzoekendeToevoegen",
     vacatures,
     dienstverbandFilter,
     branchFilter
   })
 })
-
-
-// Werkzoekedende toevoegen route - get
-app.get('/werkzoekendeToevoegen', (req, res) => { // gebruikersModel
-  let gebruikers = {}
-  res.render('werkzoekendeToevoegen', {
-    paginaClass: "werkzoekende-toevoegen",
-    footertekst: "Terug naar werkzoekende",
-    footerlink: "/werkzoekende",
-    title: "Gebruiker Toevoegen",
-    gebruikers
-  });
-});
-
-
-// Werkzoekedende toevoegen route - post - ik haal data op het formulier door de req.body te gebruiken
-app.post('/werkzoekendeToevoegen', async (req, res) => {
-  const gebruikers = {
-    "voornaam": req.body.voornaam,
-    "achternaam": req.body.achternaam,
-    "biografie": req.body.biografie,
-    "opleidingRichting": req.body.opleidingRichting,
-    "schoolNaam": req.body.schoolNaam,
-    "opleidingsniveau": req.body.opleidingsniveau,
-    "leerjaar": req.body.leerjaar,
-    "kwaliteiten": req.body.kwaliteiten,
-    "functie": req.body.functie,
-    "branch": req.body.branch,
-    "dienstverband": req.body.dienstverband
-  };
-  await db.collection('gebruikers').insertOne(gebruikers);
-  res.render('werkzoekendeIngevuldeGegevens', {
-    title: req.body.naam + " je bent toegevoegd!",
-    paginaClass: "werkzoekende-toevoegen",
-    footertekst: "Terug naar werkzoekende",
-    footerlink: "/werkzoekende",
-    gebruikers
-  })
-});
 
 
 // Vacature toevoegen route - post - ik haal data op het formulier door de req.body te gebruiken
@@ -335,10 +346,11 @@ app.get('/vacaturesToevoegen', (req, res) => { //checkAuthenticated
     paginaClass: "werkzoekende-toevoegen",
     footertekst: "Terug naar werkzoekende",
     footerlink: "/werkzoekende",
-    title: "Vacature Toevoegen",
+    title: "Vacature plaatsen",
     vacature
   });
 });
+
 
 // Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
 app.post('/vacaturesToevoegen', async (req, res) => {

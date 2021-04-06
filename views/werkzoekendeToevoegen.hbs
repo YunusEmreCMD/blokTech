@@ -7,13 +7,6 @@
     <fieldset class="naam">
         <legend>Dit ben ik</legend>
 
-        {{!-- <label for="soortGebruiker">Soort gebruiker</label>
-        <select name="soortGebruiker" id="soortGebruiker" required>
-            <option value="">Maak keuze</option>
-            <option value="Werkzoekende">Werkzoekende</option>
-            <option value="Werkgever">Werkgever</option>
-        </select> --}}
-
         <section>
             <div>
                 <label for="voornaam">Voornaam</label><br>
@@ -22,6 +15,26 @@
             <div>
                 <label for="achternaam">Achternaam</label><br>
                 <input id="achternaam" type="text" name="achternaam" required>
+            </div>
+            <div>
+                <label for="leeftijd">Leeftijd</label><br>
+                <input id="leeftijd" type="number" name="leeftijd" min="12" max="99" required>
+            </div>
+            <div>
+                <label for="werkzoekendeEmail">E-mail</label><br>
+                <input id="werkzoekendeEmail" type="email" name="werkzoekendeEmail" required>
+            </div>
+            <div>
+                <label for="werkzoekendePortfolio">Portfolio (website)</label><br>
+                <input id="werkzoekendePortfolio" type="text" name="werkzoekendePortfolio" required>
+            </div>
+            <div>
+                <label for="werkzoekendeCv">CV</label><br>
+                <input id="werkzoekendeCv" type="file" name="werkzoekendeCv" required>
+            </div>
+            <div>
+                <label for="werkzoekendeWoonplaats">Woonplaats</label><br>
+                <input id="werkzoekendeWoonplaats" type="text" name="werkzoekendeWoonplaats" required>
             </div>
         </section>
         <div class="biografie">
@@ -62,20 +75,28 @@
         </section>
     </fieldset>
 
-    {{!-- Invulvelden/optievelden - Kwaliteiten --}}
+    {{!-- Invulvelden/optievelden - skills --}}
     <fieldset>
         <legend>Ik kan werken met <span>Je kunt meerdere selecteren</span></legend>
-        <select name="kwaliteiten" required id="kwaliteiten" multiple>
+        <select name="skills" required id="skills" multiple>
             <option value="HTML"> HTML</option>
             <option value="CSS"> CSS</option>
             <option value="Javascript"> Javascript</option>
+            <option value="Nodejs"> Nodejs</option>
+            <option value="PHP"> PHP</option>
+            <option value="C#"> C#</option>
             <option value="Illustrator"> Illustrator</option>
             <option value="Photoshop"> Photoshop</option>
             <option value="XD"> XD</option>
+            <option value="Premier Pro"> Premier Pro</option>
+            <option value="Adobe Animate"> Adobe Animate</option>
             <option value="Wordpress"> Wordpress</option>
             <option value="Joomla"> Joomla</option>
             <option value="Excel"> Excel</option>
             <option value="AutoCAD"> AutoCAD</option>
+            <option value="Tekenen"> Tekenen</option>
+            <option value="Schilderen"> Schilderen</option>
+        </select>
         </select>
     </fieldset>
 
@@ -94,9 +115,17 @@
                 <label for="branch">Branch</label>
                 <select name="branch" id="branch" required>
                     <option value="">Maak keuze</option>
-                    <option value="ICT">ICT</option>
                     <option value="Design">Design</option>
+                    <option value="ICT">ICT</option>
+                    <option value="Horeca">Horeca</option>
+                    <option value="Kunst">Kunst</option>
+                    <option value="Landbouw">Landbouw</option>
+                    <option value="Logistiek">Logistiek</option>
                     <option value="Marketing">Marketing</option>
+                    <option value="Onderwijs">Onderwijs</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Zorg">Zorg</option>
                 </select>
             </div>
 

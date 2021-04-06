@@ -4,7 +4,7 @@
   "description": "Mijn blok-tech project",
   "main": "HelloWorld.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon index.js & node-sass static/styles/main.scss static/styles/output/main.css -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
-    "eslint": "^7.21.0"
+    "eslint": "^7.21.0",
+    "node-sass": "^5.0.0"
   }
 }

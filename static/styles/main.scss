@@ -1,0 +1,821 @@
+@font-face {
+    font-family: AppFont;
+    src: url("/fonts/sf-pro-text_regular.woff");
+}
+
+body {
+    font-family: AppFont;
+    padding: 0;
+    margin: 0;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header a {
+    text-decoration: none;
+}
+
+/* Header voor de homepagina */
+
+.main-header {
+    background-color: #0075FF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.5em;
+    z-index: -1;
+    text-align: center;
+}
+
+.home-knoppen {
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 600;
+}
+
+.home .home-knoppen a {
+    margin: 3em auto;
+    color: rgb(255, 193, 22);
+    padding: 2em 0;
+    width: 60%;
+    text-decoration: none;
+    border-radius: 0.5em;
+    border: 4px solid rgb(255, 193, 22);
+    -webkit-box-shadow: rgba(149, 157, 165, 0.096) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
+
+    &:hover {
+        color: white;
+        border: none;
+        width: 70%;
+        padding: 2.5em 0;
+        background-color: rgb(255, 193, 22);
+        transition: 0.5s;
+    }
+}
+
+/* De applicatie een maximale-width geven, zodat je deze zonder te schalen, goed in de browser kan bekijken */
+
+header,
+footer {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* .bekijk-op-mobiel {
+    display: none;
+    font-size: 25px;
+    text-align: center;
+  } */
+
+/* Speciale styling voor de filter header */
+
+.filter-header {
+    background-color: #0075FF;
+    padding: 1em 2em;
+    text-align: right;
+    z-index: 1;
+
+    svg {
+        width: 2em;
+        height: 2em;
+        fill: white;
+        cursor: pointer;
+    }
+}
+
+.filter-overlay {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-animation-name: filter-overlay-openen;
+    animation-name: filter-overlay-openen;
+    -webkit-transition: 1s;
+    transition: 1s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+
+    /* padding: 1em 3em; */
+    margin-top: 4em;
+    height: 100%;
+}
+
+.jobdone {
+    float: left;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header .jobdone {
+    float: none;
+    margin-top: 0.75em;
+}
+
+/* De applicatie een maximale-width geven, zodat je deze zonder te schalen, goed in de browser kan bekijken */
+
+.maximale-breedte-mobiel {
+    width: 80%;
+    margin: 2em auto;
+}
+
+.filter-overlay {
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        padding-bottom: 0.25em;
+        padding-top: 0.5em;
+    }
+}
+
+body.filterOverlayOpenen .filter-overlay {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    z-index: 10;
+}
+
+label {
+    display: block;
+    padding: 2em 0 0.5em 0;
+    font-weight: 600;
+}
+
+/* SLIDER - filteroverlay*/
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 1em;
+    background: lightgray;
+    outline: none;
+    border-radius: 1em;
+}
+
+
+
+/* De verzend knop styling */
+
+input[type=submit] {
+    margin-top: 4em;
+    width: 100%;
+    padding: 1.25em;
+    background-color: rgb(255, 193, 22);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-family: AppFont;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 0.5em;
+    transition: 0.5s;
+
+    &:hover {
+        padding: 1.5em;
+    }
+}
+
+select {
+    padding: 0.5em;
+    font-family: AppFont;
+    width: 100%;
+    cursor: pointer;
+
+    option {
+        padding: 0.5em;
+    }
+}
+
+/* Radio buttons voor even eruit gehaald */
+/* .radio-buttons {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .radio-buttons legend {
+    padding: 2em 0 1em 0;
+    font-weight: 600;
+  }
+  
+  .radio-buttons label {
+    display: inline-block;
+    padding: 0;
+    font-weight: normal;
+  } */
+
+/* CARDS */
+
+.cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+    padding: 1em;
+
+    /* margin-top: 5em; */
+}
+
+.resultaten h1 {
+    margin: 0;
+    margin-top: 1em;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.card-content {
+    background-color: rgb(240, 240, 240);
+    margin: auto;
+    margin: 1em;
+    padding: 0 2em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.75em;
+    min-width: 75%;
+    height: 600px;
+    position: relative;
+
+    header {
+        margin-top: 1.5em;
+
+        h2 {
+            /* text-align: center; */
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    header p {
+        margin: 0.5em 0 1em 0;
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin: 0;
+        margin: 1em 0 0.5em 0;
+    }
+
+    h3 {
+        font-size: 14px;
+        display: block;
+        margin: 1.25em 0 0.25em 0;
+    }
+
+    span {
+        font-weight: 600;
+    }
+
+    .school-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em 0;
+        margin-bottom: 0.3em;
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+    }
+}
+
+.link {
+    position: absolute;
+    background-color: rgb(255, 193, 22);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 0.75em 0.75em;
+    text-align: center;
+    transition: 1.25s;
+    vertical-align: middle;
+    height: 7%;
+    color: white;
+
+    h4 {
+        margin: 0;
+        padding: 0;
+        padding-top: 0.65em;
+    }
+
+    &:hover {
+        padding: 0.5em 0;
+        background-color: #0075FF;
+        transition: 1.25s;
+        height: 30%;
+
+        // transition: 2s;
+        // height: 100%;
+        // border-radius: 0.75em;
+    }
+}
+
+.meer-info {
+    display: none;
+    transition: 1s;
+    padding: 0.5em 2em;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+    }
+}
+
+// .meer-info div:last-child{
+//     margin-top: 2em;
+//     text-align: start;
+// }
+
+.link {
+    h5 {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    p {
+        font-size: 12px;
+        margin: 0;
+        margin-top: 0.18em;
+        padding: 0;
+    }
+}
+
+.meer-info div a {
+    color: rgb(255, 193, 22);
+    font-size: 12px;
+    text-decoration: none;
+    margin: 0;
+    margin-top: 0.18em;
+    padding: 0;
+}
+
+.link:hover .meer-info {
+    display: block;
+}
+
+hr {
+    margin-bottom: 1em;
+    border: 0.5px solid black;
+}
+
+
+
+/* Footer styling */
+
+footer {
+    background-color: #0075FF;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    padding-top: 1.5em;
+    text-align: center;
+    z-index: 10;
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        padding: 0;
+        font-weight: 600;
+        margin: auto 0;
+    }
+
+    svg {
+        vertical-align: middle;
+        width: 1.25em;
+        height: 1.25em;
+        fill: white;
+        padding-right: 0.5em;
+    }
+}
+
+.werkzoekende-footer {
+    z-index: 15;
+}
+
+/* Werkzoekende toevoegen */
+
+.werkzoekende-toevoegen {
+    overflow: auto;
+}
+
+input {
+    padding: 0.5em;
+}
+
+.gebruikers-toevoegen {
+    margin-top: 6em;
+    padding: 0 1.5em;
+    padding-bottom: 6em;
+
+    label {
+        display: inline-block;
+        padding: 1.5em 0 0.25em 0;
+        font-size: 14px;
+    }
+
+    fieldset {
+        margin-top: 1.5em;
+        padding-bottom: 1.5em;
+        border: 1.5px solid #0075FF;
+
+        span {
+            margin: 0 0.5em;
+            font-size: 12px;
+            font-style: italic;
+        }
+    }
+}
+
+.naam {
+    >label {
+        padding: 0.5em 0;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    
+    div:nth-child(1), div:nth-child(2) {
+        width: 35%;
+    }
+    div:nth-child(3){
+        width: 10%;
+        margin-right: 1em;
+    }
+    div:nth-child(4){
+        width: 43%;
+    }
+    div:nth-child(5){
+        width: 43%;
+        margin-right: 1em;
+    }
+    div:nth-child(6){
+        width: 60%;
+        margin-right: 1em;
+    }
+    div:nth-child(7){
+        width: 30%;
+        margin-right: 1em;
+    }
+    input {
+        width: 100%;
+    }
+    input[type=file]{
+        margin: auto 0;
+        padding: 0;
+        padding-top: 0.5em;
+    }
+}}
+
+.biografie {
+    textarea {
+        width: 99%;
+        resize: none;
+        font-family: AppFont;
+    }
+
+    label {
+        display: block;
+    }
+}
+
+.school>div {
+    input {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    padding-right: 1em;
+}
+
+.school-flexbox {
+    display: flex;
+
+    div:nth-child(2) {
+        margin: 0 1em;
+    }
+}
+
+/* .school div:not(:last-child) {
+    padding-right: 2em;
+  } */
+
+.school label {
+    padding: 0.5em 0;
+}
+
+.opzoek-naar>div {
+    padding-right: 1em;
+
+    input {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+}
+
+.opzoek-naar-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.opzoek-naar label {
+    padding: 0.5em 0;
+}
+
+.gebruikers-toevoegen button {
+    width: 60%;
+    display: block;
+    margin: 2em auto;
+    border: none;
+    padding: 1.5em 0;
+    border-radius: 0.5em;
+    background-color: rgb(255, 193, 22);
+    font-weight: 600;
+    box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+        border: none;
+        width: 70%;
+        padding: 1.75em 0;
+        transition: 0.5s;
+    }
+}
+
+/* Vacatures toevoegen */
+
+.vacatures-toevoegen {
+    overflow: auto;
+}
+
+input {
+    padding: 0.5em;
+}
+
+.vacatures-toevoegen {
+    margin-top: 6em;
+    padding: 0 1.5em;
+    padding-bottom: 6em;
+
+    label {
+        display: inline-block;
+        padding: 1.5em 0 0.25em 0;
+        font-size: 14px;
+    }
+
+    fieldset {
+        margin-top: 1.5em;
+        padding-bottom: 1.5em;
+        border: 1.5px solid #0075FF;
+
+        span {
+            margin: 0 0.5em;
+            font-size: 12px;
+            font-style: italic;
+        }
+    }
+}
+
+/* .het-bedrijf > label {
+    padding: 0.5em 0;
+  } */
+
+.het-bedrijf {
+    >div {
+        margin-right: 1em;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        div {
+            &:nth-child(odd) {
+                width: 70%;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            &:nth-child(even) {
+                width: 20%;
+                margin-right: 1em;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.vacature-omschrijving {
+    textarea {
+        width: 99%;
+        resize: none;
+        font-family: AppFont;
+    }
+
+    label {
+        display: block;
+    }
+}
+
+.vacature {
+    >div input {
+        width: 100%;
+    }
+
+    div:first-of-type {
+        padding-right: 1em;
+    }
+}
+
+.vacature-details {
+    display: flex;
+    justify-content: space-between;
+
+    div:not(:last-child) {
+        padding-right: 2em;
+    }
+}
+
+.vraag-flexbox {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        width: 45%;
+    }
+}
+
+/* .vraag-flexbox div:nth-child(2){
+    margin: 0 1em;
+  } */
+
+.aanbod textarea {
+    width: 99%;
+    resize: none;
+    font-family: AppFont;
+}
+
+.vacatures-toevoegen button {
+    width: 60%;
+    display: block;
+    margin: 2em auto;
+    border: none;
+    padding: 1.5em 0;
+    border-radius: 0.5em;
+    background-color: rgb(255, 193, 22);
+    font-weight: 600;
+    box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+        border: none;
+        width: 70%;
+        padding: 1.75em 0;
+        transition: 0.5s;
+    }
+}
+
+.contactpersoon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    div {
+        width: 45%;
+
+        &:last-child {
+            width: 100%;
+            margin-right: 1.3em;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Ingevulde gegevens */
+
+.ingevulde-gegevens {
+    margin-top: 6em;
+    font-size: 16px;
+    padding: 0 2em;
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h3 {
+        font-size: 14px;
+        display: block;
+        margin: 0.25em 0;
+    }
+
+    p {
+        font-size: 14px;
+        display: block;
+        margin: 0;
+    }
+}
+
+.biografie {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+::placeholder {
+    font-style: italic;
+    color: rgba(199, 190, 190, 0.664);
+}
+
+.ingevulde-gegevens a {
+    width: 60%;
+    padding: 1.25em;
+    background-color: rgb(255, 193, 22);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-family: AppFont;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 0.5em;
+    transition: 0.5s;
+    margin: 2.25em auto;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10em;
+
+    &:hover {
+        padding: 1.5em;
+        width: 70%;
+    }
+}
+
+.geen-resultaten {
+    text-align: center;
+    margin: 5em auto;
+
+    h4 {
+        display: block;
+    }
+
+    img {
+        height: 20em;
+    }
+}
