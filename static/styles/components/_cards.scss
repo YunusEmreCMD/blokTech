@@ -1,0 +1,81 @@
+.cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 1em;
+}
+
+.resultaten h1 {
+    margin: 0;
+    margin-top: 1em;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.card-content {
+    background-color: rgb(240, 240, 240);
+    margin: auto;
+    margin: 1em;
+    padding: 0 2em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.75em;
+    min-width: 75%;
+    height: 600px;
+    position: relative;
+
+    header {
+        margin-top: 1.5em;
+
+        h2 {
+            /* text-align: center; */
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    header p {
+        margin: 0.5em 0 1em 0;
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin: 0;
+        margin: 1em 0 0.5em 0;
+    }
+
+    h3 {
+        font-size: 14px;
+        display: block;
+        margin: 1.25em 0 0.25em 0;
+    }
+
+    span {
+        font-weight: $dikgedrukt;
+    }
+
+    .school-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em 0;
+        margin-bottom: 0.3em;
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: $font;
+    src: url("/fonts/sf-pro-text_regular.woff");
+}
+
+.maximale-breedte-mobiel {
+    width: 80%;
+    margin: 2em auto;
+}
+
+body {
+    font-family: $font;
+    padding: 0;
+    margin: 0;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header,
+footer {
+    max-width: 500px;
+    margin: 0 auto;
+}

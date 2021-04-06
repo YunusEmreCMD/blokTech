@@ -47,6 +47,26 @@ const gebruikersSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  leeftijd: {
+    type: Number,
+    required: false
+  },
+  email: {
+    type: String,
+    required: false
+  },
+  portfolio: {
+    type: String,
+    required: false
+  },
+  cv: {
+    type: String,
+    required: false
+  },
+  woonplaats: {
+    type: String,
+    required: false
+  },
   biografie: {
     type: String,
     required: false

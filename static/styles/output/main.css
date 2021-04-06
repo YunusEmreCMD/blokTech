@@ -1,66 +1,27 @@
-@font-face {
-  font-family: AppFont;
-  src: url("/fonts/sf-pro-text_regular.woff"); }
-
-body {
-  font-family: AppFont;
-  padding: 0;
-  margin: 0;
-  max-width: 500px;
-  margin: 0 auto;
-  overflow: hidden; }
-
-header a {
-  text-decoration: none; }
-
-/* Header voor de homepagina */
-.main-header {
-  background-color: #0075FF;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4.5em;
-  z-index: -1;
-  text-align: center; }
-
 .home-knoppen {
   margin-top: 5em;
   display: flex;
   flex-direction: column;
   text-align: center;
   font-weight: 600; }
+  .home-knoppen a {
+    margin: 3em auto;
+    color: #ffc116;
+    padding: 2em 0;
+    width: 60%;
+    text-decoration: none;
+    border-radius: 0.5em;
+    border: 4px solid #ffc116;
+    -webkit-box-shadow: rgba(149, 157, 165, 0.096) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px; }
+    .home-knoppen a:hover {
+      color: white;
+      border: none;
+      width: 70%;
+      padding: 2.5em 0;
+      background-color: #ffc116;
+      transition: 0.5s; }
 
-.home .home-knoppen a {
-  margin: 3em auto;
-  color: #ffc116;
-  padding: 2em 0;
-  width: 60%;
-  text-decoration: none;
-  border-radius: 0.5em;
-  border: 4px solid #ffc116;
-  -webkit-box-shadow: rgba(149, 157, 165, 0.096) 0px 8px 24px;
-  box-shadow: rgba(149, 157, 165, 0.719) 0px 8px 24px; }
-  .home .home-knoppen a:hover {
-    color: white;
-    border: none;
-    width: 70%;
-    padding: 2.5em 0;
-    background-color: #ffc116;
-    transition: 0.5s; }
-
-/* De applicatie een maximale-width geven, zodat je deze zonder te schalen, goed in de browser kan bekijken */
-header,
-footer {
-  max-width: 500px;
-  margin: 0 auto; }
-
-/* .bekijk-op-mobiel {
-    display: none;
-    font-size: 25px;
-    text-align: center;
-  } */
-/* Speciale styling voor de filter header */
 .filter-header {
   background-color: #0075FF;
   padding: 1em 2em;
@@ -72,71 +33,6 @@ footer {
     fill: white;
     cursor: pointer; }
 
-.filter-overlay {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #f0f0f0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  -webkit-transform: translateY(100%);
-  transform: translateY(100%);
-  -webkit-animation-name: filter-overlay-openen;
-  animation-name: filter-overlay-openen;
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  /* padding: 1em 3em; */
-  margin-top: 4em;
-  height: 100%; }
-
-.jobdone {
-  float: left;
-  color: white;
-  font-size: 25px;
-  font-weight: 600;
-  vertical-align: middle;
-  margin: 0;
-  padding: 0; }
-
-.main-header .jobdone {
-  float: none;
-  margin-top: 0.75em; }
-
-/* De applicatie een maximale-width geven, zodat je deze zonder te schalen, goed in de browser kan bekijken */
-.maximale-breedte-mobiel {
-  width: 80%;
-  margin: 2em auto; }
-
-.filter-overlay h2 {
-  text-align: center; }
-
-.filter-overlay p {
-  padding-bottom: 0.25em;
-  padding-top: 0.5em; }
-
-body.filterOverlayOpenen .filter-overlay {
-  -webkit-transform: translateY(0%);
-  transform: translateY(0%);
-  z-index: 10; }
-
-label {
-  display: block;
-  padding: 2em 0 0.5em 0;
-  font-weight: 600; }
-
-/* SLIDER - filteroverlay*/
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 1em;
-  background: lightgray;
-  outline: none;
-  border-radius: 1em; }
-
-/* De verzend knop styling */
 input[type=submit] {
   margin-top: 4em;
   width: 100%;
@@ -163,35 +59,14 @@ select {
   select option {
     padding: 0.5em; }
 
-/* Radio buttons voor even eruit gehaald */
-/* .radio-buttons {
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .radio-buttons legend {
-    padding: 2em 0 1em 0;
-    font-weight: 600;
-  }
-  
-  .radio-buttons label {
-    display: inline-block;
-    padding: 0;
-    font-weight: normal;
-  } */
-/* CARDS */
 .cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   overflow-x: scroll;
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
-  padding: 1em;
-  /* margin-top: 5em; */ }
+  padding: 1em; }
 
 .resultaten h1 {
   margin: 0;
@@ -243,6 +118,113 @@ select {
       margin: 0;
       padding: 0;
       font-size: 16px; }
+
+@font-face {
+  font-family: AppFont;
+  src: url("/fonts/sf-pro-text_regular.woff"); }
+
+.maximale-breedte-mobiel {
+  width: 80%;
+  margin: 2em auto; }
+
+body {
+  font-family: AppFont;
+  padding: 0;
+  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden; }
+
+header,
+footer {
+  max-width: 500px;
+  margin: 0 auto; }
+
+header a {
+  text-decoration: none; }
+
+.main-header {
+  background-color: #0075FF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.5em;
+  z-index: -1;
+  text-align: center; }
+
+.main-header .jobdone {
+  float: none;
+  margin-top: 0.75em; }
+
+footer {
+  background-color: #0075FF;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3em;
+  padding-top: 1.5em;
+  text-align: center;
+  z-index: 10; }
+  footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 0;
+    font-weight: 600;
+    margin: auto 0; }
+  footer svg {
+    vertical-align: middle;
+    width: 1.25em;
+    height: 1.25em;
+    fill: white;
+    padding-right: 0.5em; }
+
+.werkzoekende-footer {
+  z-index: 15; }
+
+.jobdone {
+  float: left;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0; }
+
+label {
+  display: block;
+  padding: 2em 0 0.5em 0;
+  font-weight: 600; }
+
+.filter-overlay {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  /* padding: 1em 3em; */
+  margin-top: 4em;
+  height: 100%; }
+  .filter-overlay h2 {
+    text-align: center; }
+  .filter-overlay p {
+    padding-bottom: 0.25em;
+    padding-top: 0.5em; }
+
+.filterOverlayOpenen .filter-overlay {
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+  z-index: 10; }
 
 .link {
   position: absolute;
@@ -301,34 +283,6 @@ select {
 hr {
   margin-bottom: 1em;
   border: 0.5px solid black; }
-
-/* Footer styling */
-footer {
-  background-color: #0075FF;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3em;
-  padding-top: 1.5em;
-  text-align: center;
-  z-index: 10; }
-  footer a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    padding: 0;
-    font-weight: 600;
-    margin: auto 0; }
-  footer svg {
-    vertical-align: middle;
-    width: 1.25em;
-    height: 1.25em;
-    fill: white;
-    padding-right: 0.5em; }
-
-.werkzoekende-footer {
-  z-index: 15; }
 
 /* Werkzoekende toevoegen */
 .werkzoekende-toevoegen {
@@ -403,9 +357,6 @@ input {
   .school-flexbox div:nth-child(2) {
     margin: 0 1em; }
 
-/* .school div:not(:last-child) {
-    padding-right: 2em;
-  } */
 .school label {
   padding: 0.5em 0; }
 

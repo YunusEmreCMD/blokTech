@@ -1,0 +1,32 @@
+footer {
+    background-color: $blauw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    padding-top: 1.5em;
+    text-align: center;
+    z-index: 10;
+
+    a {
+        text-decoration: none;
+        color: $tekstkleur;
+        font-size: 20px;
+        padding: 0;
+        font-weight: $dikgedrukt;
+        margin: auto 0;
+    }
+
+    svg {
+        vertical-align: middle;
+        width: 1.25em;
+        height: 1.25em;
+        fill: $svgkleur;
+        padding-right: 0.5em;
+    }
+}
+
+.werkzoekende-footer {
+    z-index: 15;
+}

@@ -1,0 +1,19 @@
+@mixin ease-out {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+@mixin translateY100 {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+@mixin translateY0 {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+}
+
+@mixin transition {
+    -webkit-transition: 1s;
+    transition: 1s;
+}

@@ -1,0 +1,19 @@
+header a {
+    text-decoration: none;
+}
+
+.main-header {
+    background-color: $blauw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.5em;
+    z-index: -1;
+    text-align: center;
+}
+
+.main-header .jobdone {
+    float: none;
+    margin-top: 0.75em;
+}

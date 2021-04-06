@@ -1,0 +1,13 @@
+.filter-header {
+    background-color: $blauw;
+    padding: 1em 2em;
+    text-align: right;
+    z-index: 1;
+
+    svg {
+        width: 2em;
+        height: 2em;
+        fill: $svgkleur;
+        cursor: pointer;
+    }
+}
