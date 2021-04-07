@@ -7,30 +7,30 @@
     <fieldset class="het-bedrijf">
         <legend>Het bedrijf</legend>
         <div>
-            <label for="bedrijfsnaam">Bedrijfsnaam</label><br>
+            <label for="bedrijfsnaam">Bedrijfsnaam*</label><br>
             <input id="bedrijfsnaam" type="text" name="bedrijfsnaam" required>
         </div>
 
         <section class="bedrijf-gegevens-flex">
             <div>
-                <label for="straatnaam">Straatnaam</label><br>
+                <label for="straatnaam">Straatnaam*</label><br>
                 <input id="straatnaam" type="text" name="straatnaam" required>
             </div>
             <div>
-                <label for="huisnummer">Nr. + toevg.</label><br>
+                <label for="huisnummer">Nr. + toevg.*</label><br>
                 <input id="huisnummer" type="text" name="huisnummer" required>
             </div>
             <div>
-                <label for="plaatsnaam">Plaatsnaam</label><br>
+                <label for="plaatsnaam">Plaatsnaam*</label><br>
                 <input id="plaatsnaam" type="text" name="plaatsnaam" required>
             </div>
             <div>
-                <label for="postcode">Postcode</label><br>
+                <label for="postcode">Postcode*</label><br>
                 <input id="postcode" type="text" name="postcode" required>
             </div>
         </section>
         <div>
-            <label for="bedrijfWebsite">Website</label><br>
+            <label for="bedrijfWebsite">Website*</label><br>
             <input id="bedrijfWebsite" type="text" name="bedrijfWebsite" required>
         </div>
     </fieldset>
@@ -40,13 +40,13 @@
         <legend>De vacature</legend>
 
         <div>
-            <label for="vacatureNaam">Vacature Naam</label><br>
+            <label for="vacatureNaam">Vacature Naam*</label><br>
             <input id="vacatureNaam" type="text" name="vacatureNaam" placeholder="FED AMS" required>
         </div>
 
         <section class="vacature-details">
             <div>
-                <label for="dienstverband">Dienstverband</label>
+                <label for="dienstverband">Dienstverband*</label>
                 <select name="dienstverband" id="dienstverband" required>
                     <option value="">Maak keuze</option>
                     <option value="Fulltime">Fulltime</option>
@@ -58,7 +58,7 @@
             </div>
 
             <div>
-                <label for="Branch">Branch</label>
+                <label for="Branch">Branch*</label>
                 <select name="branch" id="branch" required>
                     <option value="Alle">Alle</option>
                     <option value="Design">Design</option>
@@ -77,14 +77,14 @@
         </section>
 
         <div class="vacature-omschrijving">
-            <label for="vacatureOmschrijving">Vacature Omschrijving</label>
+            <label for="vacatureOmschrijving">Vacature Omschrijving*</label>
             <textarea name="vacatureOmschrijving" rows="8" required></textarea>
         </div>
     </fieldset>
 
     {{!-- Invulvelden/optievelden --}}
     <fieldset class="vraag">
-        <legend>Waaraan moet de werkzoekende aan voldoen?</span></legend>
+        <legend>Waaraan moet de werkzoekende aan voldoen?*</span></legend>
         <div>
             <label for="opleidingsniveau">Opleidingsniveau</label>
             <select name="opleidingsniveau" id="opleidingsniveau" required>
@@ -100,7 +100,7 @@
 
         <section class="vraag-flexbox">
             <div>
-                <label for="competenties">Competenties</label>
+                <label for="competenties">Competenties*</label>
                 <select name="competenties" required id="competenties" multiple>
                     <option value="Ambitieus">Ambitieus</option>
                     <option value="Analytisch">Analytisch</option>
@@ -116,7 +116,7 @@
                 </select>
             </div>
             <div>
-                <label for="skills">Skills</label>
+                <label for="skills">Skills*</label>
                 <select name="skills" required id="skills" multiple>
                     <option value="HTML"> HTML</option>
                     <option value="CSS"> CSS</option>
@@ -144,7 +144,7 @@
     <fieldset>
         <legend>Wat biedt je de werkzoekende aan?</span></legend>
         <div class="aanbod">
-            <label for="aanbod">Aanbod</label>
+            <label for="aanbod">Aanbod*</label>
             <textarea name="aanbod" rows="4" required></textarea>
         </div>
     </fieldset>
@@ -153,24 +153,24 @@
         <legend>Contactpersoon</span></legend>
         <section class="contactpersoon">
             <div>
-                <label for="contactpersoonVoornaam">Voornaam</label>
+                <label for="contactpersoonVoornaam">Voornaam*</label>
                 <input id="contactpersoonVoornaam" type="text" name="contactpersoonVoornaam" required>
             </div>
             <div>
-                <label for="contactpersoonAchternaam">Achternaam</label>
+                <label for="contactpersoonAchternaam">Achternaam*</label>
                 <input id="contactpersoonAchternaam" type="text" name="contactpersoonAchternaam" required>
             </div>
             <div>
-                <label for="contactpersoonEmail">Email</label>
+                <label for="contactpersoonEmail">Email*</label>
                 <input id="contactpersoonEmail" type="email" name="contactpersoonEmail" required>
             </div>
             <div>
-                <label for="contactpersoonNummer">Telefoonnummer</label>
+                <label for="contactpersoonNummer">Telefoonnummer*</label>
                 <input id="contactpersoonNummer" type="tel" name="contactpersoonNummer" required>
             </div>
             <div>
                 <label for="contactpersoonLinkedIn">LinkedIn</label>
-                <input id="contactpersoonLinkedIn" type="text" name="contactpersoonLinkedIn" required>
+                <input id="contactpersoonLinkedIn" type="text" name="contactpersoonLinkedIn">
             </div>
         </section>
     </fieldset>

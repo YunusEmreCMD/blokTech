@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const db = mongoose.connection
 const app = express();
-
 mongoose.connect(process.env.DB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -16,15 +15,15 @@ mongoose.connect(process.env.DB_URI, {
 
 // Connectie maken met de database
 db.once('open', () => {
-  console.log('Connected to MongoDB')
+  console.log('Connectie met de database')
 })
 
 
-// Aangeven waar de statishce files zich bevinden  
+// Aangeven waar de statische files zich bevinden  
 app.use(express.static('static'));
 
 
-// Hiermee zorgen we ervoor dat we data kunnen versturen naar de DB
+// Hiermee zorgen we ervoor dat we data kunnen versturen naar de DB uit de formulieren
 app.use(bodyParser.urlencoded({
   extended: false
 }))
@@ -37,136 +36,150 @@ app.engine('hbs', hbs({
 app.set('view engine', 'hbs');
 
 
-// Database gebruikers schema maken
+// Mongoose db schema aanmaken voor de werkzoekende
 const gebruikersSchema = new mongoose.Schema({
   voornaam: {
     type: String,
-    required: false
+    required: true
   },
   achternaam: {
     type: String,
-    required: false
+    required: true
   },
   leeftijd: {
     type: Number,
-    required: false
+    required: true
   },
-  email: {
+  werkzoekendeEmail: {
+    type: String,
+    required: true
+  },
+  werkzoekendePortfolio: {
     type: String,
     required: false
   },
-  portfolio: {
-    type: String,
-    required: false
+  werkzoekendeCv: {
+    // https://stackoverflow.com/questions/54151409/what-is-the-field-type-for-a-file-in-a-mongodb-schema-model
+    // https://mongoosejs.com/docs/schematypes.html
+    type: Buffer,
+    required: true
   },
-  cv: {
+  werkzoekendeWoonplaats: {
     type: String,
-    required: false
-  },
-  woonplaats: {
-    type: String,
-    required: false
+    required: true
   },
   biografie: {
     type: String,
-    required: false
+    required: true
   },
   opleidingRichting: {
     type: String,
-    required: false
+    required: true
   },
   schoolNaam: {
     type: String,
-    required: false
+    required: true
   },
   opleidingsniveau: {
     type: String,
-    required: false
+    required: true
   },
   leerjaar: {
     type: Number,
-    required: false
+    required: true
+  },
+  skills: {
+    type: Array,
+    required: true
   },
   functie: {
     type: String,
-    required: false
+    required: true
   },
   branch: {
     type: String,
-    required: false
+    required: true
   },
   dienstverband: {
     type: String,
-    required: false
+    required: true
   }
 });
 
 
-// Database vacature schema maken
+// Mongoose db schema aanmaken voor de vacatures
 const vacaturesSchema = new mongoose.Schema({
   bedrijfsnaam: {
     type: String,
-    required: false
+    required: true
   },
   straatnaam: {
     type: String,
-    required: false
+    required: true
   },
   huisnummer: {
-    type: String,
-    required: false
+    type: Number,
+    required: true
   },
   plaatsnaam: {
     type: String,
-    required: false
+    required: true
   },
   postcode: {
     type: String,
-    required: false
+    required: true
   },
   bedrijfWebsite: {
     type: String,
-    required: false
+    required: true
   },
   branch: {
     type: String,
-    required: false
+    required: true
+  },
+  vacatureNaam: {
+    type: String,
+    required: true
+  },
+  dienstverband: {
+    type: String,
+    required: true
   },
   vacatureOmschrijving: {
     type: String,
-    required: false
+    required: true
   },
   opleidingsniveau: {
     type: String,
-    required: false
+    required: true
   },
   competenties: {
-    type: String,
-    required: false
+    type: Array,
+    required: true
   },
   skills: {
-    type: String,
-    required: false
+    type: Array,
+    required: true
   },
   aanbod: {
     type: String,
-    required: false
+    required: true
   },
   contactpersoonVoornaam: {
     type: String,
-    required: false
+    required: true
   },
   contactpersoonAchternaam: {
     type: String,
-    required: false
+    required: true
   },
   contactpersoonEmail: {
     type: String,
-    required: false
+    required: true
   },
   contactpersoonNummer: {
     type: String,
-    required: false
+    required: true
   },
   contactpersoonLinkedIn: {
     type: String,
@@ -177,8 +190,6 @@ const vacaturesSchema = new mongoose.Schema({
 
 // De database schema's stoppen in een variabele
 const vacatureCollection = mongoose.model('vacature', vacaturesSchema);
-// const gebruikersModel = mongoose.model('gebruikers', gebruikersSchema);
-// const vacaturesModel = mongoose.model('vacature', vacaturesSchema);
 const gebruikersCollection = mongoose.model('gebruikers', gebruikersSchema);
 
 
@@ -195,8 +206,9 @@ app.get('/', async (req, res) => {
 
 // Werkzoekende resultaten route - get
 app.get('/werkzoekende', async (req, res) => {
-  let gebruikers = {}
-  gebruikers = await gebruikersCollection.find({}).lean()
+
+  //met lean() zetten we het om naar mongodb objecten
+  const gebruikers = await gebruikersCollection.find({}).lean()
   res.render('werkzoekende', {
     title: "Werkzoekende",
     paginaClass: "resultaten",
@@ -214,15 +226,15 @@ app.post('/werkzoekende', async (req, res) => {
   const dienstverbandFilter = req.body.dienstverbandFilter
   const opleidingsniveauFilter = req.body.opleidingsniveauFilter
 
-  // leeg object aanmaken, standaard. Zoekt naar alles
+  // leeg object aanmaken, standaard wordt er naar alle resultaten gezocht
   let query = {}
 
-  // if else checkt waarop er wordt gefilterd, past query aan
+  // if else checkt waarop er wordt gefilterd (of er wordt gefiltert), past query steeds aan
   if (dienstverbandFilter === 'Alle' && opleidingsniveauFilter === 'Alle') {
     query = {}
   } else if (opleidingsniveauFilter === 'Alle') {
     query = {
-      dienstverband: dienstverbandFilter 
+      dienstverband: dienstverbandFilter
     }
   } else if (dienstverbandFilter === 'Alle') {
     query = {
@@ -236,7 +248,7 @@ app.post('/werkzoekende', async (req, res) => {
   }
 
   // query gebruiken, om in de db te zoeken
-  // lean, omzetten naar json, anders is het een mongodb object
+  //met lean() zetten we het om naar mongodb objecten
   const gebruikers = await gebruikersCollection.find(query).lean()
 
   res.render('werkzoekende', {
@@ -267,9 +279,14 @@ app.get('/werkzoekendeToevoegen', (req, res) => {
 });
 
 
-// Werkzoekedende toevoegen route - post - ik haal data op het formulier door de req.body te gebruiken
+// Werkzoekedende toevoegen route - post
 app.post('/werkzoekendeToevoegen', async (req, res) => {
-  const gebruikers = {
+
+  // await db.collection('gebruikers').insertOne(gebruikers);
+
+
+  // create wordt gebruikt om nieuwe documenten aan te maken
+  const gebruikers = await gebruikersCollection.create({
     "voornaam": req.body.voornaam,
     "achternaam": req.body.achternaam,
     "leeftijd": req.body.leeftijd,
@@ -286,14 +303,19 @@ app.post('/werkzoekendeToevoegen', async (req, res) => {
     "functie": req.body.functie,
     "branch": req.body.branch,
     "dienstverband": req.body.dienstverband
-  };
-  await db.collection('gebruikers').insertOne(gebruikers);
+  })
+
   res.render('werkzoekendeIngevuldeGegevens', {
     title: req.body.voornaam + " je bent toegevoegd!",
     paginaClass: "werkzoekende-toevoegen",
     footertekst: "Terug naar vacatures",
     footerlink: "/vacatures",
-    gebruikers
+
+    // zet de documenten om naar objecten
+    // https://stackoverflow.com/questions/34435461/create-mongoose-model-from-results-of-lean-query
+
+    // zet de data om naar objecten
+    gebruikers: gebruikers.toObject()
   })
 });
 
@@ -317,31 +339,31 @@ app.get('/vacatures', async (req, res) => {
 // Vacature resultaten route - post - om data vanuit het formulier te versturen
 app.post('/vacatures', async (req, res) => {
 
-    // variabelen aanmaken, filter opties
-    const branchFilter = req.body.branchFilter
-    const dienstverbandFilter = req.body.dienstverbandFilter
-  
-    // leeg object aanmaken, standaard. Zoekt naar alles
-    let query = {}
-  
-    // if else checkt waarop er wordt gefilterd, past query aan
-    if (branchFilter === 'Alle' && dienstverbandFilter === 'Alle') {
-      query = {}
-    } else if (dienstverbandFilter === 'Alle') {
-      query = {
-        branch: branchFilter
-      }
-    } else if (branchFilter === 'Alle') {
-      query = {
-        dienstverband: dienstverbandFilter
-      }
-    } else {
-      query = {
-        dienstverband: dienstverbandFilter,
-        branch: branchFilter
-      }
+  // variabelen aanmaken, filter opties
+  const branchFilter = req.body.branchFilter
+  const dienstverbandFilter = req.body.dienstverbandFilter
+
+  // leeg object aanmaken, standaard. Zoekt naar alles
+  let query = {}
+
+  // if else checkt waarop er wordt gefilterd, past query aan
+  if (branchFilter === 'Alle' && dienstverbandFilter === 'Alle') {
+    query = {}
+  } else if (dienstverbandFilter === 'Alle') {
+    query = {
+      branch: branchFilter
     }
-  
+  } else if (branchFilter === 'Alle') {
+    query = {
+      dienstverband: dienstverbandFilter
+    }
+  } else {
+    query = {
+      dienstverband: dienstverbandFilter,
+      branch: branchFilter
+    }
+  }
+
   // query gebruiken, om in de db te zoeken
   // lean, omzetten naar json, anders is het een mongodb object
   const vacatures = await vacatureCollection.find(query).lean()
@@ -359,8 +381,8 @@ app.post('/vacatures', async (req, res) => {
 })
 
 
-// Vacature toevoegen route - post - ik haal data op het formulier door de req.body te gebruiken
-app.get('/vacaturesToevoegen', (req, res) => { //checkAuthenticated
+// Vacature toevoegen route - get
+app.get('/vacaturesToevoegen', (req, res) => {
   let vacature = {}
   res.render('vacaturesToevoegen', {
     paginaClass: "werkzoekende-toevoegen",
@@ -372,9 +394,10 @@ app.get('/vacaturesToevoegen', (req, res) => { //checkAuthenticated
 });
 
 
-// Reultaten pagina route - post - ik haal data op het formulier door de req.body te gebruiken
+// Vacature pagina route - post
 app.post('/vacaturesToevoegen', async (req, res) => {
-  const vacatures = {
+
+  const vacatures = await vacatureCollection.create({
     "vacatureNaam": req.body.vacatureNaam,
     "bedrijfsnaam": req.body.bedrijfsnaam,
     "straatnaam": req.body.straatnaam,
@@ -394,22 +417,36 @@ app.post('/vacaturesToevoegen', async (req, res) => {
     "contactpersoonEmail": req.body.contactpersoonEmail,
     "contactpersoonNummer": req.body.contactpersoonNummer,
     "contactpersoonLinkedIn": req.body.contactpersoonLinkedIn
-  };
-  await db.collection('vacatures').insertOne(vacatures);
+  })
+
+  // await db.collection('vacatures').insertOne(vacatures);
+
   res.render('vacaturesIngevuldeGegevens', {
     title: req.body.vacatureNaam + " is toegevoegd!",
     paginaClass: "werkzoekende-toevoegen",
-    // footertekst: "hoi",
-    // footerlink: "/werkzoekende",
-    vacatures
+
+    // zet de documenten om naar objecten
+    // https://stackoverflow.com/questions/34435461/create-mongoose-model-from-results-of-lean-query
+
+    // zet de data om naar objecten
+
+    vacatures: vacatures.toObject()
   })
 });
 
 
 // 404 route
 app.use(function (req, res, next) {
-  res.status(404).send("Sorry ik heb niks kunnen vinden");
-});
+  res.render('404', {
+    paginaClass: "vier04"
+  });
+})
+
+// app.use(function (req, res, next) {
+//   res.status(404).send("Sorry ik heb niks kunnen vinden");
+// });
+
+
 
 // Geeft de port terug die gebruikt wordt
 app.listen(PORT, () => {

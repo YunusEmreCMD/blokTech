@@ -9,36 +9,36 @@
 
         <section>
             <div>
-                <label for="voornaam">Voornaam</label><br>
+                <label for="voornaam">Voornaam*</label><br>
                 <input id="voornaam" type="text" name="voornaam" required>
             </div>
             <div>
-                <label for="achternaam">Achternaam</label><br>
+                <label for="achternaam">Achternaam*</label><br>
                 <input id="achternaam" type="text" name="achternaam" required>
             </div>
             <div>
-                <label for="leeftijd">Leeftijd</label><br>
+                <label for="leeftijd">Leeftijd*</label><br>
                 <input id="leeftijd" type="number" name="leeftijd" min="12" max="99" required>
             </div>
             <div>
-                <label for="werkzoekendeEmail">E-mail</label><br>
+                <label for="werkzoekendeEmail">E-mail*</label><br>
                 <input id="werkzoekendeEmail" type="email" name="werkzoekendeEmail" required>
             </div>
             <div>
                 <label for="werkzoekendePortfolio">Portfolio (website)</label><br>
-                <input id="werkzoekendePortfolio" type="text" name="werkzoekendePortfolio" required>
+                <input id="werkzoekendePortfolio" type="text" name="werkzoekendePortfolio">
             </div>
             <div>
                 <label for="werkzoekendeCv">CV</label><br>
-                <input id="werkzoekendeCv" type="file" name="werkzoekendeCv" required>
+                <input id="werkzoekendeCv" type="file" name="werkzoekendeCv">
             </div>
             <div>
-                <label for="werkzoekendeWoonplaats">Woonplaats</label><br>
+                <label for="werkzoekendeWoonplaats">Woonplaats*</label><br>
                 <input id="werkzoekendeWoonplaats" type="text" name="werkzoekendeWoonplaats" required>
             </div>
         </section>
         <div class="biografie">
-            <label for="biografie">Vertel een beetje overzelf</label>
+            <label for="biografie">Vertel een beetje overzelf*</label>
             <textarea name="biografie" rows="8" required></textarea>
         </div>
     </fieldset>
@@ -47,17 +47,17 @@
     <fieldset class="school">
         <legend>Mijn school informatie</legend>
         <div>
-            <label for="opleidingRichting">Opleiding / richting</label><br>
+            <label for="opleidingRichting">Opleiding / richting*</label><br>
             <input id="opleidingRichting" type="text" name="opleidingRichting"
                 placeholder="Bijv. Communication and Multi Media Design" required>
         </div>
         <section class="school-flexbox">
             <div>
-                <label for="schoolNaam">School</label><br>
+                <label for="schoolNaam">School*</label><br>
                 <input id="schoolNaam" type="text" name="schoolNaam" placeholder="Bijv. Hogeschool Leiden" required>
             </div>
             <div>
-                <label for="opleidingsniveau">Opleidingsniveau</label>
+                <label for="opleidingsniveau">Opleidingsniveau*</label>
                 <select name="opleidingsniveau" id="opleidingsniveau" required>
                     <option value="">Maak keuze</option>
                     <option value="Universiteit">Universiteit</option>
@@ -69,7 +69,7 @@
                 </select>
             </div>
             <div>
-                <label for="leerjaar">Leerjaar</label><br>
+                <label for="leerjaar">Leerjaar*</label><br>
                 <input id="leerjaar" type="number" name="leerjaar" min="1" max="6" required>
             </div>
         </section>
@@ -77,7 +77,7 @@
 
     {{!-- Invulvelden/optievelden - skills --}}
     <fieldset>
-        <legend>Ik kan werken met <span>Je kunt meerdere selecteren</span></legend>
+        <legend>Ik kan werken met <span>Je kunt meerdere selecteren*</span></legend>
         <select name="skills" required id="skills" multiple>
             <option value="HTML"> HTML</option>
             <option value="CSS"> CSS</option>
@@ -105,14 +105,14 @@
         <legend>Ik ben opzoek naar</legend>
 
         <div>
-            <label for="functie">Functie:</label><br>
+            <label for="functie">Functie:*</label><br>
             <input id="functie" type="text" name="functie" placeholder="Bijv. Webdedigner" required>
         </div>
 
         <section class="opzoek-naar-flex">
 
             <div>
-                <label for="branch">Branch</label>
+                <label for="branch">Branch*</label>
                 <select name="branch" id="branch" required>
                     <option value="">Maak keuze</option>
                     <option value="Design">Design</option>
@@ -130,7 +130,7 @@
             </div>
 
             <div>
-                <label for="dienstverband">Dienstverband</label>
+                <label for="dienstverband">Dienstverband*</label>
                 <select name="dienstverband" id="dienstverband" required>
                     <option value="">Maak keuze</option>
                     <option value="Fulltime">Fulltime</option>
