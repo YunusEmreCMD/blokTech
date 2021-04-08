@@ -66,6 +66,7 @@ De functionaliteit om te **Filteren** is de main feature die is uitgewerkt in de
 Door rechtsboven-in op het filter icoontje te klikken, schuift er een filteroverlay naar boven hierin kun je een keuze maken uit de dropdowns en een keuze maken bij de radiobuttons. Na een keuze te hebben gemaakt klik je op "zoeken".
 
 ![Filteren](https://github.com/YunusEmreCMD/blokTech/blob/main/images/joddone-filter.png)
+![Meerinfo en geen resultaten](https://github.com/YunusEmreCMD/blokTech/blob/main/images/joddone-meerinfo-geenresultaten.png)
 
 ## License
 
