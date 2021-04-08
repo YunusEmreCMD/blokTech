@@ -10,7 +10,7 @@
 
 > Er zijn wellicht veel apps of websites die verzorgen voor een connectie tussen een werkzoekende en werkegvers, maar ik heb niet op mijn manier gezien. Daarom heb ik gekzoen voor dit project. Ik wil het proces wat speelser en gemakkelijker maken, en naar mijn mening kan dat door **cards** (design principe) te gebruiken waarop je moet filteren om resultaten te krijgen.
 
-![JobDone-homepagina-en-resultatenPagina](https://github.com/YunusEmreCMD/blokTech/blob/main/images/jobDone-applicatie-home-resultaten.png)
+![JobDone-homepagina-en-404](https://github.com/YunusEmreCMD/blokTech/blob/main/images/joddone-home-404.png)
 
 ## Inhoudsopagve
 
