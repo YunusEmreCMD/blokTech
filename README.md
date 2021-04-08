@@ -59,6 +59,8 @@ start npm
 
 De functionaliteit om te **Filteren** is de main feature die is uitgewerkt in de applicatie, bekijk [inhoudelijke features](https://github.com/YunusEmreCMD/blokTech/wiki/Features) voor meer informatie.
 
+![Resultaten](https://github.com/YunusEmreCMD/blokTech/blob/main/images/joddone-resultaten.png)
+
 ## In gebruik
 
 Door rechtsboven-in op het filter icoontje te klikken, schuift er een filteroverlay naar boven hierin kun je een keuze maken uit de dropdowns en een keuze maken bij de radiobuttons. Na een keuze te hebben gemaakt klik je op "zoeken".
