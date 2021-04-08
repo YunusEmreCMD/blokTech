@@ -219,6 +219,7 @@ app.get('/werkzoekende', async (req, res) => {
   });
 });
 
+
 // Werkzoekende resultaten route - post - om data vanuit het formulier te versturen
 app.post('/werkzoekende', async (req, res) => {
 
@@ -248,7 +249,7 @@ app.post('/werkzoekende', async (req, res) => {
   }
 
   // query gebruiken, om in de db te zoeken
-  //met lean() zetten we het om naar mongodb objecten
+  // met lean() zetten we het om naar mongodb objecten
   const gebruikers = await gebruikersCollection.find(query).lean()
 
   res.render('werkzoekende', {
@@ -268,22 +269,17 @@ app.post('/werkzoekende', async (req, res) => {
 
 // Werkzoekedende toevoegen route - get
 app.get('/werkzoekendeToevoegen', (req, res) => {
-  let gebruikers = {}
   res.render('werkzoekendeToevoegen', {
     paginaClass: "werkzoekende-toevoegen",
     footertekst: "Terug naar vacatures",
     footerlink: "/vacatures",
-    title: "Werkzoekende aanmaken",
-    gebruikers
+    title: "Werkzoekende aanmaken"
   });
 });
 
 
 // Werkzoekedende toevoegen route - post
 app.post('/werkzoekendeToevoegen', async (req, res) => {
-
-  // await db.collection('gebruikers').insertOne(gebruikers);
-
 
   // create wordt gebruikt om nieuwe documenten aan te maken
   const gebruikers = await gebruikersCollection.create({
@@ -311,10 +307,7 @@ app.post('/werkzoekendeToevoegen', async (req, res) => {
     footertekst: "Terug naar vacatures",
     footerlink: "/vacatures",
 
-    // zet de documenten om naar objecten
-    // https://stackoverflow.com/questions/34435461/create-mongoose-model-from-results-of-lean-query
-
-    // zet de data om naar objecten
+    //.toObject is nodig om de data op te halen voor de ingevulde gegevens pagina
     gebruikers: gebruikers.toObject()
   })
 });
@@ -335,6 +328,7 @@ app.get('/vacatures', async (req, res) => {
     vacatures,
   });
 });
+
 
 // Vacature resultaten route - post - om data vanuit het formulier te versturen
 app.post('/vacatures', async (req, res) => {
@@ -397,6 +391,7 @@ app.get('/vacaturesToevoegen', (req, res) => {
 // Vacature pagina route - post
 app.post('/vacaturesToevoegen', async (req, res) => {
 
+  // create wordt gebruikt om nieuwe documenten aan te maken
   const vacatures = await vacatureCollection.create({
     "vacatureNaam": req.body.vacatureNaam,
     "bedrijfsnaam": req.body.bedrijfsnaam,
@@ -419,33 +414,21 @@ app.post('/vacaturesToevoegen', async (req, res) => {
     "contactpersoonLinkedIn": req.body.contactpersoonLinkedIn
   })
 
-  // await db.collection('vacatures').insertOne(vacatures);
-
   res.render('vacaturesIngevuldeGegevens', {
     title: req.body.vacatureNaam + " is toegevoegd!",
     paginaClass: "werkzoekende-toevoegen",
 
-    // zet de documenten om naar objecten
-    // https://stackoverflow.com/questions/34435461/create-mongoose-model-from-results-of-lean-query
-
-    // zet de data om naar objecten
-
+    //.toObject is nodig om de data op te halen voor de ingevulde gegevens pagina
     vacatures: vacatures.toObject()
   })
 });
 
 
 // 404 route
+// https://www.geeksforgeeks.org/express-js-res-status-function/
 app.use(function (req, res, next) {
-  res.render('404', {
-    paginaClass: "vier04"
-  });
-})
-
-// app.use(function (req, res, next) {
-//   res.status(404).send("Sorry ik heb niks kunnen vinden");
-// });
-
+  res.status(404).render('404');
+});
 
 
 // Geeft de port terug die gebruikt wordt
